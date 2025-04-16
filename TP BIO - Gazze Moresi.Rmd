@@ -21,7 +21,7 @@ Llevar a cabo un proceso exhaustivo de validación, empleando técnicas para eva
 
 ## Desarrollo
 
-### Reglas de validación
+### 1)Reglas de validación
 
 Las reglas de validación que se plantearan para detectar inconsistencias son las siguientes:
 
@@ -45,7 +45,7 @@ Las reglas de validación que se plantearan para detectar inconsistencias son la
 
 Y el código para detectar estos errores es el siguiente:
 
-```{r,echo=FALSE}
+```{r,echo=FALSE, message=FLASE, warning=FALSE}
 library(readxl)
 library(tidyverse)
 
@@ -70,36 +70,31 @@ reglas = tribble(
 "r13", "(countrycode) distinto de 4, 11, 14, 23, 31, 48, 54, 65, 72 o 97", "!countrycode %in% c(4, 11, 14, 23, 31, 48, 54, 65, 72, 97)",
 "r14", "(interview) no sigue formato dd/mm/yyyy", "!tryCatch(!is.na(as.Date(`interview`, format='%d/%m/%Y')), error = function(e) TRUE)",
 "r15", "Edad fuera de rango según Patient ID y Date of interview", "{
-    fecha_nac <- as.Date(sub('-.*', '', `Patient ID`), format='%d/%m/%Y')
-    fecha_entrevista <- as.Date(`Date of interview`, format='%d/%m/%Y')
+    fecha_nac <- as.Date(sub('-.*', '', `patientid`), format='%d/%m/%Y')
+    fecha_entrevista <- as.Date(`interview`, format='%d/%m/%Y')
     edad <- as.numeric(difftime(fecha_entrevista, fecha_nac, units='days')) / 365.25
     edad < 18 | edad > 100
   }",
 "r16", "subjectnumber tiene valor cuando scr, usscr o consent no son 2", "(scr != 2 | usscr != 2 | consent != 2) & !is.na(subjectnumber) & subjectnumber != ''",
-"r17", "subjectnumber está vacío cuando scr, usscr y consent son 2", "(scr == 2 & usscr == 2 & consent == 2) & (is.na(subjectnumber) | subjectnumber == '')",
-"r18", "subjectnumber no respeta formato: 3 dígitos de countrycode + 6 números", "!grepl('^\\d{9}$', subjectnumber) | substr(subjectnumber, 1, 3) != sprintf('%03d', countrycode)"
+"r17", "subjectnumber está vacío cuando scr, usscr y consent son 2", "(scr == 2 & usscr == 2 & consent == 2) & (is.na(subjectnumber) | subjectnumber == '')"
 )
 
+#"r18", "subjectnumber no respeta formato: 3 dígitos de countrycode + 6 números", #"!grepl('^\\d{9}$', subjectnumber) | substr(subjectnumber, 1, 3) != sprintf('%03d', #countrycode)"
 ```
 
+### 2) Detección de errores
+
+A través de las reglas anteriormente mencionadas se van a identificar los errores presentes en la base de datos ´adm´. Dicha base cuenta con la información referida a 1000 encuestas realizadas.
+
 ```{r}
-# Funcion validador()
-# argumentos:
-# - datos: conjunto de validacion
-# - id : nombre de la columna en (datos) con el identificador
-# - cond : nombre de la columna en (datos) con la condicion
-# salida: vector nombrado
-validador = function(datos, id, cond){
-reglas = datos[[cond]]
-names(reglas) = datos[[id]]
+
+validador = function(regla, id, cond){
+reglas = regla[[cond]]
+names(reglas) = regla[[id]]
 reglas
 }
-# Funcion validar()
-# argumentos:
-# - datos : conjunto de datos a validar
-# - id : nombre de la columna en (datos) con el identificador
-# - validador: salida de validador()
-# salida: tibble con el resultado de la validación
+
+
 validar = function(datos, id, validador){
 sapply(
 validador,
@@ -111,6 +106,26 @@ dplyr::mutate(registro = datos[[id]], .before = 0)
 ```
 
 ```{r}
-validacion = validar(adm, "id", validador(reglas, "id", "cond"))
+validacion = validar(adm, "patientid", validador(reglas, "id", "cond"))
 validacion
+
+
+validacion_largo = pivot_longer(validacion, -registro, names_to = "regla", values_to = "error")
+
 ```
+
+Cuantos individuos presentan inconsistencias
+
+```{r}
+validacion_largo |>
+filter(error) |>
+distinct(registro) |>
+count()
+
+colSums(validacion[,2:18])
+
+regla17 = validacion[,18]
+
+sum(regla17)
+```
+
