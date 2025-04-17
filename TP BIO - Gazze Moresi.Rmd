@@ -21,27 +21,27 @@ Llevar a cabo un proceso exhaustivo de validación, empleando técnicas para eva
 
 ## Desarrollo
 
-### 1)Reglas de validación
+### 1) Reglas de validación
 
 Las reglas de validación que se plantearan para detectar inconsistencias son las siguientes:
 
--   La fecha de inscripción debe seguir el siguiente formato: dd(del 1 al 31)/mm(del 1 al 12)/yyyy(menor a 2025) (*Date of interview)*
+-   La fecha de inscripción debe seguir el siguiente formato: dd(del 1 al 31)/mm(del 1 al 12)/yyyy(menor a 2025) (*Date of interview*).
 
--   El ID del paciente debe seguir el siguiente formato: dd/mm/yyyy-AA (es decir, *Birth Date + Initials)*
+-   El ID del paciente debe seguir el siguiente formato: dd/mm/yyyy-AA (es decir, *Birth Date + Initials*).
 
--   Las mujeres deben ser mayores de 18 años (18 years *\< Date of interview - Birth Date \<* 100 years)
+-   Las mujeres deben ser mayores de 18 años (18 years *\< Date of interview - Birth Date \<* 100 years).
 
--   Los códigos de paises posibles en este estudio son: 4, 11, 14, 23, 31, 48, 54, 65, 72, 97 (*Country code =* 4, 11, 14, 23, 31, 48, 54, 65, 72, 97)
+-   Los códigos de paises posibles en este estudio son: 4, 11, 14, 23, 31, 48, 54, 65, 72, 97 (*Country code =* 4, 11, 14, 23, 31, 48, 54, 65, 72, 97).
 
--   Los grupos étnicos deben ser iguales a 1="Caucasico",2=Asiatico",3="Africano" o 4="Otro"(*Ethnic group =* 1,2,3,4)
+-   Los grupos étnicos deben ser iguales a 1="Caucasico",2="Asiatico",3="Africano" o 4="Otro"(*Ethnic group =* 1, 2, 3, 4).
 
--   Las preguntas mencionadas en el formulario como 1,2 y 3 deben ser iguales a 1="No" o 2="Si"
+-   Las preguntas mencionadas en el formulario como 1, 2 y 3 deben ser iguales a 1="No" o 2="Si".
 
--   Si las 3 preguntas anteriores son iguales a 2="Si", entonces la pregunta *Subject Number* debe contener respuesta, en caso contrario debe dejarse en blanco (**2 condiciones**)
+-   Si las 3 preguntas anteriores son iguales a 2="Si", entonces la pregunta *Subject Number* debe contener respuesta, en caso contrario debe dejarse en blanco (**2 condiciones**).
 
--   La respuesta de *Subject Number* debe seguir el siguiente formato: <u>0</u> \_ \_ (*country code)* \_ \_ *(physician code = numeric)* \_ \_ \_ (*subject code = numeric*)
+-   La respuesta de *Subject Number* debe seguir el siguiente formato: <u>0</u> \_ \_ (*country code*)\_ \_ (*physician code = numeric*) \_ \_ \_ (*subject code = numeric*).
 
--   Adicionalmente se contaran las celdas que esten vacias en cada variable
+-   Adicionalmente, se contaran las celdas que esten vacias en cada variable.
 
 Y el código para detectar estos errores es el siguiente:
 
@@ -114,7 +114,7 @@ validacion
 
 Las celdas con TRUE corresponden a errores en esa regla de validación. Además, en registro se especifica a que encuestada pertenece.
 
-### 3)Informe de errores
+### 3) Informe de errores
 
 a) Número de participantes limpios (sin inconsistencias)
 
