@@ -45,7 +45,7 @@ Las reglas de validación que se plantearan para detectar inconsistencias son la
 
 Y el código para detectar estos errores es el siguiente:
 
-```{r,echo=FALSE, message=FLASE, warning=FALSE}
+```{r,echo=FALSE, message=FALSE}
 library(readxl)
 library(tidyverse)
 
@@ -81,12 +81,12 @@ reglas = tribble(
   (!grepl('^\\\\d{9}$', subjectnumber) | substr(subjectnumber, 1, 3) != sprintf('%03d', countrycode))"
 )
 
-
+#falta ver si patientid cumple el formato
 ```
 
 ### 2) Detección de errores
 
-A través de las reglas anteriormente mencionadas se van a identificar los errores presentes en la base de datos ´adm´. Dicha base cuenta con la información referida a 1000 encuestas realizadas.
+A través de las reglas anteriormente mencionadas se van a identificar los errores presentes en la base de datos "***adm"***. Dicha base cuenta con la información referida a 1000 encuestas realizadas.
 
 ```{r}
 
@@ -109,15 +109,15 @@ dplyr::mutate(registro = datos[[id]], .before = 0)
 
 ```{r}
 validacion = validar(adm, "patientid", validador(reglas, "id", "cond"))
+inconsistencias = sum(validacion[,2:18],na.rm = T)
 validacion
 ```
 
-Las celdas con TRUE corresponden a errores en esa regla de validación. Además, en registro se especifica a que encuestada pertenece.
+Las celdas con TRUE corresponden a errores en esa regla de validación. Además, en registro se especifica a que encuestada pertenece.Obteniendo un total de inconsistencias de `r inconsistencias`
 
 ### 3) Informe de errores
 
-a) Número de participantes limpios (sin inconsistencias)
-
+a)  Número de participantes limpios (sin inconsistencias)
 
 ```{r}
 validacion_largo = pivot_longer(validacion, -registro, names_to = "regla", values_to = "error")
@@ -130,9 +130,10 @@ count()
 
 1000 - ind_incos
 ```
+
 761 de las participantes no presentan errores en la carga de sus datos.
 
-b) Participantes con inconsistencias
+b)  Participantes con inconsistencias
 
 ```{r}
 ind_incos
@@ -140,14 +141,24 @@ ind_incos
 
 Por consecuencia, 239 de las entrevistadas presentan al menos un error en la carga de sus respuestas.
 
-c) Inconsistencias más frecuentes
+c)  Inconsistencias más frecuentes
+
+```{r}
+colSums(validacion[,2:18],na.rm = T)
+#Hacer gráfico de barras
+```
+d) Campos con más errores
+
+```{r}
+preg_a =sum(validacion[,c(2,13)],na.rm = T)
+preg_b =sum(validacion[,c(3,15)],na.rm = T)
+preg_c =sum(validacion[,c(4,14)],na.rm = T)
 
 
 
+#como contemplar en el caso de que sea menor de edad o sea una señora de 120 años, cual de los #campos es el del error?birth date?date of interview?
 
 
 
-
-
-
+```
 

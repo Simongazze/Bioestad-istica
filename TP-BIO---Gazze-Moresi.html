@@ -388,31 +388,163 @@ sistemáticos en el llenado de los formularios.</p>
 <div id="desarrollo" class="section level2">
 <h2>Desarrollo</h2>
 <div id="reglas-de-validación" class="section level3">
-<h3>Reglas de validación</h3>
+<h3>1) Reglas de validación</h3>
 <p>Las reglas de validación que se plantearan para detectar
 inconsistencias son las siguientes:</p>
 <ul>
-<li><p>La fecha de inscripción debe seguir el siguiente formato:
-dd/mm/yyyy (<em>Date of interview)</em></p></li>
+<li><p>La fecha de inscripción debe seguir el siguiente formato: dd(del
+1 al 31)/mm(del 1 al 12)/yyyy(menor a 2025) (<em>Date of
+interview</em>).</p></li>
 <li><p>El ID del paciente debe seguir el siguiente formato:
-dd/mm/yyyy-AA (es decir, <em>Birth Date + Initials)</em></p></li>
+dd/mm/yyyy-AA (es decir, <em>Birth Date + Initials</em>).</p></li>
 <li><p>Las mujeres deben ser mayores de 18 años (18 years <em>&lt; Date
-of interview - Birth Date &lt;</em> 100 years)</p></li>
+of interview - Birth Date &lt;</em> 100 years).</p></li>
 <li><p>Los códigos de paises posibles en este estudio son: 4, 11, 14,
 23, 31, 48, 54, 65, 72, 97 (<em>Country code =</em> 4, 11, 14, 23, 31,
-48, 54, 65, 72, 97)</p></li>
+48, 54, 65, 72, 97).</p></li>
 <li><p>Los grupos étnicos deben ser iguales a
-1=“Caucasico”,2=Asiatico”,3=“Africano” o 4=“Otro”(<em>Ethnic group
-=</em> 1,2,3,4)</p></li>
-<li><p>Las preguntas mencionadas en el formulario como 1,2 y 3 deben ser
-iguales a 1=“No” o 2=“Si”</p></li>
+1=“Caucasico”,2=“Asiatico”,3=“Africano” o 4=“Otro”(<em>Ethnic group
+=</em> 1, 2, 3, 4).</p></li>
+<li><p>Las preguntas mencionadas en el formulario como 1, 2 y 3 deben
+ser iguales a 1=“No” o 2=“Si”.</p></li>
 <li><p>Si las 3 preguntas anteriores son iguales a 2=“Si”, entonces la
 pregunta <em>Subject Number</em> debe contener respuesta, en caso
-contrario debe dejarse en blanco</p></li>
+contrario debe dejarse en blanco (<strong>2
+condiciones</strong>).</p></li>
 <li><p>La respuesta de <em>Subject Number</em> debe seguir el siguiente
-formato: <u>0</u> _ _ (<em>country code)</em> _ _ <em>(physician code =
-numeric)</em> _ _ _ (<em>subject code = numeric</em>)</p></li>
+formato: <u>0</u> _ _ (<em>country code</em>)_ _ (<em>physician code =
+numeric</em>) _ _ _ (<em>subject code = numeric</em>).</p></li>
+<li><p>Adicionalmente, se contaran las celdas que esten vacias en cada
+variable.</p></li>
 </ul>
+<p>Y el código para detectar estos errores es el siguiente:</p>
+<pre class="r"><code>reglas = tribble(
+~id, ~descrip, ~cond,
+&quot;r1&quot;, &quot;(countrycode) es faltante&quot;, &quot;is.na(countrycode)&quot;,
+&quot;r2&quot;, &quot;(patientid) es faltante&quot;, &quot;is.na(patientid)&quot;,
+&quot;r3&quot;, &quot;(interview) es faltante&quot;, &quot;is.na(interview)&quot;,
+&quot;r4&quot;, &quot;(ethnicgroup) es faltante&quot;, &quot;is.na(ethnicgroup)&quot;,
+&quot;r5&quot;, &quot;(scr) es faltante&quot;, &quot;is.na(scr)&quot;,
+&quot;r6&quot;, &quot;(usscr) es faltante&quot;, &quot;is.na(usscr)&quot;,
+&quot;r7&quot;, &quot;(consent) es faltante&quot;, &quot;is.na(consent)&quot;,
+&quot;r8&quot;, &quot;(ethnicgroup) distinto de 1,2,3 o 4&quot;, &quot;!ethnicgroup %in% c(1, 2, 3, 4)&quot;,
+&quot;r9&quot;, &quot;(scr) distinto de 1 o 2&quot;, &quot;!scr %in% c(1,2)&quot;,
+&quot;r10&quot;, &quot;(usscr) distinto de 1 o 2&quot;, &quot;!usscr %in% c(1,2)&quot;,
+&quot;r11&quot;, &quot;(consent) distinto de 1 o 2&quot;, &quot;!consent %in% c(1,2)&quot;,
+&quot;r12&quot;, &quot;(countrycode) distinto de 4, 11, 14, 23, 31, 48, 54, 65, 72 o 97&quot;, &quot;!countrycode %in% c(4, 11, 14, 23, 31, 48, 54, 65, 72, 97)&quot;,
+&quot;r13&quot;, &quot;(interview) no sigue formato dd/mm/yyyy&quot;, &quot;!tryCatch(!is.na(as.Date(`interview`, format=&#39;%d/%m/%Y&#39;)), error = function(e) TRUE)&quot;,
+&quot;r14&quot;, &quot;Edad fuera de rango según Patient ID y Date of interview&quot;, &quot;{
+    fecha_nac &lt;- as.Date(sub(&#39;-.*&#39;, &#39;&#39;, `patientid`), format=&#39;%d/%m/%Y&#39;)
+    fecha_entrevista &lt;- as.Date(`interview`, format=&#39;%d/%m/%Y&#39;)
+    edad &lt;- as.numeric(difftime(fecha_entrevista, fecha_nac, units=&#39;days&#39;)) / 365.25
+    edad &lt; 18 | edad &gt; 100
+  }&quot;,
+&quot;r15&quot;, &quot;subjectnumber tiene valor cuando scr, usscr o consent no son 2&quot;, &quot;(scr != 2 | usscr != 2 | consent != 2) &amp; !is.na(subjectnumber) &amp; subjectnumber != &#39;&#39;&quot;,
+&quot;r16&quot;, &quot;subjectnumber está vacío cuando scr, usscr y consent son 2&quot;, &quot;(scr == 2 &amp; usscr == 2 &amp; consent == 2) &amp; (is.na(subjectnumber) | subjectnumber == &#39;&#39;)&quot;,
+&quot;r17&quot;, &quot;subjectnumber no respeta formato: 3 dígitos de countrycode + 6 números&quot;, 
+&quot;(scr == 2 &amp; usscr == 2 &amp; consent == 2) &amp; 
+  (!grepl(&#39;^\\\\d{9}$&#39;, subjectnumber) | substr(subjectnumber, 1, 3) != sprintf(&#39;%03d&#39;, countrycode))&quot;
+)
+
+#falta ver si patientid cumple el formato</code></pre>
+</div>
+<div id="detección-de-errores" class="section level3">
+<h3>2) Detección de errores</h3>
+<p>A través de las reglas anteriormente mencionadas se van a identificar
+los errores presentes en la base de datos
+“<strong><em>adm”</em></strong>. Dicha base cuenta con la información
+referida a 1000 encuestas realizadas.</p>
+<pre class="r"><code>validador = function(regla, id, cond){
+reglas = regla[[cond]]
+names(reglas) = regla[[id]]
+reglas
+}
+
+
+validar = function(datos, id, validador){
+sapply(
+validador,
+function(x) eval(parse(text = x), datos)
+) |&gt;
+dplyr::as_tibble() |&gt;
+dplyr::mutate(registro = datos[[id]], .before = 0)
+}</code></pre>
+<pre class="r"><code>validacion = validar(adm, &quot;patientid&quot;, validador(reglas, &quot;id&quot;, &quot;cond&quot;))
+inconsistencias = sum(validacion[,2:18],na.rm = T)
+validacion</code></pre>
+<pre><code>## # A tibble: 1,000 × 18
+##    registro    r1    r2    r3    r4    r5    r6    r7    r8    r9    r10   r11  
+##    &lt;chr&gt;       &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;
+##  1 15/03/1989… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  2 19/03/1973… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  3 26/11/1994… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  4 18/04/1990… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  5 01/01/1981… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  6 13/12/1981… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  7 12/07/1977… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  8 12/04/1981… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  9 28/02/1984… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## 10 11/11/1990… FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## # ℹ 990 more rows
+## # ℹ 6 more variables: r12 &lt;lgl&gt;, r13 &lt;lgl&gt;, r14 &lt;lgl&gt;, r15 &lt;lgl&gt;, r16 &lt;lgl&gt;,
+## #   r17 &lt;lgl&gt;</code></pre>
+<p>Las celdas con TRUE corresponden a errores en esa regla de
+validación. Además, en registro se especifica a que encuestada
+pertenece.Obteniendo un total de inconsistencias de 371</p>
+</div>
+<div id="informe-de-errores" class="section level3">
+<h3>3) Informe de errores</h3>
+<ol style="list-style-type: lower-alpha">
+<li>Número de participantes limpios (sin inconsistencias)</li>
+</ol>
+<pre class="r"><code>validacion_largo = pivot_longer(validacion, -registro, names_to = &quot;regla&quot;, values_to = &quot;error&quot;)
+head(validacion_largo)</code></pre>
+<pre><code>## # A tibble: 6 × 3
+##   registro      regla error
+##   &lt;chr&gt;         &lt;chr&gt; &lt;lgl&gt;
+## 1 15/03/1989-LQ r1    FALSE
+## 2 15/03/1989-LQ r2    FALSE
+## 3 15/03/1989-LQ r3    FALSE
+## 4 15/03/1989-LQ r4    FALSE
+## 5 15/03/1989-LQ r5    FALSE
+## 6 15/03/1989-LQ r6    FALSE</code></pre>
+<pre class="r"><code>ind_incos = validacion_largo |&gt;
+filter(error) |&gt;
+distinct(registro) |&gt;
+count()
+
+1000 - ind_incos</code></pre>
+<pre><code>##     n
+## 1 761</code></pre>
+<p>761 de las participantes no presentan errores en la carga de sus
+datos.</p>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Participantes con inconsistencias</li>
+</ol>
+<pre class="r"><code>ind_incos</code></pre>
+<pre><code>## # A tibble: 1 × 1
+##       n
+##   &lt;int&gt;
+## 1   239</code></pre>
+<p>Por consecuencia, 239 de las entrevistadas presentan al menos un
+error en la carga de sus respuestas.</p>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Inconsistencias más frecuentes</li>
+</ol>
+<pre class="r"><code>colSums(validacion[,2:18],na.rm = T)</code></pre>
+<pre><code>##  r1  r2  r3  r4  r5  r6  r7  r8  r9 r10 r11 r12 r13 r14 r15 r16 r17 
+##   0   0   0  26   0   0   1  51   0   0   1   0   0   3  56  97 136</code></pre>
+<pre class="r"><code>#Hacer gráfico de barras</code></pre>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Campos con más errores</li>
+</ol>
+<pre class="r"><code>preg_a =sum(validacion[,c(2,13)],na.rm = T)
+preg_b =sum(validacion[,c(3,15)],na.rm = T)
+preg_c =sum(validacion[,c(4,14)],na.rm = T)
+
+
+
+#como contemplar en el caso de que sea menor de edad o sea una señora de 120 años, cual de los #campos es el del error?birth date?date of interview?</code></pre>
 </div>
 </div>
 
