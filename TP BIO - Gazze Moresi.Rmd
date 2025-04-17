@@ -191,7 +191,7 @@ preg_c =sum(validacion[,c(4,14)],na.rm = T)
 
 
 #como contemplar en el caso de que sea menor de edad o sea una señora de 120 años, cual de los #campos es el del error?birth date?date of interview?
-
+#no tener en cuenta los errores de la regla 18
 
 
 ```
