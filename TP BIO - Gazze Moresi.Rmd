@@ -48,6 +48,7 @@ Y el código para detectar estos errores es el siguiente:
 ```{r,echo=FALSE, message=FALSE}
 library(readxl)
 library(tidyverse)
+library(ggplot2)
 
 adm <- read_excel("adm.xlsx")
 ```
@@ -62,26 +63,27 @@ reglas = tribble(
 "r5", "(scr) es faltante", "is.na(scr)",
 "r6", "(usscr) es faltante", "is.na(usscr)",
 "r7", "(consent) es faltante", "is.na(consent)",
-"r8", "(ethnicgroup) distinto de 1,2,3 o 4", "!ethnicgroup %in% c(1, 2, 3, 4)",
-"r9", "(scr) distinto de 1 o 2", "!scr %in% c(1,2)",
-"r10", "(usscr) distinto de 1 o 2", "!usscr %in% c(1,2)",
-"r11", "(consent) distinto de 1 o 2", "!consent %in% c(1,2)",
-"r12", "(countrycode) distinto de 4, 11, 14, 23, 31, 48, 54, 65, 72 o 97", "!countrycode %in% c(4, 11, 14, 23, 31, 48, 54, 65, 72, 97)",
-"r13", "(interview) no sigue formato dd/mm/yyyy", "!tryCatch(!is.na(as.Date(`interview`, format='%d/%m/%Y')), error = function(e) TRUE)",
-"r14", "Edad fuera de rango según Patient ID y Date of interview", "{
-    fecha_nac <- as.Date(sub('-.*', '', `patientid`), format='%d/%m/%Y')
-    fecha_entrevista <- as.Date(`interview`, format='%d/%m/%Y')
-    edad <- as.numeric(difftime(fecha_entrevista, fecha_nac, units='days')) / 365.25
+"r8", "(subjectnumber) es faltante cuando (scr), (usscr) y (consent) son 2", "(scr == 2 & usscr == 2 & consent == 2) & (is.na(subjectnumber) | subjectnumber == '')",
+"r9", "(ethnicgroup) distinto de 1,2,3 o 4", "!is.na(ethnicgroup) & ethnicgroup != '' & !ethnicgroup %in% c(1, 2, 3, 4)",
+"r10", "(scr) distinto de 1 o 2", "!is.na(scr) & scr != '' & !scr %in% c(1,2)",
+"r11", "(usscr) distinto de 1 o 2", "!is.na(usscr) & usscr != '' & !usscr %in% c(1,2)",
+"r12", "(consent) distinto de 1 o 2", "!is.na(consent) & consent != '' & !consent %in% c(1,2)",
+"r13", "(countrycode) distinto de 4, 11, 14, 23, 31, 48, 54, 65, 72 o 97", "!is.na(countrycode) & countrycode != '' & !countrycode %in% c(4, 11, 14, 23, 31, 48, 54, 65, 72, 97)",
+"r14", "(interview) no sigue formato dd/mm/yyyy", "!is.na(interview) & interview != '' & tryCatch(is.na(as.Date(`interview`, format='%d/%m/%Y')), error = function(e) TRUE)",
+"r15", "(patientid) no sigue el formato dd/mm/yyyy-AA", "!is.na(patientid) & patientid != '' & !grepl('^\\\\d{2}/\\\\d{2}/\\\\d{4}-[A-Z]{2}$', patientid) | tryCatch(is.na(as.Date(sub('-.*', '', patientid), format = '%d/%m/%Y')), error = function(e) TRUE)",
+"r16", "(subjectnumber) tiene valor cuando (scr), (usscr) o (consent) no son 2", "(scr != 2 | usscr != 2 | consent != 2) & !is.na(subjectnumber) & subjectnumber != ''",
+"r17", "(subjectnumber) no respeta formato: 3 dígitos de (countrycode) + 6 números", 
+"(scr == 2 & usscr == 2 & consent == 2) & !is.na(subjectnumber) & subjectnumber != '' & (!grepl('^\\\\d{9}$', subjectnumber) | substr(subjectnumber, 1, 3) != sprintf('%03d', countrycode))",
+"r18", "Edad fuera de rango según (patientid) e (interview)", " !is.na(patientid) & !is.na(interview) &
+  tryCatch({
+    fecha_nac <- as.Date(sub('-.*', '', patientid), format='%d/%m/%Y')
+    fecha_entrevista <- as.Date(interview, format='%d/%m/%Y')
+    edad <- as.numeric(difftime(fecha_entrevista, fecha_nac, units = 'days')) / 365.25
     edad < 18 | edad > 100
-  }",
-"r15", "subjectnumber tiene valor cuando scr, usscr o consent no son 2", "(scr != 2 | usscr != 2 | consent != 2) & !is.na(subjectnumber) & subjectnumber != ''",
-"r16", "subjectnumber está vacío cuando scr, usscr y consent son 2", "(scr == 2 & usscr == 2 & consent == 2) & (is.na(subjectnumber) | subjectnumber == '')",
-"r17", "subjectnumber no respeta formato: 3 dígitos de countrycode + 6 números", 
-"(scr == 2 & usscr == 2 & consent == 2) & 
-  (!grepl('^\\\\d{9}$', subjectnumber) | substr(subjectnumber, 1, 3) != sprintf('%03d', countrycode))"
+  }, error = function(e) FALSE)
+"
 )
 
-#falta ver si patientid cumple el formato
 ```
 
 ### 2) Detección de errores
@@ -109,7 +111,7 @@ dplyr::mutate(registro = datos[[id]], .before = 0)
 
 ```{r}
 validacion = validar(adm, "patientid", validador(reglas, "id", "cond"))
-inconsistencias = sum(validacion[,2:18],na.rm = T)
+inconsistencias = sum(validacion[,2:19],na.rm = T)
 validacion
 ```
 
@@ -117,37 +119,69 @@ Las celdas con TRUE corresponden a errores en esa regla de validación. Además,
 
 ### 3) Informe de errores
 
-a)  Número de participantes limpios (sin inconsistencias)
+####  Número de participantes limpios (sin inconsistencias)
 
 ```{r}
 validacion_largo = pivot_longer(validacion, -registro, names_to = "regla", values_to = "error")
-head(validacion_largo)
 
 ind_incos = validacion_largo |>
 filter(error) |>
 distinct(registro) |>
 count()
 
-1000 - ind_incos
+ind_limp = 1000 - ind_incos
 ```
 
-761 de las participantes no presentan errores en la carga de sus datos.
+`r ind_limp` de las participantes no presentan errores en la carga de sus datos.
 
-b)  Participantes con inconsistencias
+####  Participantes con inconsistencias
 
 ```{r}
 ind_incos
 ```
 
-Por consecuencia, 239 de las entrevistadas presentan al menos un error en la carga de sus respuestas.
+Por consecuencia, `r ind_incos` de las entrevistadas presentan al menos un error en la carga de sus respuestas.
 
-c)  Inconsistencias más frecuentes
+####  Inconsistencias más frecuentes
 
 ```{r}
-colSums(validacion[,2:18],na.rm = T)
+errores = colSums(validacion[,2:19],na.rm = T)
+id=reglas$id
+df=data.frame(errores,id)
+
+df$id <- factor(df$id, levels = paste0("r", 1:18))
 #Hacer gráfico de barras
+ggplot(data = df) +
+  aes(x = id, y = errores) +
+  geom_bar(stat = "identity", fill = "darkorchid4", color ="black") +
+  geom_label(
+    aes(label = errores), #texto a mostrar en cada barra (en este caso, el conteo)
+    vjust = -0.5, #justificacion vertical, en este caso arriba de todo
+    size = 4, #tamaño de la etiqueta
+    fill = "coral3", #color de fondo
+    color = "white" #color del texto
+    )+
+  scale_y_continuous(limits = c(0,110))+
+  labs(title = "Cantidad de errores por regla", x = "Reglas", y ="Errores")+
+  theme_minimal()+
+  theme(plot.title = element_text(hjust = 0.5),panel.grid = element_blank())
+
 ```
-d) Campos con más errores
+
+Se evidencias 5 errores que se presentan con mayor frecuencia, estos son:
+
+r9) La respuesta al campo `ethnicgroup` es distinta a 1,2,3 y 4 (25 veces).
+
+r4) El campo `ethnicgroup` no contiene respuesta (26 veces).
+
+r17) El campo `subjectnumber` no respeta el formato (39 veces).
+
+r16) El campo `subjectnumber` tiene una respuesta y alguna de las variables filtro (`scr`,`usscr`,`consent`) son distintas de 2 = "Si" (56 veces).
+
+r8) `subjectnumber` no presenta respuesta cuando si debería tenerla , es decir, cuando se cumple que `scr` = 2, `usscr` = 2 y `consent` = 2 (*97 veces*).
+
+
+####  Campos con más errores
 
 ```{r}
 preg_a =sum(validacion[,c(2,13)],na.rm = T)
@@ -161,4 +195,78 @@ preg_c =sum(validacion[,c(4,14)],na.rm = T)
 
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Anexo
+
+Se detalla el funcionamiento del código de ciertas reglas.
+
+*r14)* !is.na(interview) & interview != '' & tryCatch(is.na(as.Date(`interview`, format='%d/%m/%Y')), error = function(e) TRUE)
+
+Donde,
+
+´!is.na(interview) & interview != ''´ se agrega para que no cuente a las celdas vacias, ya que se cuenta en la r3)
+
+´as.Date´ intenta convertir el valor de la variable **interview** en fecha. Hay 3 posibles resultados: si la fecha es correcta convierte en fecha el valor, si la fecha sigue en formato correcto pero no es una fecha real(por ejemplo "32/13/2025") devuelve un error y si no sigue el formato correcto (por ejemplo "2025-04-15") da NA.
+
+´is.na´ verifica si lo que devuelve as.Date() es NA en ese caso da TRUE, si devuelve una fecha da FALSE y si devuelve un error, sigue manteniendose el error.
+
+´tryCatch´ contempla el caso en el que as.Date da error y devuelve un TRUE en ese caso.En caso de que se reciba un TRUE o un FALSE, se devuelve el mismo resultado.
+
+*r15)* !is.na(patientid) & patientid != '' & !grepl('^\\d{2}/\\d{2}/\\d{4}-[A-Z]{2}$', patientid) | tryCatch(is.na(as.Date(sub('-.*', '', patientid), format = '%d/%m/%Y')), error = function(e) TRUE)
+
+´grepl(pattern,string)´ busca si hay coincidencia con un patrón(pattern) dentro de una cadena de texto(string).
+
+
+*r17)* (scr == 2 & usscr == 2 & consent == 2) & !is.na(subjectnumber) & subjectnumber != '' & (!grepl('^\\\\d{9}$', subjectnumber) | substr(subjectnumber, 1, 3) != sprintf('%03d', countrycode))
+
+
+´substr(subjectnumber, 1, 3)´ extrae los tres primeros caracteres.
+
+´sprintf('%03d', countrycode)´ convierte el countrycode en texto de 3 dígitos con ceros a la izquierda.
+
+
+
+
+
+
+
+
+
+
+
 
