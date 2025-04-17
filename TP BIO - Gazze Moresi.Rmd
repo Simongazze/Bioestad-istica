@@ -62,24 +62,26 @@ reglas = tribble(
 "r5", "(scr) es faltante", "is.na(scr)",
 "r6", "(usscr) es faltante", "is.na(usscr)",
 "r7", "(consent) es faltante", "is.na(consent)",
-"r8", "(subjectnumber) es faltante", "is.na(subjectnumber)",
-"r9", "(ethnicgroup) distinto de 1,2,3 o 4", "!ethnicgroup %in% c(1, 2, 3, 4)",
-"r10", "(scr) distinto de 1 o 2", "!scr %in% c(1,2)",
-"r11", "(usscr) distinto de 1 o 2", "!usscr %in% c(1,2)",
-"r12", "(consent) distinto de 1 o 2", "!consent %in% c(1,2)",
-"r13", "(countrycode) distinto de 4, 11, 14, 23, 31, 48, 54, 65, 72 o 97", "!countrycode %in% c(4, 11, 14, 23, 31, 48, 54, 65, 72, 97)",
-"r14", "(interview) no sigue formato dd/mm/yyyy", "!tryCatch(!is.na(as.Date(`interview`, format='%d/%m/%Y')), error = function(e) TRUE)",
-"r15", "Edad fuera de rango según Patient ID y Date of interview", "{
+"r8", "(ethnicgroup) distinto de 1,2,3 o 4", "!ethnicgroup %in% c(1, 2, 3, 4)",
+"r9", "(scr) distinto de 1 o 2", "!scr %in% c(1,2)",
+"r10", "(usscr) distinto de 1 o 2", "!usscr %in% c(1,2)",
+"r11", "(consent) distinto de 1 o 2", "!consent %in% c(1,2)",
+"r12", "(countrycode) distinto de 4, 11, 14, 23, 31, 48, 54, 65, 72 o 97", "!countrycode %in% c(4, 11, 14, 23, 31, 48, 54, 65, 72, 97)",
+"r13", "(interview) no sigue formato dd/mm/yyyy", "!tryCatch(!is.na(as.Date(`interview`, format='%d/%m/%Y')), error = function(e) TRUE)",
+"r14", "Edad fuera de rango según Patient ID y Date of interview", "{
     fecha_nac <- as.Date(sub('-.*', '', `patientid`), format='%d/%m/%Y')
     fecha_entrevista <- as.Date(`interview`, format='%d/%m/%Y')
     edad <- as.numeric(difftime(fecha_entrevista, fecha_nac, units='days')) / 365.25
     edad < 18 | edad > 100
   }",
-"r16", "subjectnumber tiene valor cuando scr, usscr o consent no son 2", "(scr != 2 | usscr != 2 | consent != 2) & !is.na(subjectnumber) & subjectnumber != ''",
-"r17", "subjectnumber está vacío cuando scr, usscr y consent son 2", "(scr == 2 & usscr == 2 & consent == 2) & (is.na(subjectnumber) | subjectnumber == '')"
+"r15", "subjectnumber tiene valor cuando scr, usscr o consent no son 2", "(scr != 2 | usscr != 2 | consent != 2) & !is.na(subjectnumber) & subjectnumber != ''",
+"r16", "subjectnumber está vacío cuando scr, usscr y consent son 2", "(scr == 2 & usscr == 2 & consent == 2) & (is.na(subjectnumber) | subjectnumber == '')",
+"r17", "subjectnumber no respeta formato: 3 dígitos de countrycode + 6 números", 
+"(scr == 2 & usscr == 2 & consent == 2) & 
+  (!grepl('^\\\\d{9}$', subjectnumber) | substr(subjectnumber, 1, 3) != sprintf('%03d', countrycode))"
 )
 
-#"r18", "subjectnumber no respeta formato: 3 dígitos de countrycode + 6 números", #"!grepl('^\\d{9}$', subjectnumber) | substr(subjectnumber, 1, 3) != sprintf('%03d', #countrycode)"
+
 ```
 
 ### 2) Detección de errores
@@ -108,24 +110,44 @@ dplyr::mutate(registro = datos[[id]], .before = 0)
 ```{r}
 validacion = validar(adm, "patientid", validador(reglas, "id", "cond"))
 validacion
-
-
-validacion_largo = pivot_longer(validacion, -registro, names_to = "regla", values_to = "error")
-
 ```
 
-Cuantos individuos presentan inconsistencias
+Las celdas con TRUE corresponden a errores en esa regla de validación. Además, en registro se especifica a que encuestada pertenece.
+
+### 3)Informe de errores
+
+a) Número de participantes limpios (sin inconsistencias)
+
 
 ```{r}
-validacion_largo |>
+validacion_largo = pivot_longer(validacion, -registro, names_to = "regla", values_to = "error")
+head(validacion_largo)
+
+ind_incos = validacion_largo |>
 filter(error) |>
 distinct(registro) |>
 count()
 
-colSums(validacion[,2:18])
-
-regla17 = validacion[,18]
-
-sum(regla17)
+1000 - ind_incos
 ```
+761 de las participantes no presentan errores en la carga de sus datos.
+
+b) Participantes con inconsistencias
+
+```{r}
+ind_incos
+```
+
+Por consecuencia, 239 de las entrevistadas presentan al menos un error en la carga de sus respuestas.
+
+c) Inconsistencias más frecuentes
+
+
+
+
+
+
+
+
+
 
