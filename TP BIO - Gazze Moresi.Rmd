@@ -70,7 +70,7 @@ reglas = tribble(
 "r6", "(usscr) es faltante", "is.na(usscr)",
 "r7", "(consent) es faltante", "is.na(consent)",
 "r8", "(subjectnumber) es faltante cuando (scr), (usscr) y (consent) son 2", "(scr == 2 & usscr == 2 & consent == 2) & (is.na(subjectnumber) | subjectnumber == '')",
-"r9", "(ethnicgroup) distinto de 1,2,3 o 4", "!is.na(ethnicgroup) & ethnicgroup != '' & !ethnicgroup %in% c(1, 2, 3, 4)",
+"r9", "(ethnicgroup) distinto de 1, 2, 3 o 4", "!is.na(ethnicgroup) & ethnicgroup != '' & !ethnicgroup %in% c(1, 2, 3, 4)",
 "r10", "(scr) distinto de 1 o 2", "!is.na(scr) & scr != '' & !scr %in% c(1,2)",
 "r11", "(usscr) distinto de 1 o 2", "!is.na(usscr) & usscr != '' & !usscr %in% c(1,2)",
 "r12", "(consent) distinto de 1 o 2", "!is.na(consent) & consent != '' & !consent %in% c(1,2)",
@@ -90,7 +90,7 @@ reglas = tribble(
 "
 )
 
-datatable(reglas %>% select(1:3) %>% slice(1:18))
+### agregamos 1,2,3,4 o vacio???
 ```
 
 ### 2) Detección de errores
