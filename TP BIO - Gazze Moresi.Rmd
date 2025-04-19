@@ -1,19 +1,24 @@
 ---
-title: "TP - Validación de datos"
+title: "Trabajo Práctico - Validación de datos"
 author: "Gazze Simón - Moresi Manuel"
-date: "2025-04-15"
-output: html_document
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme: cerulean
+    toc: yes
+    toc_float:
+      collapsed: true
 ---
 
 ## Introducción
 
 En el marco de un estudio de investigación clínica multicéntrico, se ha recolectado información a través de un formulario dirigido a mujeres mayores de 18 años con el objetivo de implementar estándares internacionales para el crecimiento fetal. Estos estándares permitirán facilitar la detección temprana de alteraciones en el desarrollo del feto durante la gestación.
 
-Dado que la calidad de los datos es fundamental para garantizar la validez de los resultados en estudios clínicos, en este trabajo nos enfocamos en la validación de la base de datos proveniente del formulario. Nuestra tarea como equipo de análisis estadístico consiste en detectar, clasificar y documentar los errores presentes en los datos recolectados. Esto incluye inconsistencias internas, valores imposibles o improbables, datos faltantes, duplicados, y cualquier otro tipo de anomalía que pueda comprometer la calidad del estudio.
+Dado que la calidad de los datos es fundamental para garantizar la validez de los resultados en estudios clínicos, en este trabajo nos enfocamos en la validación de la base de datos proveniente del formulario. Nuestra tarea como equipo de análisis estadístico consiste en detectar, clasificar y documentar los errores presentes en los datos recolectados. Esto incluye inconsistencias internas, valores imposibles o improbables, datos faltantes, y cualquier otro tipo de anomalía que pueda comprometer la calidad del estudio.
 
-El formulario contiene las siguientes preguntas:
+El formulario es el siguiente:
 
-![Formulario](images/formulario_page-0001.jpg)
+![](images/formulario_page-0001.jpg)
 
 ## Objetivo
 
@@ -25,37 +30,38 @@ Llevar a cabo un proceso exhaustivo de validación, empleando técnicas para eva
 
 Las reglas de validación que se plantearan para detectar inconsistencias son las siguientes:
 
--   La fecha de inscripción debe seguir el siguiente formato: dd(del 1 al 31)/mm(del 1 al 12)/yyyy(menor a 2025) (*Date of interview*).
+-   Se contaran las celdas que esten vacias en cada variable.
+
+-   La fecha de inscripción debe seguir el siguiente formato: dd (del 1 al 31)/mm (del 1 al 12)/yyyy (menor a 2025) (*Date of interview*).
 
 -   El ID del paciente debe seguir el siguiente formato: dd/mm/yyyy-AA (es decir, *Birth Date + Initials*).
 
--   Las mujeres deben ser mayores de 18 años (18 years *\< Date of interview - Birth Date \<* 100 years).
+-   Las mujeres deben ser mayores de 18 años (18 años *\< Date of interview - Birth Date \<* 100 años).
 
--   Los códigos de paises posibles en este estudio son: 4, 11, 14, 23, 31, 48, 54, 65, 72, 97 (*Country code =* 4, 11, 14, 23, 31, 48, 54, 65, 72, 97).
+-   Los códigos de paises posibles en este estudio son: 4, 11, 14, 23, 31, 48, 54, 65, 72, 97 (*Country code* = 4, 11, 14, 23, 31, 48, 54, 65, 72, 97).
 
--   Los grupos étnicos deben ser iguales a 1="Caucasico",2="Asiatico",3="Africano" o 4="Otro"(*Ethnic group =* 1, 2, 3, 4).
+-   Los grupos étnicos deben ser iguales a 1 = "Caucasico", 2 = "Asiatico", 3 = "Africano" o 4 = "Otro" (*Ethnic Group* = 1, 2, 3, 4).
 
--   Las preguntas mencionadas en el formulario como 1, 2 y 3 deben ser iguales a 1="No" o 2="Si".
+-   Las preguntas mencionadas en el formulario como 1, 2 y 3 deben ser iguales a 1 = "No" o 2 = "Si".
 
--   Si las 3 preguntas anteriores son iguales a 2="Si", entonces la pregunta *Subject Number* debe contener respuesta, en caso contrario debe dejarse en blanco (**2 condiciones**).
+-   Si las 3 preguntas anteriores son iguales a 2 = "Si", entonces el campo *Subject Number* debe contener respuesta, en caso contrario debe dejarse en blanco (**2 condiciones**).
 
--   La respuesta de *Subject Number* debe seguir el siguiente formato: <u>0</u> \_ \_ (*country code*)\_ \_ (*physician code = numeric*) \_ \_ \_ (*subject code = numeric*).
-
--   Adicionalmente, se contaran las celdas que esten vacias en cada variable.
+-   La respuesta de *Subject Number* debe seguir el siguiente formato: <u>0</u> \_ \_ (*Country code*)\_ \_ (*Physician code = numeric*) \_ \_ \_ (*Subject code = numeric*).
 
 Y el código para detectar estos errores es el siguiente:
 
-```{r,echo=FALSE, message=FALSE}
+```{r,echo=FALSE, message=FALSE, warning=FALSE}
 library(readxl)
 library(tidyverse)
 library(ggplot2)
+library(DT)
 
 adm <- read_excel("adm.xlsx")
 ```
 
 ```{r}
 reglas = tribble(
-~id, ~descrip, ~cond,
+~id, ~descripción, ~condición,
 "r1", "(countrycode) es faltante", "is.na(countrycode)",
 "r2", "(patientid) es faltante", "is.na(patientid)",
 "r3", "(interview) es faltante", "is.na(interview)",
@@ -84,20 +90,19 @@ reglas = tribble(
 "
 )
 
+datatable(reglas %>% select(1:3) %>% slice(1:18))
 ```
 
 ### 2) Detección de errores
 
-A través de las reglas anteriormente mencionadas se van a identificar los errores presentes en la base de datos "***adm"***. Dicha base cuenta con la información referida a 1000 encuestas realizadas.
+A través de las reglas anteriormente mencionadas, se van a identificar los errores presentes en la base de datos *adm*. Dicha base cuenta con la información referida a 1000 encuestas realizadas.
 
 ```{r}
-
-validador = function(regla, id, cond){
-reglas = regla[[cond]]
+validador = function(regla, id, condición){
+reglas = regla[[condición]]
 names(reglas) = regla[[id]]
 reglas
 }
-
 
 validar = function(datos, id, validador){
 sapply(
@@ -107,19 +112,18 @@ function(x) eval(parse(text = x), datos)
 dplyr::as_tibble() |>
 dplyr::mutate(registro = datos[[id]], .before = 0)
 }
-```
 
-```{r}
-validacion = validar(adm, "patientid", validador(reglas, "id", "cond"))
+validacion = validar(adm, "patientid", validador(reglas, "id", "condición"))
 inconsistencias = sum(validacion[,2:19],na.rm = T)
-validacion
+
+datatable(validacion %>% select(1:19) %>% slice(1:1000))
 ```
 
-Las celdas con TRUE corresponden a errores en esa regla de validación. Además, en registro se especifica a que encuestada pertenece.Obteniendo un total de inconsistencias de `r inconsistencias`
+Las celdas con `TRUE` corresponden a errores en esa regla de validación. Además, en la variable `registro` se especifica a que encuestada pertenece. Existen un total de `r inconsistencias` inconsistencias.
 
 ### 3) Informe de errores
 
-####  Número de participantes limpios (sin inconsistencias)
+#### Número de participantes limpios (sin inconsistencias)
 
 ```{r}
 validacion_largo = pivot_longer(validacion, -registro, names_to = "regla", values_to = "error")
@@ -130,19 +134,20 @@ distinct(registro) |>
 count()
 
 ind_limp = 1000 - ind_incos
+print(paste("Participantes limpios:", ind_limp))
 ```
 
-`r ind_limp` de las participantes no presentan errores en la carga de sus datos.
+Las participantes que no presentan errores en la carga de sus datos son `r ind_limp`. 
 
-####  Participantes con inconsistencias
+#### Participantes con inconsistencias
 
 ```{r}
-ind_incos
+print(paste("Participantes con inconsistencias:", ind_incos))
 ```
 
 Por consecuencia, `r ind_incos` de las entrevistadas presentan al menos un error en la carga de sus respuestas.
 
-####  Inconsistencias más frecuentes
+#### Inconsistencias más frecuentes
 
 ```{r}
 errores = colSums(validacion[,2:19],na.rm = T)
@@ -150,16 +155,16 @@ id=reglas$id
 df=data.frame(errores,id)
 
 df$id <- factor(df$id, levels = paste0("r", 1:18))
-#Hacer gráfico de barras
+
 ggplot(data = df) +
   aes(x = id, y = errores) +
   geom_bar(stat = "identity", fill = "darkorchid4", color ="black") +
   geom_label(
-    aes(label = errores), #texto a mostrar en cada barra (en este caso, el conteo)
-    vjust = -0.5, #justificacion vertical, en este caso arriba de todo
-    size = 4, #tamaño de la etiqueta
-    fill = "coral3", #color de fondo
-    color = "white" #color del texto
+    aes(label = errores),
+    vjust = -0.5, 
+    size = 4, 
+    fill = "coral3", 
+    color = "white" 
     )+
   scale_y_continuous(limits = c(0,110))+
   labs(title = "Cantidad de errores por regla", x = "Reglas", y ="Errores")+
@@ -168,25 +173,24 @@ ggplot(data = df) +
 
 ```
 
-Se evidencias 5 errores que se presentan con mayor frecuencia, estos son:
+Se evidencian 5 errores que se presentan con mayor frecuencia, estos son:
 
-r9) La respuesta al campo `ethnicgroup` es distinta a 1,2,3 y 4 (25 veces).
+- La respuesta al campo *Ethnic Group* es distinta a 1, 2, 3 y 4 en 25 ocasiones (**r9**) .
 
-r4) El campo `ethnicgroup` no contiene respuesta (26 veces).
+- El campo *Ethnic Group* no contiene respuesta en 26 ocasiones (**r4**).
 
-r17) El campo `subjectnumber` no respeta el formato (39 veces).
+- El campo *Subject Number* no respeta el formato en 39 ocasiones (**r17**).
 
-r16) El campo `subjectnumber` tiene una respuesta y alguna de las variables filtro (`scr`,`usscr`,`consent`) son distintas de 2 = "Si" (56 veces).
+- El campo *Subject Number* tiene una respuesta y alguna de las variables filtro (`scr`,`usscr`,`consent`) son distintas de 2 = "Si" en 56 ocasiones (**r16**).
 
-r8) `subjectnumber` no presenta respuesta cuando si debería tenerla , es decir, cuando se cumple que `scr` = 2, `usscr` = 2 y `consent` = 2 (*97 veces*).
+- El campo *Subject Number* no presenta respuesta cuando si debería tenerla , es decir, cuando se cumple que `scr` = 2, `usscr` = 2 y `consent` = 2 en 97 ocasiones (**r8**).
 
-
-####  Campos con más errores
+#### Campos con más errores
 
 ```{r}
-preg_a =sum(validacion[,c(2,13)],na.rm = T)
-preg_b =sum(validacion[,c(3,15)],na.rm = T)
-preg_c =sum(validacion[,c(4,14)],na.rm = T)
+#preg_a =sum(validacion[,c(2,13)],na.rm = T)
+#preg_b =sum(validacion[,c(3,15)],na.rm = T)
+#preg_c =sum(validacion[,c(4,14)],na.rm = T)
 
 
 
@@ -196,77 +200,29 @@ preg_c =sum(validacion[,c(4,14)],na.rm = T)
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Anexo
+## Anexo
 
 Se detalla el funcionamiento del código de ciertas reglas.
 
-*r14)* !is.na(interview) & interview != '' & tryCatch(is.na(as.Date(`interview`, format='%d/%m/%Y')), error = function(e) TRUE)
+**r14** `!is.na(interview) & interview != '' & tryCatch(is.na(as.Date(interview, format='%d/%m/%Y')),` 
+`error = function(e) TRUE)`
 
-Donde,
+- `!is.na(interview) & interview != ''` se agrega para que no cuente a las celdas vacias, ya que se cuenta en la r3)
 
-´!is.na(interview) & interview != ''´ se agrega para que no cuente a las celdas vacias, ya que se cuenta en la r3)
+- `as.Date` intenta convertir el valor de la variable `interview` en fecha. Hay 3 posibles resultados: si la fecha es correcta convierte en fecha el valor, si la fecha sigue en formato correcto pero no es una fecha real (por ejemplo "32/13/2025") devuelve un error y si no sigue el formato correcto (por ejemplo "2025-04-15") da `NA`.
 
-´as.Date´ intenta convertir el valor de la variable **interview** en fecha. Hay 3 posibles resultados: si la fecha es correcta convierte en fecha el valor, si la fecha sigue en formato correcto pero no es una fecha real(por ejemplo "32/13/2025") devuelve un error y si no sigue el formato correcto (por ejemplo "2025-04-15") da NA.
+- `is.na` verifica si lo que devuelve `as.Date()` es `NA` y en ese caso da `TRUE`, si devuelve una fecha da `FALSE` y si devuelve un error, sigue manteniendose el error.
 
-´is.na´ verifica si lo que devuelve as.Date() es NA en ese caso da TRUE, si devuelve una fecha da FALSE y si devuelve un error, sigue manteniendose el error.
+- `tryCatch` contempla el caso en el que as.Date da error y devuelve un `TRUE` en ese caso. En caso de que se reciba un TRUE o un `FALSE`, se devuelve el mismo resultado.
 
-´tryCatch´ contempla el caso en el que as.Date da error y devuelve un TRUE en ese caso.En caso de que se reciba un TRUE o un FALSE, se devuelve el mismo resultado.
+**r15** `!is.na(patientid) & patientid != '' & !grepl('\^\\d{2}/\\d{2}/\\d{4}-[A-Z]{2}\$', patientid)` 
+`\| tryCatch(is.na(as.Date(sub('-.\*', '', patientid), format = '%d/%m/%Y')), error = function(e) TRUE)`
 
-*r15)* !is.na(patientid) & patientid != '' & !grepl('^\\d{2}/\\d{2}/\\d{4}-[A-Z]{2}$', patientid) | tryCatch(is.na(as.Date(sub('-.*', '', patientid), format = '%d/%m/%Y')), error = function(e) TRUE)
+- `grepl(pattern,string)` busca si hay coincidencia con un patrón(pattern) dentro de una cadena de texto(string).
 
-´grepl(pattern,string)´ busca si hay coincidencia con un patrón(pattern) dentro de una cadena de texto(string).
+**r17** `(scr == 2 & usscr == 2 & consent == 2) & !is.na(subjectnumber) & subjectnumber != ''` 
+`& (!grepl('\^\\\\d{9}\$', subjectnumber) \| substr(subjectnumber, 1, 3) != sprintf('%03d', countrycode))`
 
+- `substr(subjectnumber, 1, 3)` extrae los tres primeros caracteres.
 
-*r17)* (scr == 2 & usscr == 2 & consent == 2) & !is.na(subjectnumber) & subjectnumber != '' & (!grepl('^\\\\d{9}$', subjectnumber) | substr(subjectnumber, 1, 3) != sprintf('%03d', countrycode))
-
-
-´substr(subjectnumber, 1, 3)´ extrae los tres primeros caracteres.
-
-´sprintf('%03d', countrycode)´ convierte el countrycode en texto de 3 dígitos con ceros a la izquierda.
-
-
-
-
-
-
-
-
-
-
-
-
+- `sprintf('%03d', countrycode)` convierte el countrycode en texto de 3 dígitos con ceros a la izquierda.
