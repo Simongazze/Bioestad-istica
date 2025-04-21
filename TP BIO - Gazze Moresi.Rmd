@@ -30,9 +30,9 @@ Llevar a cabo un proceso exhaustivo de validación, empleando técnicas para eva
 
 Las reglas de validación que se plantearan para detectar inconsistencias son las siguientes:
 
--   Se contaran las celdas que esten vacias en cada variable.
+-   Se evaluará que las celdas no esten vacias (en caso que corresponda) en cada variable.
 
--   La fecha de inscripción debe seguir el siguiente formato: dd (del 1 al 31)/mm (del 1 al 12)/yyyy (menor a 2025) (*Date of interview*).
+-   La fecha de entrevista debe seguir el siguiente formato: dd (del 1 al 31)/mm (del 1 al 12)/yyyy (menor a 2025) (*Date of interview*).
 
 -   El ID del paciente debe seguir el siguiente formato: dd/mm/yyyy-AA (es decir, *Birth Date + Initials*).
 
@@ -51,6 +51,11 @@ Las reglas de validación que se plantearan para detectar inconsistencias son la
 Y el código para detectar estos errores es el siguiente:
 
 ```{r,echo=FALSE, message=FALSE, warning=FALSE}
+if (!require("readxl")) install.packages("readxl")
+if (!require("tidyverse")) install.packages("tidyverse")
+if (!require("ggplot2")) install.packages("ggplot2")
+if (!require("DT")) install.packages("DT")
+
 library(readxl)
 library(tidyverse)
 library(ggplot2)
@@ -89,9 +94,9 @@ reglas = tribble(
   }, error = function(e) FALSE)
 "
 )
-
-### agregamos 1,2,3,4 y vacio???
 ```
+
+Cabe destacar que todas las reglas son independientes, y un mismo error no será contado en más de una ocasión.
 
 ### 2) Detección de errores
 
@@ -134,7 +139,7 @@ distinct(registro) |>
 count()
 
 ind_limp = 1000 - ind_incos
-print(paste("Participantes limpios:", ind_limp))
+print(paste(ind_limp))
 ```
 
 Las participantes que no presentan errores en la carga de sus datos son `r ind_limp`. 
@@ -142,7 +147,7 @@ Las participantes que no presentan errores en la carga de sus datos son `r ind_l
 #### Participantes con inconsistencias
 
 ```{r}
-print(paste("Participantes con inconsistencias:", ind_incos))
+print(paste(ind_incos))
 ```
 
 Por consecuencia, `r ind_incos` de las entrevistadas presentan al menos un error en la carga de sus respuestas.
@@ -235,11 +240,19 @@ ggplot(data = df_2) +
         panel.grid = element_blank(),
         axis.text.x = element_text(size = 8.5))
 
-#como contemplar en el caso de que sea menor de edad o sea una señora de 120 años, cual de los #campos es el del error?birth date?date of interview?
-#no tener en cuenta los errores de la regla 18
-
-
 ```
+
+Los campos que presentan errores son los siguientes:
+
+- *Subject Number* (192 errores)
+
+- *Ethnic Group* (51 errores)
+
+- *Consent* (1 error)
+
+Se recomienda prestar especial atención en los primeros dos campos mencionados, ya que, estos abarcan la gran mayoría de los errores presentes en los datos. Esto podría deberse a que no estan formulados de manera clara.
+
+Por último, se aclara que los errores presentes en la regla 18 (relacionada a que la edad de la participante está fuera de rango) no es tenido en cuenta en este gráfico, ya que no es posible identificar si el error es producido por una mala carga en la fecha de entrevista, en la fecha de nacimiento, o que efectivamente la participante sea menor de edad.
 
 ## Anexo
 
