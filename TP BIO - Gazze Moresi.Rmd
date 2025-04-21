@@ -90,7 +90,7 @@ reglas = tribble(
 "
 )
 
-### agregamos 1,2,3,4 o vacio???
+### agregamos 1,2,3,4 y vacio???
 ```
 
 ### 2) Detección de errores
@@ -169,7 +169,8 @@ ggplot(data = df) +
   scale_y_continuous(limits = c(0,110))+
   labs(title = "Cantidad de errores por regla", x = "Reglas", y ="Errores")+
   theme_minimal()+
-  theme(plot.title = element_text(hjust = 0.5),panel.grid = element_blank())
+  theme(plot.title = element_text(hjust = 0.5),
+        panel.grid = element_blank())
 
 ```
 
@@ -188,11 +189,51 @@ Se evidencian 5 errores que se presentan con mayor frecuencia, estos son:
 #### Campos con más errores
 
 ```{r}
-#preg_a =sum(validacion[,c(2,13)],na.rm = T)
-#preg_b =sum(validacion[,c(3,15)],na.rm = T)
-#preg_c =sum(validacion[,c(4,14)],na.rm = T)
+country_code = sum(validacion[,c(2,13)],na.rm = T)
+patient_id = sum(validacion[,c(3,15)],na.rm = T)
+interview_date = sum(validacion[,c(4,14)],na.rm = T)
+ethnic_group = sum(validacion[,c(5,10)],na.rm = T)
+scr = sum(validacion[,c(6,11)],na.rm = T)
+usscr = sum(validacion[,c(7,12)],na.rm = T)
+consent = sum(validacion[,c(8,13)],na.rm = T)
+subject_number = sum(validacion[,c(9,17,18)],na.rm = T)
 
+df_2 = data.frame(errores = c(country_code,
+                  patient_id,
+                  interview_date,
+                  ethnic_group,
+                  scr,
+                  usscr,
+                  consent,
+                  subject_number))
 
+df_2$campo = c("Country code",
+                "Patient ID",
+                "Date of interview",
+                "Ethnic group",
+                "SCR",
+                "USSCR",
+                "Consent",
+                "Subject number")
+
+df_2$campo = factor(df_2$campo, levels = df_2$campo)
+
+ggplot(data = df_2) +
+  aes(x = campo, y = errores) +
+  geom_bar(stat = "identity", fill = "darkorchid4", color ="black") +
+  geom_label(
+    aes(label = errores),
+    vjust = -0.5, 
+    size = 4, 
+    fill = "coral3", 
+    color = "white" 
+    )+
+  scale_y_continuous(limits = c(0,200))+
+  labs(title = "Cantidad de errores por campo", x = "Campos", y ="Errores")+
+  theme_minimal()+
+  theme(plot.title = element_text(hjust = 0.5),
+        panel.grid = element_blank(),
+        axis.text.x = element_text(size = 8.5))
 
 #como contemplar en el caso de que sea menor de edad o sea una señora de 120 años, cual de los #campos es el del error?birth date?date of interview?
 #no tener en cuenta los errores de la regla 18
