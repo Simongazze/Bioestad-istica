@@ -1,0 +1,9 @@
+---
+title: "TP 2 BIO - Gazze Moresi"
+author: "Gazze Simón - Moresi Manuel"
+date: "2025-05-03"
+output: html_document
+---
+
+## Introducción
+
