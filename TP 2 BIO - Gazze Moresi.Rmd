@@ -7,3 +7,6 @@ output: html_document
 
 ## Introducción
 
+Se realizó un ensayo clínico a 22 pares de gemelos identicos durante 8 semanas para probar si existen efectos cardiometabolicos distintos comparando 2 tipos de dietas: una vegana y otra omnivora.
+
+Dicho 
