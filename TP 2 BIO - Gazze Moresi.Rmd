@@ -8,89 +8,393 @@ output:
     toc: yes
     toc_float:
       collapsed: true
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ## Introducción
 
-Se realizó un ensayo clínico a 22 pares de gemelos identicos de 18 años o más, durante 8 semanas para probar si existen efectos cardiometabolicos distintos comparando 2 tipos de dietas saludables: una vegana y otra omnivora.
+Se realizó un ensayo clínico a 22 pares de gemelos identicos de 18 años
+o más, durante 8 semanas para probar si existen efectos
+cardiometabolicos distintos comparando 2 tipos de dietas saludables: una
+vegana y otra omnivora.
 
-Para realizar dicho estudio, se aleatorizaron los pares de gemelos, tal que uno siga una dieta vegana y el otro la dieta omnivora. Durante las primeras 4 semanas, los participantes recibieron las comidas que les correspondían mediante un servicio de delivery y luego, de la semana 5 a la 8, ellos prepararon sus propias comidas.
+Para realizar dicho estudio, se aleatorizaron los pares de gemelos, tal
+que uno siga una dieta vegana y el otro la dieta omnivora. Durante las
+primeras 4 semanas, los participantes recibieron las comidas que les
+correspondían mediante un servicio de delivery y luego, de la semana 5 a
+la 8, ellos prepararon sus propias comidas.
 
-El resultado principal que se quiere extraer de este ensayo, es la diferencia en colesterol LDL desde el inicio del estudio hasta el final para ambos grupos. Y como resultados secundarios, se analizarán los cambios en factores metabólicos, nivel de vitamina B12 en plasma y el peso corporal.
+El resultado principal que se quiere extraer de este ensayo, es la
+diferencia en colesterol LDL desde el inicio del estudio hasta el final
+para ambos grupos. Y como resultados secundarios, se analizarán los
+cambios en factores metabólicos, nivel de vitamina B12 en plasma y el
+peso corporal.
 
-Adicionalmente, a partir de encuestas, se recolectó información sobre el cumplimiento de la dieta, las facilidades o dificultades en el seguimiento de las mismas, los niveles de energía de los participantes y ó su sensación de bienestar.
+Adicionalmente, a partir de encuestas, se recolectó información sobre el
+cumplimiento de la dieta, las facilidades o dificultades en el
+seguimiento de las mismas, los niveles de energía de los participantes y
+ó su sensación de bienestar.
 
-### 1)
+### 1
 
-- **Autor:** Christopher David Gardner.
+-   **Autor:** Christopher David Gardner.
 
-- **Afiliación:** Stanford Prevention Research Center, Department of Medicine, School of Medicine, Stanford University, 3180 Porter Dr, Palo Alto, CA 94304.
+-   **Afiliación:** Stanford Prevention Research Center, Department of
+    Medicine, School of Medicine, Stanford University, 3180 Porter Dr,
+    Palo Alto, CA 94304.
 
-- **Revista:** [JAMA (Journal of the American Medical Association) Network Open](https://jamanetwork.com/journals/jamanetworkopen).
+-   **Revista:** [JAMA (Journal of the American Medical Association)
+    Network Open](https://jamanetwork.com/journals/jamanetworkopen).
 
-- <details>
+-   <details>
+
     <summary>**Referencias**</summary>
 
-  - Chai BC, van der Voort JR, Grofelnik K, Eliasdottir HG, Klöss I, Perez-Cueto FJ. Which diet has the least environmental impact on our planet? a systematic review of vegan, vegetarian and omnivorous diets. Sustainability. 2019
-  - Fresán U, Sabaté J. Vegetarian diets: planetary health and its alignment with human health. Adv Nutr. 2019
-  - Willett W, Rockström J, Loken B, et al. Food in the Anthropocene: the EAT-Lancet Commission on healthy diets from sustainable food systems. Lancet. 2019
-  - Mendoza-Vasconez AS, Landry MJ, Crimarco A, Bladier C, Gardner CD. Sustainable diets for cardiovascular disease prevention and management. Curr Atheroscler Rep. 2021
-  - Conrad Z, Drewnowski A, Belury MA, Love DC. Greenhouse gas emissions, cost, and diet quality of specific diet patterns in the United States. Am J Clin Nutr. 2023
-  - Storz MA. What makes a plant-based diet? a review of current concepts and proposal for a standardized plant-based dietary intervention checklist. Eur J Clin Nutr. 2022
-  - Kaiser J, van Daalen KR, Thayyil A, Cocco MTARR, Caputo D, Oliver-Williams C. A systematic review of the association between vegan diets and risk of cardiovascular disease. J Nutr. 2021
-  - Dybvik JS, Svendsen M, Aune D. Vegetarian and vegan diets and the risk of cardiovascular disease, ischemic heart disease and stroke: a systematic review and meta-analysis of prospective cohort studies. Eur J Nutr. 2023
-  - Selinger E, Neuenschwander M, Koller A, et al. Evidence of a vegan diet for health benefits and risks – an umbrella review of meta-analyses of observational and clinical studies. Crit Rev Food Sci Nutr. Published online May 16, 2022
-  - Satija A, Hu FB. Plant-based diets and cardiovascular health. Trends Cardiovasc Med. 2018
-  - Gardner CD, Vadiveloo MK, Petersen KS, et al. ; American Heart Association Council on Lifestyle and Cardiometabolic Health . Popular dietary patterns: alignment with American Heart Association 2021 dietary guidance: a scientific statement from the American Heart Association. Circulation. 2023
-  - Thompson AS, Tresserra-Rimbau A, Karavasiloglou N, et al. Association of healthful plant-based diet adherence with risk of mortality and major chronic diseases among adults in the UK. JAMA Netw Open. 2023
-  - Turner-McGrievy GM, Barnard ND, Scialli AR. A two-year randomized weight loss trial comparing a vegan diet to a more moderate low-fat diet. Obesity (Silver Spring). 2007
-  - Parker HW, Vadiveloo MK. Diet quality of vegetarian diets compared with nonvegetarian diets: a systematic review. Nutr Rev. 2019
-  - Melina V, Craig W, Levin S. Position of the Academy of Nutrition and Dietetics: vegetarian diets. J Acad Nutr Diet. 2016
-  - Bakaloudi DR, Halloran A, Rippin HL, et al. Intake and adequacy of the vegan diet. a systematic review of the evidence. Clin Nutr. 2021
-  - Dinu M, Abbate R, Gensini GF, Casini A, Sofi F. Vegetarian, vegan diets and multiple health outcomes: a systematic review with meta-analysis of observational studies. Crit Rev Food Sci Nutr. 2017
-  - Selinger E, Neuenschwander M, Koller A, et al. Evidence of a vegan diet for health benefits and risks: an umbrella review of meta-analyses of observational and clinical studies. Crit Rev Food Sci Nutr. 2022
-  - Wang T, Kroeger CM, Cassidy S, et al. Vegetarian dietary patterns and cardiometabolic risk in people with or at high risk of cardiovascular disease: a systematic review and meta-analysis. JAMA Netw Open. 2023
-  - Termannsen AD, Clemmensen KKB, Thomsen JM, et al. Effects of vegan diets on cardiometabolic health: a systematic review and meta-analysis of randomized controlled trials. Obes Rev. 2022
-  - Bedford JL, Barr SI. Diets and selected lifestyle practices of self-defined adult vegetarians from a population-based sample suggest they are more ‘health conscious’. Int J Behav Nutr Phys Act. 2005
-  - Satija A, Bhupathiraju SN, Spiegelman D, et al. Healthful and unhealthful plant-based diets and the risk of coronary heart disease in US adults. J Am Coll Cardiol. 2017
-  - Vimaleswaran KS. A nutrigenetics approach to study the impact of genetic and lifestyle factors on cardiometabolic traits in various ethnic groups: findings from the GeNuIne Collaboration. Proc Nutr Soc. 2020
-  - World Medical Association . World Medical Association Declaration of Helsinki: ethical principles for medical research involving human subjects. JAMA. 2013
-  - ClinicalTrials.gov . Twins Nutrition Study (TwiNS): Vegan vs. Omnivore (TwiNS). NCT05297825. Accessed October 19, 2023
-  - Grundy SM, Stone NJ, Bailey AL, et al. 2018 AHA/ACC/AACVPR/AAPA/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA guideline on the management of blood cholesterol: executive summary: a report of the American College of Cardiology/American Heart Association Task Force on Clinical Practice Guidelines. J Am Coll Cardiol. 2019
-  - Institute of Medicine Standing Committee on the Scientific Evaluation of Dietary Reference Intakes . Institute of Medicine (US) Standing Committee on the Scientific Evaluation of Dietary Reference Intakes and its Panel on Folate, Other B Vitamins, and Choline. National Academies Press; 1998.
-  - Termannsen AD, Clemmensen KKB, Thomsen JM, et al. Effects of vegan diets on cardiometabolic health: a systematic review and meta-analysis of randomized controlled trials. Obes Rev. 2022
-  - Tran E, Dale HF, Jensen C, Lied GA. Effects of plant-based diets on weight status: a systematic review. Diabetes Metab Syndr Obes. 2020
-  - Huang RY, Huang CC, Hu FB, Chavarro JE. Vegetarian diets and weight reduction: a meta-analysis of randomized controlled trials. J Gen Intern Med. 2016
-  - Barnard ND, Levin SM, Yokoyama Y. A systematic review and meta-analysis of changes in body weight in clinical trials of vegetarian diets. J Acad Nutr Diet. 2015
-  - Li SS, Blanco Mejia S, Lytvyn L, et al. Effect of plant protein on blood lipids: a systematic review and meta-analysis of randomized controlled trials. J Am Heart Assoc. 2017
-  - Johannesen CO, Dale HF, Jensen C, Lied GA. Effects of plant-based diets on outcomes related to glucose metabolism: a systematic review. Diabetes Metab Syndr Obes. 2020
-  - Viguiliouk E, Kendall CW, Kahleová H, et al. Effect of vegetarian dietary patterns on cardiometabolic risk factors in diabetes: a systematic review and meta-analysis of randomized controlled trials. Clin Nutr. 2019
-  - Joshi S, Ettinger L, Liebman SE. Plant-based diets and hypertension. Am J Lifestyle Med. 2019
-  - Gibbs J, Gaskin E, Ji C, Miller MA, Cappuccio FP. The effect of plant-based dietary patterns on blood pressure: a systematic review and meta-analysis of controlled intervention trials. J Hypertens. 2021
-  - Lee KW, Loh HC, Ching SM, Devaraj NK, Hoo FK. Effects of vegetarian diets on blood pressure lowering: a systematic review with meta-analysis and trial sequential analysis. Nutrients. 2020
-  - Remde A, DeTurk SN, Almardini A, Steiner L, Wojda T. Plant-predominant eating patterns—how effective are they for treating obesity and related cardiometabolic health outcomes? a systematic review. Nutr Rev. 2022
-  - Turner-McGrievy GM, Wilcox S, Frongillo EA, et al. Effect of a plant-based vs omnivorous soul food diet on weight and lipid levels among African American adults: a randomized clinical trial. JAMA Netw Open. 2023
-  - Craig JM, Calais-Ferreira L, Umstad MP, Buchwald D. The value of twins for health and medical research: a third of a century of progress. Twin Res Hum Genet. 2020
-  - Elder SJ, Lichtenstein AH, Pittas AG, et al. Genetic and environmental influences on factors associated with cardiovascular disease and the metabolic syndrome. J Lipid Res. 2009
-  - Koeth RA, Lam-Galvez BR, Kirsop J, et al. l-Carnitine in omnivorous diets induces an atherogenic gut microbial pathway in humans. J Clin Invest. 
-  - Obeid R, Awwad HM, Keller M, Geisel J. Trimethylamine-N-oxide and its biological variations in vegetarians. Eur J Nutr. 2017
-  - Witkowski M, Weeks TL, Hazen SL. Gut microbiota and cardiovascular disease. Circ Res. 2020
-  - Velasquez MT, Ramezani A, Manal A, Raj DS. Trimethylamine N-oxide: the good, the bad and the unknown. Toxins (Basel). 2016
-  - Crimarco A, Springfield S, Petlura C, et al. A randomized crossover trial on the effect of plant-based compared with animal-based meat on trimethylamine-N-oxide and cardiovascular disease risk factors in generally healthy adults: Study With Appetizing Plantfood-Meat Eating Alternative Trial (SWAP-MEAT). Am J Clin Nutr. 2020
-  - Cara KC, Goldman DM, Kollman BK, Amato SS, Tull MD, Karlsen MC. Commonalities among dietary recommendations from 2010-2021 clinical practice guidelines: a meta-epidemiological study from the American College of Lifestyle Medicine. Adv Nutr. 2023
-  - Lichtenstein AH, Appel LJ, Vadiveloo M, et al. 2021 dietary guidance to improve cardiovascular health: a scientific statement from the American Heart Association. Circulation. 2021
-  - US Department of Agriculture and US Department of Health and Human Services. Dietary Guidelines for Americans, 2020-2025. 9th ed. US Dept of Agriculture, US Dept of Health & Human Services; December 2020. Accessed October 27, 2023
-  - Fleming JA, Kris-Etherton PM, Petersen KS, Baer DJ. Effect of varying quantities of lean beef as part of a Mediterranean-style dietary pattern on lipids and lipoproteins: a randomized crossover controlled feeding trial. Am J Clin Nutr. 2021
-  - Cepni AB, Crumbley C, Nadeem S, Ledoux TA, Johnston CA. Incorporating nutrition counseling into lifestyle medicine. Am J Lifestyle Med. 2022
-  - Gardner CD, Hartle JC, Garrett RD, Offringa LC, Wasserman AS. Maximizing the intersection of human health and the health of the environment with regard to the amount and type of protein produced and consumed in the United States. Nutr Rev. 2019
-  - Gardner CD, Crimarco A, Landry MJ, Fielding-Singh P. Nutrition study design issues: important issues for interpretation. Am J Health Promot. 2020
-  - Barnard ND, Cohen J, Jenkins DJ, et al. A low-fat vegan diet improves glycemic control and cardiovascular risk factors in a randomized clinical trial in individuals with type 2 diabetes. Diabetes Care. 2006
-  - Kahleova H, Fleeman R, Hlozkova A, Holubkov R, Barnard ND. A plant-based diet in overweight individuals in a 16-week randomized clinical trial: metabolic benefits of plant protein. Nutr Diabetes. 2018
-  - Gardner CD, Landry MJ, Perelman D, et al. Effect of a ketogenic diet versus Mediterranean diet on glycated hemoglobin in individuals with prediabetes and type 2 diabetes mellitus: the Interventional Keto-Med Randomized Crossover Trial. Am J Clin Nutr. 2022
+    -   Chai BC, van der Voort JR, Grofelnik K, Eliasdottir HG, Klöss I,
+        Perez-Cueto FJ. Which diet has the least environmental impact on
+        our planet? a systematic review of vegan, vegetarian and
+        omnivorous diets. Sustainability. 2019
+    -   Fresán U, Sabaté J. Vegetarian diets: planetary health and its
+        alignment with human health. Adv Nutr. 2019
+    -   Willett W, Rockström J, Loken B, et al. Food in the
+        Anthropocene: the EAT-Lancet Commission on healthy diets from
+        sustainable food systems. Lancet. 2019
+    -   Mendoza-Vasconez AS, Landry MJ, Crimarco A, Bladier C,
+        Gardner CD. Sustainable diets for cardiovascular disease
+        prevention and management. Curr Atheroscler Rep. 2021
+    -   Conrad Z, Drewnowski A, Belury MA, Love DC. Greenhouse gas
+        emissions, cost, and diet quality of specific diet patterns in
+        the United States. Am J Clin Nutr. 2023
+    -   Storz MA. What makes a plant-based diet? a review of current
+        concepts and proposal for a standardized plant-based dietary
+        intervention checklist. Eur J Clin Nutr. 2022
+    -   Kaiser J, van Daalen KR, Thayyil A, Cocco MTARR, Caputo D,
+        Oliver-Williams C. A systematic review of the association
+        between vegan diets and risk of cardiovascular disease. J Nutr.
+        2021
+    -   Dybvik JS, Svendsen M, Aune D. Vegetarian and vegan diets and
+        the risk of cardiovascular disease, ischemic heart disease and
+        stroke: a systematic review and meta-analysis of prospective
+        cohort studies. Eur J Nutr. 2023
+    -   Selinger E, Neuenschwander M, Koller A, et al. Evidence of a
+        vegan diet for health benefits and risks – an umbrella review of
+        meta-analyses of observational and clinical studies. Crit Rev
+        Food Sci Nutr. Published online May 16, 2022
+    -   Satija A, Hu FB. Plant-based diets and cardiovascular health.
+        Trends Cardiovasc Med. 2018
+    -   Gardner CD, Vadiveloo MK, Petersen KS, et al. ; American Heart
+        Association Council on Lifestyle and Cardiometabolic Health .
+        Popular dietary patterns: alignment with American Heart
+        Association 2021 dietary guidance: a scientific statement from
+        the American Heart Association. Circulation. 2023
+    -   Thompson AS, Tresserra-Rimbau A, Karavasiloglou N, et al.
+        Association of healthful plant-based diet adherence with risk of
+        mortality and major chronic diseases among adults in the UK.
+        JAMA Netw Open. 2023
+    -   Turner-McGrievy GM, Barnard ND, Scialli AR. A two-year
+        randomized weight loss trial comparing a vegan diet to a more
+        moderate low-fat diet. Obesity (Silver Spring). 2007
+    -   Parker HW, Vadiveloo MK. Diet quality of vegetarian diets
+        compared with nonvegetarian diets: a systematic review. Nutr
+        Rev. 2019
+    -   Melina V, Craig W, Levin S. Position of the Academy of Nutrition
+        and Dietetics: vegetarian diets. J Acad Nutr Diet. 2016
+    -   Bakaloudi DR, Halloran A, Rippin HL, et al. Intake and adequacy
+        of the vegan diet. a systematic review of the evidence. Clin
+        Nutr. 2021
+    -   Dinu M, Abbate R, Gensini GF, Casini A, Sofi F. Vegetarian,
+        vegan diets and multiple health outcomes: a systematic review
+        with meta-analysis of observational studies. Crit Rev Food Sci
+        Nutr. 2017
+    -   Selinger E, Neuenschwander M, Koller A, et al. Evidence of a
+        vegan diet for health benefits and risks: an umbrella review of
+        meta-analyses of observational and clinical studies. Crit Rev
+        Food Sci Nutr. 2022
+    -   Wang T, Kroeger CM, Cassidy S, et al. Vegetarian dietary
+        patterns and cardiometabolic risk in people with or at high risk
+        of cardiovascular disease: a systematic review and
+        meta-analysis. JAMA Netw Open. 2023
+    -   Termannsen AD, Clemmensen KKB, Thomsen JM, et al. Effects of
+        vegan diets on cardiometabolic health: a systematic review and
+        meta-analysis of randomized controlled trials. Obes Rev. 2022
+    -   Bedford JL, Barr SI. Diets and selected lifestyle practices of
+        self-defined adult vegetarians from a population-based sample
+        suggest they are more ‘health conscious’. Int J Behav Nutr Phys
+        Act. 2005
+    -   Satija A, Bhupathiraju SN, Spiegelman D, et al. Healthful and
+        unhealthful plant-based diets and the risk of coronary heart
+        disease in US adults. J Am Coll Cardiol. 2017
+    -   Vimaleswaran KS. A nutrigenetics approach to study the impact of
+        genetic and lifestyle factors on cardiometabolic traits in
+        various ethnic groups: findings from the GeNuIne Collaboration.
+        Proc Nutr Soc. 2020
+    -   World Medical Association . World Medical Association
+        Declaration of Helsinki: ethical principles for medical research
+        involving human subjects. JAMA. 2013
+    -   ClinicalTrials.gov . Twins Nutrition Study (TwiNS): Vegan vs.
+        Omnivore (TwiNS). NCT05297825. Accessed October 19, 2023
+    -   Grundy SM, Stone NJ, Bailey AL, et al. 2018
+        AHA/ACC/AACVPR/AAPA/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA
+        guideline on the management of blood cholesterol: executive
+        summary: a report of the American College of Cardiology/American
+        Heart Association Task Force on Clinical Practice Guidelines. J
+        Am Coll Cardiol. 2019
+    -   Institute of Medicine Standing Committee on the Scientific
+        Evaluation of Dietary Reference Intakes . Institute of Medicine
+        (US) Standing Committee on the Scientific Evaluation of Dietary
+        Reference Intakes and its Panel on Folate, Other B Vitamins, and
+        Choline. National Academies Press; 1998.
+    -   Termannsen AD, Clemmensen KKB, Thomsen JM, et al. Effects of
+        vegan diets on cardiometabolic health: a systematic review and
+        meta-analysis of randomized controlled trials. Obes Rev. 2022
+    -   Tran E, Dale HF, Jensen C, Lied GA. Effects of plant-based diets
+        on weight status: a systematic review. Diabetes Metab Syndr
+        Obes. 2020
+    -   Huang RY, Huang CC, Hu FB, Chavarro JE. Vegetarian diets and
+        weight reduction: a meta-analysis of randomized controlled
+        trials. J Gen Intern Med. 2016
+    -   Barnard ND, Levin SM, Yokoyama Y. A systematic review and
+        meta-analysis of changes in body weight in clinical trials of
+        vegetarian diets. J Acad Nutr Diet. 2015
+    -   Li SS, Blanco Mejia S, Lytvyn L, et al. Effect of plant protein
+        on blood lipids: a systematic review and meta-analysis of
+        randomized controlled trials. J Am Heart Assoc. 2017
+    -   Johannesen CO, Dale HF, Jensen C, Lied GA. Effects of
+        plant-based diets on outcomes related to glucose metabolism: a
+        systematic review. Diabetes Metab Syndr Obes. 2020
+    -   Viguiliouk E, Kendall CW, Kahleová H, et al. Effect of
+        vegetarian dietary patterns on cardiometabolic risk factors in
+        diabetes: a systematic review and meta-analysis of randomized
+        controlled trials. Clin Nutr. 2019
+    -   Joshi S, Ettinger L, Liebman SE. Plant-based diets and
+        hypertension. Am J Lifestyle Med. 2019
+    -   Gibbs J, Gaskin E, Ji C, Miller MA, Cappuccio FP. The effect of
+        plant-based dietary patterns on blood pressure: a systematic
+        review and meta-analysis of controlled intervention trials. J
+        Hypertens. 2021
+    -   Lee KW, Loh HC, Ching SM, Devaraj NK, Hoo FK. Effects of
+        vegetarian diets on blood pressure lowering: a systematic review
+        with meta-analysis and trial sequential analysis. Nutrients.
+        2020
+    -   Remde A, DeTurk SN, Almardini A, Steiner L, Wojda T.
+        Plant-predominant eating patterns—how effective are they for
+        treating obesity and related cardiometabolic health outcomes? a
+        systematic review. Nutr Rev. 2022
+    -   Turner-McGrievy GM, Wilcox S, Frongillo EA, et al. Effect of a
+        plant-based vs omnivorous soul food diet on weight and lipid
+        levels among African American adults: a randomized clinical
+        trial. JAMA Netw Open. 2023
+    -   Craig JM, Calais-Ferreira L, Umstad MP, Buchwald D. The value of
+        twins for health and medical research: a third of a century of
+        progress. Twin Res Hum Genet. 2020
+    -   Elder SJ, Lichtenstein AH, Pittas AG, et al. Genetic and
+        environmental influences on factors associated with
+        cardiovascular disease and the metabolic syndrome. J Lipid Res.
+        2009
+    -   Koeth RA, Lam-Galvez BR, Kirsop J, et al. l-Carnitine in
+        omnivorous diets induces an atherogenic gut microbial pathway in
+        humans. J Clin Invest.
+    -   Obeid R, Awwad HM, Keller M, Geisel J. Trimethylamine-N-oxide
+        and its biological variations in vegetarians. Eur J Nutr. 2017
+    -   Witkowski M, Weeks TL, Hazen SL. Gut microbiota and
+        cardiovascular disease. Circ Res. 2020
+    -   Velasquez MT, Ramezani A, Manal A, Raj DS. Trimethylamine
+        N-oxide: the good, the bad and the unknown. Toxins (Basel). 2016
+    -   Crimarco A, Springfield S, Petlura C, et al. A randomized
+        crossover trial on the effect of plant-based compared with
+        animal-based meat on trimethylamine-N-oxide and cardiovascular
+        disease risk factors in generally healthy adults: Study With
+        Appetizing Plantfood-Meat Eating Alternative Trial (SWAP-MEAT).
+        Am J Clin Nutr. 2020
+    -   Cara KC, Goldman DM, Kollman BK, Amato SS, Tull MD, Karlsen MC.
+        Commonalities among dietary recommendations from 2010-2021
+        clinical practice guidelines: a meta-epidemiological study from
+        the American College of Lifestyle Medicine. Adv Nutr. 2023
+    -   Lichtenstein AH, Appel LJ, Vadiveloo M, et al. 2021 dietary
+        guidance to improve cardiovascular health: a scientific
+        statement from the American Heart Association. Circulation. 2021
+    -   US Department of Agriculture and US Department of Health and
+        Human Services. Dietary Guidelines for Americans, 2020-2025. 9th
+        ed. US Dept of Agriculture, US Dept of Health & Human Services;
+        December 2020. Accessed October 27, 2023
+    -   Fleming JA, Kris-Etherton PM, Petersen KS, Baer DJ. Effect of
+        varying quantities of lean beef as part of a Mediterranean-style
+        dietary pattern on lipids and lipoproteins: a randomized
+        crossover controlled feeding trial. Am J Clin Nutr. 2021
+    -   Cepni AB, Crumbley C, Nadeem S, Ledoux TA, Johnston CA.
+        Incorporating nutrition counseling into lifestyle medicine. Am J
+        Lifestyle Med. 2022
+    -   Gardner CD, Hartle JC, Garrett RD, Offringa LC, Wasserman AS.
+        Maximizing the intersection of human health and the health of
+        the environment with regard to the amount and type of protein
+        produced and consumed in the United States. Nutr Rev. 2019
+    -   Gardner CD, Crimarco A, Landry MJ, Fielding-Singh P. Nutrition
+        study design issues: important issues for interpretation. Am J
+        Health Promot. 2020
+    -   Barnard ND, Cohen J, Jenkins DJ, et al. A low-fat vegan diet
+        improves glycemic control and cardiovascular risk factors in a
+        randomized clinical trial in individuals with type 2 diabetes.
+        Diabetes Care. 2006
+    -   Kahleova H, Fleeman R, Hlozkova A, Holubkov R, Barnard ND. A
+        plant-based diet in overweight individuals in a 16-week
+        randomized clinical trial: metabolic benefits of plant protein.
+        Nutr Diabetes. 2018
+    -   Gardner CD, Landry MJ, Perelman D, et al. Effect of a ketogenic
+        diet versus Mediterranean diet on glycated hemoglobin in
+        individuals with prediabetes and type 2 diabetes mellitus: the
+        Interventional Keto-Med Randomized Crossover Trial. Am J Clin
+        Nutr. 2022
 
-  </details>
-  
-  
-### 2)
+    </details>
+
+### 2
+
+-   Tipo de estudio: *Diseño de Pares Apareados*
+
+En este estudio, se realiza la aleatorización de la dieta dentro de cada
+par de gemelos idénticos, para de esta manera mejorar la presición en
+las comparaciones y controlar las posibles variables de confusión.
+
+Cabe aclarar que en el informe se refiere al diseño del estudio como un
+*diseño paralelo*, lo cual creemos que no es lo correcto.
+
+-   Fase del estudio: *Fase III*
+
+Ya es de público conocimiento que las dietas veganas presentan distintos
+beneficios en la salud de las personas, por lo que este estudio se
+centra en confirmar algunos de estos, comparando dicha dieta con la
+"estandar" consumida por las personas (dieta omnivora). Por lo tanto, a
+partir de este enfoque se considera como un estudio en *fase III*.
+
+-   Tipo de hipótesis estadística: *Superioridad*
+
+Se busca evaluar si la dieta vegana proporciona mejoras en la salud
+respecto a la dieta omnívora en alguna de las métricas analizadas.
+
+-   Enmascaramiento: *Abierto (Open-Label)*
+
+En este estudio tanto los investigadores como los participantes saben
+que tratamiento estan recibiendo.
+
+-   Unidad de aleatorización: *Bloques*
+
+Cada par de gemelos es un bloque, y se aleatorizan las dietas dentro del
+mismo.
+
+-   Población:
+
+Este estudio fue realizado en un único centro, y cada uno de los pares
+de gemelos fue tomado de el Registro de Gemelos de Stanford, Estados Unidos.
+
+Adicionalmente, se tomaron en cuenta distintos criterios de inclusión y
+de exclusión, estos fueron:
+
+<u>Criterios de inclusión</u>
+
+1)  Que sea mayor a 18 años.
+
+2)  Dispuesto a consumir una dieta basada en plantas (verduras, fruta,
+    cereales integrales, legumbres, etc.)
+
+3)  Dispuesto a consumir carne/huevos (ternera, cerdo, pollo, huevos)
+    más de 1 vez al día.
+
+4)  Dispuesto a consumir lácteos (leche, yogur, queso) más de 1 vez al
+    día.
+
+<u>Criterios de exclusión</u>
+
+1)  Peso mayor a 110 lb
+
+2)  IMC mayor a 40
+
+3)  LDL-C mayor a 190 mg/dL
+
+4)  Presión arterial sistólica mayor a 160 mmHg O presión arterial diastólica
+    mayor a 90 mmHg
+
+5)  Embarazo, en periodo de lactancia o que planea quedarse embarazada
+    durante el transcurso del estudio.
+
+6)  Uso de cualquiera de los siguientes fármacos/suplementos en los
+    últimos 2 meses: antibióticos sistémicos, antifúngicos, antivirales
+    o antiparasitarios (intravenosos, intramusculares u orales);
+    corticosteroides (intravenosos, intramusculares, orales, nasales o
+    inhalados); citoquinas; metotrexato o agentes citotóxicos
+    inmunosupresores.
+
+7)  Anomalía funcional pulmonar, cardiovascular, gastrointestinal,
+    hepática o renal crónica, clínicamente significativa o inestable (no
+    resuelta, que requiera cambios continuos en el tratamiento médico o
+    en la medicación), según determine la historia clínica, diabetes de
+    tipo 1, diálisis.
+
+8)  Antecedentes de cáncer activo en los últimos 3 años, excepto
+    carcinomas de células escamosas o basales de la piel que hayan sido
+    tratados médicamente mediante escisión local.
+
+9)  Antecedentes dietéticos inestables definidos por cambios importantes
+    en la dieta durante el mes anterior, en los que el sujeto haya
+    eliminado o aumentado significativamente un grupo importante de
+    alimentos en la dieta.
+
+10) Antecedentes recientes de consumo crónico excesivo de alcohol,
+    definido como más de cinco raciones de 1,5 onzas de bebidas
+    alcohólicas destiladas de 80 grados, cinco raciones de 12 onzas de
+    cerveza o cinco raciones de 5 onzas de vino al día; o más de 14
+    bebidas a la semana.
+
+11) Cualquier afección/estado confirmado o sospechoso de inmunosupresión
+    o inmunodeficiencia (primaria o adquirida), incluida la infección
+    por VIH, la esclerosis múltiple y la enfermedad de Graves.
+
+12) Cirugía del tracto gastrointestinal, con excepción de
+    colecistectomía y apendicectomía, en los últimos cinco años.
+    Cualquier resección intestinal mayor en cualquier momento.
+
+13) Uso regular/frecuente de tabaco para fumar o mascar, cigarrillos
+    electrónicos, puros u otros productos que contengan nicotina.
+
+14) Uso regular de analgésicos opiáceos de prescripción médica.
+
+- Aprobaciones regulatorias:
+
+Este estudio siguió las normas éticas de la Declaración de Helsinki y fue aprobado por el Comité de Revisión Ética de Sujetos Humanos de la Universidad de Stanford. Todos los participantes en el estudio dieron su consentimiento informado por escrito.
+
+- Tratamiento estadístico utilizado:
+
+Para el análisis descriptivo se utilizaron las medias y las cantidades para las variables cuantitativas y cualitativas, respectivamente. 
+
+Para el análisis principal, se busco evidenciar si existían diferencias desde el inicio del estudio a la semana 8 del mismo, de los valores de LDL-C entre los distintos grupos. Para abordar este objetivo se ajustó un modelo lineal mixto, donde se incuyeron efectos fijos para la dieta y el tiempo, su interacción y un efecto aleatorio para los bloques de gemelos. Para evaluar si estas diferencias eran significativas se realizó el Test de Wald y se calcularon los respectivos intervalos de confianza (95%).
+
+Para los análisis secundarios, se realizaron los mismos procedimientos anteriormente mencionados.
+
+En estos tratamientos se decidio eliminar la presencia de outliers.
+
+-protocolo?
+
+- Resultados
+
+<u>Resultados primarios</u>
+
+Los participantes que recibieron la dieta vegana mostraron una disminución promedio de 13,9 mg/dL (IC del 95% = [-25,3 ; -2,4] mg/dL) en el nivel medio de LDL-C a las 8 semanas desde el inicio en comparación con los participantes que recibieron la dieta omnívora. Ya a las 4 semanas, observamos una disminución significativa en el nivel medio de LDL-C entre los veganos en comparación con los omnívoros
+
+<u>Resultados secundarios</u>
+
+En comparación con los participantes que seguían la dieta omnívora, los participantes que seguían la dieta vegana experimentaron una disminución promedio de 2,9 μIU/mL en la insulina en ayunas (IC del 95% = [-5,3 ; -0,4] μIU/mL) desde el inicio hasta las 8 semanas de estudio. 
+
+Los participantes veganos experimentaron una disminución promedio de -1,9 kg en el peso corporal (IC del 95% = [-3,3 ; -0,6] kg) desde el inicio hasta las 8 semanas de estudio, en comparación con los participantes de la dieta omnívora, aunque se observó pérdida de peso en ambos grupos de dieta.
+
+- Validez interna/externa
+
+Se puede concluir que este ensayo tiene una validez interna válida, es decir que el estudio puede establecer una relación causal entre las dietas y los resultados objetivo, pero no podemos extrapolar esto a toda la población, es decir, la validez externa es por lo menos limitada. Esto se debe a que los participantes de este estudio son personas saludables, de la misma región y en su mayoría jovenes, lo cual no es generalizable a toda la población.
+
+- Comentarios
+
+A pesar de que los resultados evidenciarion muchos aspectos positivos en relación al consumo de dietas veganas, se mostró a través de una encuesta de satisfacción que esta dieta no es muy aceptada por los participantes, lo cual es un factor a tener en cuenta.
+Otro aspecto relevante es que ambas dietas eran saludables.
+
 
 
