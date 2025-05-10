@@ -286,7 +286,8 @@ mismo.
 -   Población:
 
 Este estudio fue realizado en un único centro, y cada uno de los pares
-de gemelos fue tomado de el Registro de Gemelos de Stanford, Estados Unidos.
+de gemelos fue tomado de el Registro de Gemelos de Stanford, Estados
+Unidos.
 
 Adicionalmente, se tomaron en cuenta distintos criterios de inclusión y
 de exclusión, estos fueron:
@@ -312,8 +313,8 @@ de exclusión, estos fueron:
 
 3)  LDL-C mayor a 190 mg/dL
 
-4)  Presión arterial sistólica mayor a 160 mmHg O presión arterial diastólica
-    mayor a 90 mmHg
+4)  Presión arterial sistólica mayor a 160 mmHg O presión arterial
+    diastólica mayor a 90 mmHg
 
 5)  Embarazo, en periodo de lactancia o que planea quedarse embarazada
     durante el transcurso del estudio.
@@ -359,42 +360,103 @@ de exclusión, estos fueron:
 
 14) Uso regular de analgésicos opiáceos de prescripción médica.
 
-- Aprobaciones regulatorias:
+-   Aprobaciones regulatorias:
 
-Este estudio siguió las normas éticas de la Declaración de Helsinki y fue aprobado por el Comité de Revisión Ética de Sujetos Humanos de la Universidad de Stanford. Todos los participantes en el estudio dieron su consentimiento informado por escrito.
+Este estudio siguió las normas éticas de la Declaración de Helsinki y
+fue aprobado por el Comité de Revisión Ética de Sujetos Humanos de la
+Universidad de Stanford. Todos los participantes en el estudio dieron su
+consentimiento informado por escrito.
 
-- Tratamiento estadístico utilizado:
+-   Tratamiento estadístico utilizado:
 
-Para el análisis descriptivo se utilizaron las medias y las cantidades para las variables cuantitativas y cualitativas, respectivamente. 
+Para el análisis descriptivo se utilizaron las medias y las cantidades
+para las variables cuantitativas y cualitativas, respectivamente.
 
-Para el análisis principal, se busco evidenciar si existían diferencias desde el inicio del estudio a la semana 8 del mismo, de los valores de LDL-C entre los distintos grupos. Para abordar este objetivo se ajustó un modelo lineal mixto, donde se incuyeron efectos fijos para la dieta y el tiempo, su interacción y un efecto aleatorio para los bloques de gemelos. Para evaluar si estas diferencias eran significativas se realizó el Test de Wald y se calcularon los respectivos intervalos de confianza (95%).
+Para el análisis principal, se busco evidenciar si existían diferencias
+desde el inicio del estudio a la semana 8 del mismo, de los valores de
+LDL-C entre los distintos grupos. Para abordar este objetivo se ajustó
+un modelo lineal mixto, donde se incuyeron efectos fijos para la dieta y
+el tiempo, su interacción y un efecto aleatorio para los bloques de
+gemelos. Para evaluar si estas diferencias eran significativas se
+realizó el Test de Wald y se calcularon los respectivos intervalos de
+confianza (95%).
 
-Para los análisis secundarios, se realizaron los mismos procedimientos anteriormente mencionados.
+Para los análisis secundarios, se realizaron los mismos procedimientos
+anteriormente mencionados.
 
 En estos tratamientos se decidio eliminar la presencia de outliers.
 
 -protocolo?
 
-- Resultados
+-   Resultados
 
 <u>Resultados primarios</u>
 
-Los participantes que recibieron la dieta vegana mostraron una disminución promedio de 13,9 mg/dL (IC del 95% = [-25,3 ; -2,4] mg/dL) en el nivel medio de LDL-C a las 8 semanas desde el inicio en comparación con los participantes que recibieron la dieta omnívora. Ya a las 4 semanas, observamos una disminución significativa en el nivel medio de LDL-C entre los veganos en comparación con los omnívoros
+Los participantes que recibieron la dieta vegana mostraron una
+disminución promedio de 13,9 mg/dL (IC del 95% = [-25,3 ; -2,4] mg/dL)
+en el nivel medio de LDL-C a las 8 semanas desde el inicio en
+comparación con los participantes que recibieron la dieta omnívora. Ya a
+las 4 semanas, observamos una disminución significativa en el nivel
+medio de LDL-C entre los veganos en comparación con los omnívoros
 
 <u>Resultados secundarios</u>
 
-En comparación con los participantes que seguían la dieta omnívora, los participantes que seguían la dieta vegana experimentaron una disminución promedio de 2,9 μIU/mL en la insulina en ayunas (IC del 95% = [-5,3 ; -0,4] μIU/mL) desde el inicio hasta las 8 semanas de estudio. 
+En comparación con los participantes que seguían la dieta omnívora, los
+participantes que seguían la dieta vegana experimentaron una disminución
+promedio de 2,9 μIU/mL en la insulina en ayunas (IC del 95% = [-5,3 ;
+-0,4] μIU/mL) desde el inicio hasta las 8 semanas de estudio.
 
-Los participantes veganos experimentaron una disminución promedio de -1,9 kg en el peso corporal (IC del 95% = [-3,3 ; -0,6] kg) desde el inicio hasta las 8 semanas de estudio, en comparación con los participantes de la dieta omnívora, aunque se observó pérdida de peso en ambos grupos de dieta.
+Los participantes veganos experimentaron una disminución promedio de
+-1,9 kg en el peso corporal (IC del 95% = [-3,3 ; -0,6] kg) desde el
+inicio hasta las 8 semanas de estudio, en comparación con los
+participantes de la dieta omnívora, aunque se observó pérdida de peso en
+ambos grupos de dieta.
 
-- Validez interna/externa
+-   Validez interna/externa
 
-Se puede concluir que este ensayo tiene una validez interna válida, es decir que el estudio puede establecer una relación causal entre las dietas y los resultados objetivo, pero no podemos extrapolar esto a toda la población, es decir, la validez externa es por lo menos limitada. Esto se debe a que los participantes de este estudio son personas saludables, de la misma región y en su mayoría jovenes, lo cual no es generalizable a toda la población.
+Se puede concluir que este ensayo tiene una validez interna válida, es
+decir que el estudio puede establecer una relación causal entre las
+dietas y los resultados objetivo, pero no podemos extrapolar esto a toda
+la población, es decir, la validez externa es por lo menos limitada.
+Esto se debe a que los participantes de este estudio son personas
+saludables, de la misma región y en su mayoría jovenes, lo cual no es
+generalizable a toda la población.
 
-- Comentarios
+-   Comentarios
 
-A pesar de que los resultados evidenciarion muchos aspectos positivos en relación al consumo de dietas veganas, se mostró a través de una encuesta de satisfacción que esta dieta no es muy aceptada por los participantes, lo cual es un factor a tener en cuenta.
-Otro aspecto relevante es que ambas dietas eran saludables.
+A pesar de que los resultados evidenciarion muchos aspectos positivos en
+relación al consumo de dietas veganas, se mostró a través de una
+encuesta de satisfacción que esta dieta no es muy aceptada por los
+participantes, lo cual es un factor a tener en cuenta. Otro aspecto
+relevante es que ambas dietas eran saludables.
+
+### 3
+
+**Definción del tamaño de muestra**
+
+En el presente estudio, el tamaño de la muestra fue seleccionado en
+relación a la disponibilidad de recursos, ya que no se cuenta con una
+gran cantidad de gemelos en la región para poder fijar una potencia
+deseada. Dichos individuos fueron reclutados del Registro de Gemelos de
+Stanford a través de un formulario online. Mediante este formulario se
+inscribieron 135 personas, de las cuales fueron excluidas (por algunos
+de los criterios anteriormente mencionados) 91 de ellas, dejando un
+total de 44 individuos para el ensayo.
+
+Al querer repetir este ensayo clínico, y tener que definir un nuevo
+tamaño de la muestra, se tiene que tener en cuenta la disponibilidad de
+gemelos elegibles en la zona en la cual se realizará. Si esta cantidad
+es elevada podría definirse un tamaño de muestra (*n*) para una potencia
+deseada.
+
+Definiendo $\alpha = 0,05$, $\beta = 0,20$, $\sigma_d=$
+
+
+
+
+
+
+
 
 
 
