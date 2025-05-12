@@ -1488,10 +1488,10 @@ border-radius: 0px;
 
 <div id="introducción" class="section level2">
 <h2>Introducción</h2>
-<p>Se realizó un ensayo clínico a 22 pares de gemelos identicos de 18
-años o más, durante 8 semanas para probar si existen efectos
-cardiometabolicos distintos comparando 2 tipos de dietas saludables: una
-vegana y otra omnivora.</p>
+<p>Se realizó un <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10690456/#H1-1-ZOI231297">ensayo
+clínico</a> a 22 pares de gemelos identicos de 18 años o más, durante 8
+semanas para probar si existen efectos cardiometabolicos distintos
+comparando 2 tipos de dietas saludables: una vegana y otra omnivora.</p>
 <p>Para realizar dicho estudio, se aleatorizaron los pares de gemelos,
 tal que uno siga una dieta vegana y el otro la dieta omnivora. Durante
 las primeras 4 semanas, los participantes recibieron las comidas que les
@@ -1502,10 +1502,14 @@ diferencia en la concentración de colesterol LDL (mg/dL) desde el inicio
 del estudio hasta el final para ambos grupos. Y como resultados
 secundarios, se analizarán los cambios en factores metabólicos, nivel de
 vitamina B12 en plasma y el peso corporal.</p>
+<p>Los participantes debieron asistir a la Unidad de Investigación
+Clínica y Traslacional de Stanford en 3 ocasiones para realizar las
+distintas mediciones clínicas: al inicio del estudio, al final de la
+semana 4 y al final de la semana 8.</p>
 <p>Adicionalmente, a partir de encuestas, se recolectó información sobre
 el cumplimiento de la dieta, las facilidades o dificultades en el
 seguimiento de las mismas, los niveles de energía de los participantes y
-ó su sensación de bienestar.</p>
+su sensación de bienestar.</p>
 <div id="section" class="section level3">
 <h3>1</h3>
 <ul>
@@ -1732,8 +1736,9 @@ III</em>.</p>
 <li><strong>Tipo de hipótesis estadística:</strong>
 <em>Superioridad</em></li>
 </ul>
-<p>Se busca evaluar si la dieta vegana proporciona mejoras en la salud
-respecto a la dieta omnívora en alguna de las métricas analizadas.</p>
+<p>Se busca evaluar si la dieta vegana proporciona
+<strong>mejoras</strong> en la salud respecto a la dieta omnívora en
+alguna de las métricas analizadas.</p>
 <ul>
 <li><strong>Enmascaramiento:</strong> <em>Abierto (Open-Label)</em></li>
 </ul>
@@ -1748,8 +1753,8 @@ del mismo.</p>
 <li><strong>Población:</strong></li>
 </ul>
 <p>Este estudio fue realizado en un único centro, y cada uno de los
-pares de gemelos fue tomado de el Registro de Gemelos de Stanford,
-Estados Unidos.</p>
+pares de gemelos fue tomado del Registro de Gemelos de Stanford, Estados
+Unidos.</p>
 <p>Adicionalmente, se tomaron en cuenta distintos criterios de inclusión
 y de exclusión, estos fueron:</p>
 <p><u>Criterios de inclusión</u></p>
@@ -1832,8 +1837,7 @@ procedimientos anteriormente mencionados.</p>
 <p>Para realizar estos tratamientos, se decidió eliminar los outliers
 presentes.</p>
 <ul>
-<li><p><strong>Protocolo?</strong></p></li>
-<li><p><strong>Resultados:</strong></p></li>
+<li><strong>Resultados:</strong></li>
 </ul>
 <p><u>Resultados primarios</u></p>
 <p>Los participantes que recibieron la dieta vegana mostraron una
@@ -1870,7 +1874,12 @@ generalizable a toda la población.</p>
 en relación al consumo de dietas veganas, se mostró a través de una
 encuesta de satisfacción que esta dieta no es muy aceptada por los
 participantes, lo cual es un factor a tener en cuenta. Otro aspecto
-relevante es que ambas dietas eran saludables.</p>
+relevante es que ambas dietas comparadas en este estudio eran
+saludables, lo cual no siempre representa las dietas habituales de la
+población general. En la práctica, muchas personas siguen patrones
+alimentarios poco saludables, por lo que es razonable suponer que las
+diferencias en los resultados podrían ser incluso mayores si se
+comparara una dieta vegana con una dieta común no saludable.</p>
 </div>
 <div id="section-2" class="section level3">
 <h3>3</h3>
@@ -1953,42 +1962,58 @@ opcion2&lt;-genSeq(par,1)
 
 secuencia&lt;-as.data.frame(getRandList(opcion2))
 
-colnames(secuencia) = c(&quot;Gemelo 1 - Pareja 1&quot;, &quot;Gemelo 2 - Pareja 1&quot;,&quot;Gemelo 1 - Pareja 2&quot;, &quot;Gemelo 2 - Pareja 2&quot;,&quot;Gemelo 1 - Pareja 3&quot;, &quot;Gemelo 2 - Pareja 3&quot;,&quot;Gemelo 1 - Pareja 4&quot;, &quot;Gemelo 2 - Pareja 4&quot;,&quot;Gemelo 1 - Pareja 5&quot;, &quot;Gemelo 2 - Pareja 5&quot;,&quot;Gemelo 1 - Pareja 6&quot;, &quot;Gemelo 2 - Pareja 6&quot;,&quot;Gemelo 1 - Pareja 7&quot;, &quot;Gemelo 2 - Pareja 7&quot;,&quot;Gemelo 1 - Pareja 8&quot;, &quot;Gemelo 2 - Pareja 8&quot;,&quot;Gemelo 1 - Pareja 9&quot;, &quot;Gemelo 2 - Pareja 9&quot;,&quot;Gemelo 1 - Pareja 10&quot;, &quot;Gemelo 2 - Pareja 10&quot;,&quot;Gemelo 1 - Pareja 11&quot;, &quot;Gemelo 2 - Pareja 11&quot;,&quot;Gemelo 1 - Pareja 12&quot;, &quot;Gemelo 2 - Pareja 12&quot;,&quot;Gemelo 1 - Pareja 13&quot;, &quot;Gemelo 2 - Pareja 13&quot;,&quot;Gemelo 1 - Pareja 14&quot;, &quot;Gemelo 2 - Pareja 14&quot;,&quot;Gemelo 1 - Pareja 15&quot;, &quot;Gemelo 2 - Pareja 15&quot;,&quot;Gemelo 1 - Pareja 16&quot;, &quot;Gemelo 2 - Pareja 16&quot;,&quot;Gemelo 1 - Pareja 17&quot;, &quot;Gemelo 2 - Pareja 17&quot;,&quot;Gemelo 1 - Pareja 18&quot;, &quot;Gemelo 2 - Pareja 18&quot;,&quot;Gemelo 1 - Pareja 19&quot;, &quot;Gemelo 2 - Pareja 19&quot;,&quot;Gemelo 1 - Pareja 20&quot;, &quot;Gemelo 2 - Pareja 20&quot;,&quot;Gemelo 1 - Pareja 21&quot;, &quot;Gemelo 2 - Pareja 21&quot;,&quot;Gemelo 1 - Pareja 22&quot;, &quot;Gemelo 2 - Pareja 22&quot;)
+colnames(secuencia) &lt;- unlist(lapply(1:22, function(i) {
+  c(paste(&quot;Gemelo 1 - Pareja&quot;, i), paste(&quot;Gemelo 2 - Pareja&quot;, i))
+}))
 
 secuencia</code></pre>
 <pre><code>##   Gemelo 1 - Pareja 1 Gemelo 2 - Pareja 1 Gemelo 1 - Pareja 2
-## 1        Dieta vegana      Dieta omnivora      Dieta omnivora
+## 1      Dieta omnivora        Dieta vegana      Dieta omnivora
 ##   Gemelo 2 - Pareja 2 Gemelo 1 - Pareja 3 Gemelo 2 - Pareja 3
 ## 1        Dieta vegana        Dieta vegana      Dieta omnivora
 ##   Gemelo 1 - Pareja 4 Gemelo 2 - Pareja 4 Gemelo 1 - Pareja 5
-## 1        Dieta vegana      Dieta omnivora        Dieta vegana
-##   Gemelo 2 - Pareja 5 Gemelo 1 - Pareja 6 Gemelo 2 - Pareja 6
-## 1      Dieta omnivora        Dieta vegana      Dieta omnivora
-##   Gemelo 1 - Pareja 7 Gemelo 2 - Pareja 7 Gemelo 1 - Pareja 8
 ## 1        Dieta vegana      Dieta omnivora      Dieta omnivora
+##   Gemelo 2 - Pareja 5 Gemelo 1 - Pareja 6 Gemelo 2 - Pareja 6
+## 1        Dieta vegana      Dieta omnivora        Dieta vegana
+##   Gemelo 1 - Pareja 7 Gemelo 2 - Pareja 7 Gemelo 1 - Pareja 8
+## 1      Dieta omnivora        Dieta vegana      Dieta omnivora
 ##   Gemelo 2 - Pareja 8 Gemelo 1 - Pareja 9 Gemelo 2 - Pareja 9
 ## 1        Dieta vegana        Dieta vegana      Dieta omnivora
 ##   Gemelo 1 - Pareja 10 Gemelo 2 - Pareja 10 Gemelo 1 - Pareja 11
-## 1       Dieta omnivora         Dieta vegana         Dieta vegana
-##   Gemelo 2 - Pareja 11 Gemelo 1 - Pareja 12 Gemelo 2 - Pareja 12
-## 1       Dieta omnivora         Dieta vegana       Dieta omnivora
-##   Gemelo 1 - Pareja 13 Gemelo 2 - Pareja 13 Gemelo 1 - Pareja 14
 ## 1         Dieta vegana       Dieta omnivora         Dieta vegana
-##   Gemelo 2 - Pareja 14 Gemelo 1 - Pareja 15 Gemelo 2 - Pareja 15
+##   Gemelo 2 - Pareja 11 Gemelo 1 - Pareja 12 Gemelo 2 - Pareja 12
 ## 1       Dieta omnivora       Dieta omnivora         Dieta vegana
+##   Gemelo 1 - Pareja 13 Gemelo 2 - Pareja 13 Gemelo 1 - Pareja 14
+## 1         Dieta vegana       Dieta omnivora       Dieta omnivora
+##   Gemelo 2 - Pareja 14 Gemelo 1 - Pareja 15 Gemelo 2 - Pareja 15
+## 1         Dieta vegana       Dieta omnivora         Dieta vegana
 ##   Gemelo 1 - Pareja 16 Gemelo 2 - Pareja 16 Gemelo 1 - Pareja 17
 ## 1         Dieta vegana       Dieta omnivora         Dieta vegana
 ##   Gemelo 2 - Pareja 17 Gemelo 1 - Pareja 18 Gemelo 2 - Pareja 18
 ## 1       Dieta omnivora       Dieta omnivora         Dieta vegana
 ##   Gemelo 1 - Pareja 19 Gemelo 2 - Pareja 19 Gemelo 1 - Pareja 20
-## 1       Dieta omnivora         Dieta vegana       Dieta omnivora
+## 1         Dieta vegana       Dieta omnivora       Dieta omnivora
 ##   Gemelo 2 - Pareja 20 Gemelo 1 - Pareja 21 Gemelo 2 - Pareja 21
 ## 1         Dieta vegana       Dieta omnivora         Dieta vegana
 ##   Gemelo 1 - Pareja 22 Gemelo 2 - Pareja 22
-## 1         Dieta vegana       Dieta omnivora</code></pre>
+## 1       Dieta omnivora         Dieta vegana</code></pre>
 <ul>
 <li><strong>Análisis estadístico:</strong></li>
 </ul>
+<p>Una vez aleatorizadas las dietas y realizado el procedimiento de
+recolección de la información, se debe proceder al análisis de dichos
+datos. Para analizar si existen diferencias en nuestra variable de
+interes principal vamos a realizar un modelo lineal mixto teniendo en
+cuenta a la dieta como un factor fijo, al efecto del bloque (gemelos)
+como un efecto aleatorio, el tiempo (las mediciones de realizan en la
+semana 0, 4 y 8) como un efecto fijo y la interacción entre el tiempo y
+la dieta. Este resulta un modelo lineal mixto para datos
+longitudinales.</p>
+<p>Posteriormente habría que verificar los supuestos del modelo, entre
+los cuales se encuentran la linealidad de los efectos de las variables y
+la distribución normal de los errores.</p>
+<p>De la misma manera el proceso puede repetirse para cada una de las
+variables secundarias.</p>
 </div>
 </div>
 
