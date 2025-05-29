@@ -1,0 +1,69 @@
+---
+title: "Trabajo Práctico 3 - Estandarización de Tasas"
+author: "Gazze Simón - Moresi Manuel"
+date: "2025-05-28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introducción
+
+...
+
+## Manejo de bases de datos
+
+```{r}
+#install.packages(c("readxl", "dplyr", "stringr", "openxlsx"))
+
+library(readxl)
+library(dplyr)
+library(stringr)
+library(openxlsx)
+
+archivo <- "/Users/Simon/Downloads/Bioestad-istica/TP3/c2_proyecciones_prov_2010_2040.xls"
+
+# Obtener nombres de todas las hojas
+nombres_hojas <- excel_sheets(archivo)
+
+nombres_hojas <- nombres_hojas[2:26]
+
+# Crear lista para guardar los data frames de cada hoja
+lista_provincias <- list()
+
+# Loop por cada hoja
+for (hoja in nombres_hojas) {
+  
+  # Leer solo el rango que te interesa
+  datos <- read_excel(archivo, sheet = hoja, range = "A64:H84", col_names = FALSE)
+  
+  # Seleccionar columnas A, F, G y H
+  datos <- datos %>% select(1, 6, 7, 8)
+  
+  # Renombrar columnas
+  colnames(datos) <- c("Grupo_etario", "Ambos_sexos", "Masculino", "Femenino")
+  
+  # Extraer nombre de la provincia (parte después del guión)
+  nombre_provincia <- str_split(hoja, "-", simplify = TRUE)[,2]
+  
+  cod_provincia <- as.numeric(str_split(hoja, "-", simplify = TRUE)[,1])
+  
+  # Agregar columna Provincia
+  datos <- datos %>%
+    mutate(Provincia = nombre_provincia, Codigo_prov = cod_provincia) %>%
+    select(Codigo_prov, Provincia, everything())
+  
+  # Guardar en la lista
+  lista_provincias[[hoja]] <- datos
+}
+
+# Unir todo en un solo data frame
+proyeccion_total <- bind_rows(lista_provincias)
+
+# Guardar como archivo Excel
+write.xlsx(proyeccion_total, "proyeccion_poblacion_total.xlsx")
+
+```
+
