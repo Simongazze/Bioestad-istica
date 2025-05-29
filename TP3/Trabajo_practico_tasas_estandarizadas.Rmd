@@ -17,11 +17,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 #install.packages(c("readxl", "dplyr", "stringr", "openxlsx"))
-
+library(readr)
 library(readxl)
 library(dplyr)
 library(stringr)
 library(openxlsx)
+library(dbplyr)
+
+if(FALSE){ 
 
 archivo <- "/Users/Simon/Downloads/Bioestad-istica/TP3/c2_proyecciones_prov_2010_2040.xls"
 
@@ -64,6 +67,48 @@ proyeccion_total <- bind_rows(lista_provincias)
 
 # Guardar como archivo Excel
 write.xlsx(proyeccion_total, "proyeccion_poblacion_total.xlsx")
+
+}
+
+proyeccion_total <- read_excel("./proyeccion_poblacion_total.xlsx")
+
+proyeccion_total <- proyeccion_total %>%
+  mutate(Grupo_etario = ifelse(Grupo_etario %in% c("80-84", "85-89", "90-94", "95-99", "100 y más"), "80 y más", Grupo_etario)) %>%
+  group_by(Codigo_prov,Provincia,Grupo_etario) %>%
+  summarise(Ambos_sexos = sum(Ambos_sexos),
+            Masculino = sum(Masculino),
+            Femenino = sum(Femenino),
+            .groups = "drop")
+  
+proyeccion_total <- proyeccion_total %>%
+  mutate(Grupo_etario = factor(Grupo_etario, levels = c(
+    "0-4", "5-9", "10-14", "15-19", "20-24", "25-29", 
+    "30-34", "35-39", "40-44", "45-49", "50-54", 
+    "55-59", "60-64", "65-69", "70-74", "75-79", "80 y más"
+  )))
+
+```
+
+Agrego las defunciones por diabetes
+
+```{r}
+defunciones_2023 <- read_delim("./defunciones_2023.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+
+defunciones_2023 = defunciones_2023 %>% 
+  rename(
+    Masculino = muertes_masc,
+    Femenino = muertes_fem,
+    Ambos_sexos = muerte_tot 
+  )
+
+df_final <- proyeccion_total %>%
+  left_join(defunciones_2023, by = c("Codigo_prov", "Grupo_etario")) %>%
+    mutate(
+    Masculino = replace_na(Masculino, 0),
+    Femenino  = replace_na(Femenino,  0),
+    Ambos_sexos  = replace_na(Ambos_sexos,  0)
+  )
 
 ```
 
