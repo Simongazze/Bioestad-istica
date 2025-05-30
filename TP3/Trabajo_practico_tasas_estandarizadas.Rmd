@@ -23,6 +23,7 @@ library(dplyr)
 library(stringr)
 library(openxlsx)
 library(dbplyr)
+library(tidyr)
 
 if(FALSE){ 
 
@@ -92,22 +93,39 @@ proyeccion_total <- proyeccion_total %>%
 Agrego las defunciones por diabetes
 
 ```{r}
-defunciones_2023 <- read_delim("./defunciones_2023.csv", 
+defunciones_2023 <- read_delim("./defweb23.csv", 
     delim = ";", escape_double = FALSE, trim_ws = TRUE)
 
-defunciones_2023 = defunciones_2023 %>% 
-  rename(
-    Masculino = muertes_masc,
-    Femenino = muertes_fem,
-    Ambos_sexos = muerte_tot 
-  )
+def_final <- defunciones_2023 %>%
+  mutate(SEXO = ifelse(SEXO == 1, "Def_masculino", "Def_femenino")) %>%
+  pivot_wider(names_from = SEXO, values_from = CUENTA) %>%
+  replace_na(list(Def_masculino = 0, Def_femenino = 0)) %>%
+  group_by(Codigo_prov) %>%
+  mutate(Def_ambos_sexos = Def_masculino + Def_femenino) %>%
+  ungroup()
 
-df_final <- proyeccion_total %>%
-  left_join(defunciones_2023, by = c("Codigo_prov", "Grupo_etario")) %>%
-    mutate(
-    Masculino = replace_na(Masculino, 0),
-    Femenino  = replace_na(Femenino,  0),
-    Ambos_sexos  = replace_na(Ambos_sexos,  0)
+
+total_pais <- def_final %>%
+  group_by(Grupo_etario) %>%
+  summarise(
+    Def_masculino = sum(Def_masculino, na.rm = TRUE),
+    Def_femenino = sum(Def_femenino, na.rm = TRUE),
+    Def_ambos_sexos = sum(Def_ambos_sexos, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(Codigo_prov = 1) %>%
+  select(Codigo_prov, Grupo_etario, Def_masculino, Def_femenino, Def_ambos_sexos)
+
+
+def_final <- bind_rows(def_final, total_pais)
+
+
+df_unido <- proyeccion_total %>%
+  left_join(def_final, by = c("Codigo_prov", "Grupo_etario")) %>%
+  mutate(
+    Def_masculino = replace_na(Def_masculino, 0),
+    Def_femenino = replace_na(Def_femenino, 0),
+    Def_ambos_sexos = replace_na(Def_ambos_sexos, 0)
   )
 
 ```
