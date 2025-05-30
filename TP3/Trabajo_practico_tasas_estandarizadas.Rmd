@@ -2,7 +2,8 @@
 title: "Trabajo Práctico 3 - Estandarización de Tasas"
 author: "Gazze Simón - Moresi Manuel"
 date: "2025-05-28"
-output: html_document
+output: 
+  rmdformats::readthedown
 ---
 
 ```{r setup, include=FALSE}
@@ -11,12 +12,31 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introducción
 
-...
+La **diabetes mellitus tipo 2 (DM2)** es una afección metabólica caracterizada por niveles persistentemente elevados de glucosa en sangre (hiperglucemia), que resultan de una resistencia a la insulina y una disfunción progresiva de las células beta pancreáticas.
+
+Dicha enfermedad constituye uno de los principales desafíos sanitarios del siglo XXI, tanto a nivel global como en el contexto nacional. La diabetes tipo 2 es la forma más frecuente de esta enfermedad, representando aproximadamente entre el 90 y el 95% de los casos de diabetes diagnosticados en adultos.
+
+![](https://media.istockphoto.com/id/1272421423/es/vector/tiny-doctor-insertar-muestra-con-sangre-en-medidor-de-glucosa-digital-para-controlar-la.jpg?s=612x612&w=0&k=20&c=a67YXt8UGdIfGpeaf76UtBTkTlbZ2EISKLBd3mMjJFk=)
+
+En este contexto, el análisis de la mortalidad por diabetes tipo 2 adquiere una relevancia fundamental para el diseño de políticas públicas en salud. A diferencia de los datos de prevalencia, que reflejan cuántas personas viven con la enfermedad, los registros de mortalidad permiten dimensionar el impacto final de la diabetes en términos de vidas perdidas, y evidenciar la eficacia - o insuficiencia - de los sistemas sanitarios para prevenir, diagnosticar y tratar adecuadamente esta patología.
+
+En Argentina se debe tener en cuenta que factores como las desigualdades regionales en el acceso a la atención médica, las diferencias en estilos de vida, la estructura etaria de la población y la calidad de los registros sanitarios pueden influir significativamente en los patrones de mortalidad observados. Por ello, es clave realizar un análisis por provincia que permita identificar aquellas regiones con mayores tasas de mortalidad, así como las tendencias que podrían estar vinculadas a políticas sanitarias locales, cambios demográficos o contextos socioeconómicos particulares.
+
+Comprender estas diferencias territoriales contribuye a mejorar la planificación y asignación de recursos en salud. Por lo cual, en este trabajo se analizará la mortalidad atribuida a diabetes tipo 2 en las distintas provincias argentinas, considerando variables demográficas como el sexo y el grupo etario.
 
 ## Manejo de bases de datos
 
+Se cuenta con la información sobre la mortalidad por Diabetes mellitus tipo 2 (E11) para el año 2023, desagregado por provincia, grupo etario y sexo. Dichos datos fueron obtenidos de la página web de la Dirección de Estadísticas e Información en Salud ([DEIS](https://www.argentina.gob.ar/salud/deis)).
+
+A su vez contamos con la proyección de la población para cada una de las provincias en ese año.
+
+Para realizar esta tarea se decidió excluir a las personas argentinas que:
+
+-   viven en el exterior.
+-   no se pudo determinar la provincia de defunción.
+-   tienen una edad no especificada.
+
 ```{r}
-#install.packages(c("readxl", "dplyr", "stringr", "openxlsx"))
 library(readr)
 library(readxl)
 library(dplyr)
@@ -90,8 +110,6 @@ proyeccion_total <- proyeccion_total %>%
 
 ```
 
-Agrego las defunciones por diabetes
-
 ```{r}
 defunciones_2023 <- read_delim("./defweb23.csv", 
     delim = ";", escape_double = FALSE, trim_ws = TRUE)
@@ -130,3 +148,40 @@ df_unido <- proyeccion_total %>%
 
 ```
 
+## Tasas de mortalidad por provincia
+
+bla bla bla
+
+```{r}
+
+```
+
+## Tasas de mortalidad por grupo etario según provincia
+
+bla bla bla
+
+```{r}
+
+```
+
+## Tasas de mortalidad estandarizada por grupo etario según provincia
+
+### Método directo
+
+bla bla bla
+
+```{r}
+
+```
+
+### Método indirecto
+
+bla bla bla
+
+```{r}
+
+```
+
+## Conclusiones
+
+bla bla bla
