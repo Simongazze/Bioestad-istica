@@ -44,6 +44,8 @@ library(stringr)
 library(openxlsx)
 library(dbplyr)
 library(tidyr)
+library(ggplot2)
+library(plotly)
 
 if(FALSE){ 
 
@@ -150,17 +152,75 @@ df_unido <- proyeccion_total %>%
 
 ## Tasas de mortalidad por provincia
 
-bla bla bla
+Como se mencionó anteriormente, se buscará comparar la mortalidad por diabetes tipo 2 en las distintas provincias del país. Para abordar esto se calculará la tasa de mortalidad por provincia para ambos sexos. Los resultados son los siguientes:
 
 ```{r}
+tasas_simples = df_unido %>%
+                  group_by(Provincia) %>%
+                  summarise(
+                  total_def_mas = sum(Def_masculino, na.rm = TRUE),
+                  total_masc = sum(Masculino, na.rm = TRUE),
+                  tasa_masc = (total_def_mas / total_masc)*100000,
+                  total_def_fem = sum(Def_femenino, na.rm = TRUE),
+                  total_fem = sum(Femenino, na.rm = TRUE),
+                  tasa_fem = (total_def_fem / total_fem)*100000
+                )
 
+tasas_simples = tasas_simples[-24,]
+
+tasas_simples_long <- tasas_simples %>%
+  select(Provincia, tasa_masc, tasa_fem) %>%
+  pivot_longer(cols = c(tasa_masc, tasa_fem),
+               names_to = "Sexo",
+               values_to = "Tasa") %>%
+  mutate(Sexo = ifelse(Sexo == "tasa_masc", "Masculino", "Femenino"))
+
+graf = ggplot(tasas_simples_long)+
+  aes(y=reorder(Provincia, Tasa), x= Tasa, fill= Sexo)+
+  geom_bar(stat = "identity", position = "dodge")+
+  theme_minimal()+
+  labs(title = "Tasas de mortalidad por provincia según sexo", x = "Tasas de mortalidad (x100.000 pers/año)", y = "Provincia")+
+  theme(
+    axis.text.y = element_text(size = 7))
+
+ggplotly(graf)
 ```
+
+Al realizar el cálculo de las tasas de mortalidad se puede evidenciar que las 3 provincias con mayor tasa de mortalidad por diabetes tipo 2 son: Formosa, La Rioja y Mendoza. Pero este analisis primario puede no ser adecuado, ya que como se menciono anteriormente, las provincias de Argentina pueden presentar distintas estructuras etarias.
+
+Para que las comparaciones no se vean influidas por esta diferencia en la distribución de las edades de las provincias se realizan las tasas de mortalidad por grupo etario, tomando grupos con intervalos de 5 años.
 
 ## Tasas de mortalidad por grupo etario según provincia
 
-bla bla bla
+Los resultados al comparar las tasas por grupo etario son las siguientes:
 
 ```{r}
+tasas_etar = df_unido %>%
+                  mutate(
+                  tasa_masc = (Def_masculino / Masculino)*100000,
+                  tasa_fem = (Def_femenino / Femenino)*100000
+                )
+
+
+tasas_etar = tasas_etar[-(1:17),]
+
+tasas_etar_long <- tasas_etar %>%
+  select(Provincia,Grupo_etario, tasa_masc, tasa_fem) %>%
+  pivot_longer(cols = c(tasa_masc, tasa_fem),
+               names_to = "Sexo",
+               values_to = "Tasa") %>%
+  mutate(Sexo = ifelse(Sexo == "tasa_masc", "Masculino", "Femenino"))
+
+
+
+ggplot(tasas_etar_long)+
+  aes(y=Tasa, x= Grupo_etario, group= Provincia)+
+  geom_line(size=1)+
+  theme_minimal()+
+  labs(title = "Tasas de mortalidad por provincia según sexo", x = "Tasas de mortalidad (x100.000 pers/año)", y = "Provincia")+ 
+    facet_wrap(~Sexo)
+
+
 
 ```
 
