@@ -263,7 +263,9 @@ Para poder comparar las tasas de mortalidad por diabetes mellitus de tipo 2 entr
 
 ### Método directo
 
-Para realizar esta comparación, se va a necesitar conocer las tasas de mortalidad por diabetes mellitus tipo 2 que se esperarían en cada provincia si todas tuvieran la misma distribución etaria. Este cálculo se realiza multiplicando todas las tasas específicas de cada grupo etario según la provincia por los datos de una población estandar, la cual será la población proyectada de Argentina en el año 2023.
+Para realizar esta comparación, se va a necesitar conocer las tasas de mortalidad por diabetes mellitus tipo 2 que se esperarían en cada provincia si todas tuvieran la misma distribución etaria. Este cálculo se realiza multiplicando todas las tasas específicas de cada grupo etario según la provincia por los datos de una población estandar, la cual será la población proyectada de Argentina en el año 2023. 
+
+A continuación, se presenta dicha población estandar por 100.000 personas:
 
 ```{r}
 
@@ -282,6 +284,15 @@ reactable(pob_est,
           ),
           defaultPageSize = 17)
 ```
+
+Los resultados de las tasas estandarizadas fueron los siguientes:
+
+```{r}
+
+tasas_est = tasas_etar %>% 
+
+```
+
 
 ### Método indirecto
 
