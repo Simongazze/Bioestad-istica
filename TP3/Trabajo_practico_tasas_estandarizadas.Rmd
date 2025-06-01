@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 La **diabetes mellitus tipo 2 (DM2)** es una afección metabólica caracterizada por niveles persistentemente elevados de glucosa en sangre (hiperglucemia), que resultan de una resistencia a la insulina y una disfunción progresiva de las células beta pancreáticas.
 
-Dicha enfermedad constituye uno de los principales desafíos sanitarios del siglo XXI, tanto a nivel global como en el contexto nacional. La diabetes tipo 2 es la forma más frecuente de esta enfermedad, representando aproximadamente entre el 90 y el 95% de los casos de diabetes diagnosticados en adultos.
+Dicha enfermedad constituye uno de los principales desafíos sanitarios del siglo XXI, tanto a nivel global como en el contexto nacional. La diabetes tipo 2 es la forma más frecuente de esta enfermedad, representando aproximadamente entre el 90% y el 95% de los casos de diabetes diagnosticados en adultos.
 
 ![](https://media.istockphoto.com/id/1272421423/es/vector/tiny-doctor-insertar-muestra-con-sangre-en-medidor-de-glucosa-digital-para-controlar-la.jpg?s=612x612&w=0&k=20&c=a67YXt8UGdIfGpeaf76UtBTkTlbZ2EISKLBd3mMjJFk=)
 
@@ -46,6 +46,9 @@ library(dbplyr)
 library(tidyr)
 library(ggplot2)
 library(plotly)
+library(reactable)
+library(kableExtra)
+
 
 if(FALSE){ 
 
@@ -108,7 +111,8 @@ proyeccion_total <- proyeccion_total %>%
     "0-4", "5-9", "10-14", "15-19", "20-24", "25-29", 
     "30-34", "35-39", "40-44", "45-49", "50-54", 
     "55-59", "60-64", "65-69", "70-74", "75-79", "80 y más"
-  )))
+  ))) %>%
+  arrange(Provincia, Grupo_etario)
 
 ```
 
@@ -175,7 +179,7 @@ tasas_simples_long <- tasas_simples %>%
                values_to = "Tasa") %>%
   mutate(Sexo = ifelse(Sexo == "tasa_masc", "Masculino", "Femenino"))
 
-graf = ggplot(tasas_simples_long)+
+graf_1 = ggplot(tasas_simples_long)+
   aes(y=reorder(Provincia, Tasa), x= Tasa, fill= Sexo)+
   geom_bar(stat = "identity", position = "dodge")+
   theme_minimal()+
@@ -183,7 +187,7 @@ graf = ggplot(tasas_simples_long)+
   theme(
     axis.text.y = element_text(size = 7))
 
-ggplotly(graf)
+ggplotly(graf_1)
 ```
 
 Al realizar el cálculo de las tasas de mortalidad se puede evidenciar que las 3 provincias con mayor tasa de mortalidad por diabetes tipo 2 son: Formosa, La Rioja y Mendoza. Pero este analisis primario puede no ser adecuado, ya que como se menciono anteriormente, las provincias de Argentina pueden presentar distintas estructuras etarias.
@@ -201,37 +205,82 @@ tasas_etar = df_unido %>%
                   tasa_fem = (Def_femenino / Femenino)*100000
                 )
 
-
 tasas_etar = tasas_etar[-(1:17),]
+
+
+niveles_edad <- c("0-4", "5-9", "10-14", "15-19", "20-24",
+                  "25-29", "30-34", "35-39", "40-44", "45-49",
+                  "50-54", "55-59", "60-64", "65-69", "70-74",
+                  "75-79", "80 y más")
 
 tasas_etar_long <- tasas_etar %>%
   select(Provincia,Grupo_etario, tasa_masc, tasa_fem) %>%
   pivot_longer(cols = c(tasa_masc, tasa_fem),
                names_to = "Sexo",
                values_to = "Tasa") %>%
-  mutate(Sexo = ifelse(Sexo == "tasa_masc", "Masculino", "Femenino"))
+  mutate(Sexo = ifelse(Sexo == "tasa_masc", "Masculino", "Femenino"),
+         Grupo_etario = factor(Grupo_etario, levels = niveles_edad)) %>%
+  arrange(Provincia, Grupo_etario)
+  
 
+graf_2 = ggplot(tasas_etar_long, aes(x = Grupo_etario, y = Provincia, fill = Tasa)) +
+  geom_tile(color = "white") +
+  scale_fill_viridis_c(option = "plasma", direction = -1) +
+  facet_wrap(~Sexo) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7),
+        axis.text.y = element_text(size = 8)) +
+  labs(x = "Grupo Etario",title = "Tasas por Grupo Etario y Provincia", fill = "Tasa")
 
+ggplotly(graf_2)
 
-ggplot(tasas_etar_long)+
-  aes(y=Tasa, x= Grupo_etario, group= Provincia)+
-  geom_line(size=1)+
-  theme_minimal()+
-  labs(title = "Tasas de mortalidad por provincia según sexo", x = "Tasas de mortalidad (x100.000 pers/año)", y = "Provincia")+ 
-    facet_wrap(~Sexo)
+tasas_filtrado <- tasas_etar %>%
+  mutate(Grupo_etario = factor(Grupo_etario, levels = niveles_edad),
+         tasa_masc = round(tasa_masc, 2),
+         tasa_fem = round(tasa_fem, 2)) %>%
+  select(Provincia, Grupo_etario, tasa_masc, tasa_fem) %>%
+  arrange(Provincia, Grupo_etario) %>%
+  mutate(Provincia = ifelse(duplicated(Provincia), "", Provincia))  
 
-
+reactable(tasas_filtrado,
+          columns = list(
+            Grupo_etario = colDef(name = "Grupo Etario"),
+            tasa_masc = colDef(name = "Tasa Masc."),
+            tasa_fem = colDef(name = "Tasa Fem.")
+          ),
+          defaultPageSize = 17,
+          striped = TRUE,
+          highlight = TRUE,
+          paginationType = "simple")
 
 ```
+Como se puede observar, las defunciones aparecen con mayor frecuencia en personas mayores, es decir que la edad podría considerarse como un factor de riesgo. También se aprecia que la provincia que presenta mayores tasas de mortalidad en comparación al resto es Formosa, tanto para la población masculina como la femenina. 
+
+Para poder comparar las tasas de mortalidad por diabetes mellitus de tipo 2 entre todas las provincias, podrían compararse las tasas especificas por grupo etario calculadas anteriormente, pero este procedimiento puede resultar bastante engorroso ya que se cuenta con muchas provincias y muchos grupos etarios. Para resolver esto vamos a necesitar calcular un valor que resuma la experiencia de cada provincia ajustando por las diferencias en sus estructuras etarias, y estos valores se obtienen a través de métodos de estandarización.
+
 
 ## Tasas de mortalidad estandarizada por grupo etario según provincia
 
 ### Método directo
 
-bla bla bla
+Para realizar esta comparación, se va a necesitar conocer las tasas de mortalidad por diabetes mellitus tipo 2 que se esperarían en cada provincia si todas tuvieran la misma distribución etaria. Este cálculo se realiza multiplicando todas las tasas específicas de cada grupo etario según la provincia por los datos de una población estandar, la cual será la población proyectada de Argentina en el año 2023.
 
 ```{r}
 
+pob_est = proyeccion_total %>% 
+  filter(Provincia == "TOTAL DEL PAÍS") %>%
+  mutate(Población_estandar = (Ambos_sexos/sum(Ambos_sexos))*100000) %>%
+  mutate(Población_estandar = round(Población_estandar,2))
+
+pob_est = pob_est %>% 
+  select(Grupo_etario, Población_estandar)
+
+reactable(pob_est,
+          columns = list(
+            Grupo_etario = colDef(name = "Grupo Etario"),
+            Población_estandar = colDef(name = "Población Estandar")
+          ),
+          defaultPageSize = 17)
 ```
 
 ### Método indirecto
