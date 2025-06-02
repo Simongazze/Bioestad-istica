@@ -48,7 +48,7 @@ library(ggplot2)
 library(plotly)
 library(reactable)
 library(kableExtra)
-
+library(htmltools)
 
 if(FALSE){ 
 
@@ -205,22 +205,15 @@ tasas_etar = df_unido %>%
                   tasa_fem = (Def_femenino / Femenino)*100000
                 )
 
-tasas_etar = tasas_etar[-(1:17),]
+tasas_etar = tasas_etar[-(392:408),]
 
-
-niveles_edad <- c("0-4", "5-9", "10-14", "15-19", "20-24",
-                  "25-29", "30-34", "35-39", "40-44", "45-49",
-                  "50-54", "55-59", "60-64", "65-69", "70-74",
-                  "75-79", "80 y más")
 
 tasas_etar_long <- tasas_etar %>%
   select(Provincia,Grupo_etario, tasa_masc, tasa_fem) %>%
   pivot_longer(cols = c(tasa_masc, tasa_fem),
                names_to = "Sexo",
                values_to = "Tasa") %>%
-  mutate(Sexo = ifelse(Sexo == "tasa_masc", "Masculino", "Femenino"),
-         Grupo_etario = factor(Grupo_etario, levels = niveles_edad)) %>%
-  arrange(Provincia, Grupo_etario)
+  mutate(Sexo = ifelse(Sexo == "tasa_masc", "Masculino", "Femenino")) 
   
 
 graf_2 = ggplot(tasas_etar_long, aes(x = Grupo_etario, y = Provincia, fill = Tasa)) +
@@ -235,11 +228,9 @@ graf_2 = ggplot(tasas_etar_long, aes(x = Grupo_etario, y = Provincia, fill = Tas
 ggplotly(graf_2)
 
 tasas_filtrado <- tasas_etar %>%
-  mutate(Grupo_etario = factor(Grupo_etario, levels = niveles_edad),
-         tasa_masc = round(tasa_masc, 2),
+  mutate(tasa_masc = round(tasa_masc, 2),
          tasa_fem = round(tasa_fem, 2)) %>%
-  select(Provincia, Grupo_etario, tasa_masc, tasa_fem) %>%
-  arrange(Provincia, Grupo_etario) %>%
+  select(Provincia, Grupo_etario, tasa_masc, tasa_fem)  %>%
   mutate(Provincia = ifelse(duplicated(Provincia), "", Provincia))  
 
 reactable(tasas_filtrado,
@@ -277,21 +268,46 @@ pob_est = proyeccion_total %>%
 pob_est = pob_est %>% 
   select(Grupo_etario, Población_estandar)
 
+tagList(
+  h3("Población proyectada de Argentina en 2023 según grupo etario (x100.000 hab)"),
 reactable(pob_est,
           columns = list(
             Grupo_etario = colDef(name = "Grupo Etario"),
             Población_estandar = colDef(name = "Población Estandar")
           ),
-          defaultPageSize = 17)
+          defaultPageSize = 17))
 ```
 
-Los resultados de las tasas estandarizadas fueron los siguientes:
+Las tasas estandarizadas para cada provincia según sexo fueron las siguientes:
 
 ```{r}
 
 tasas_est = tasas_etar %>% 
+              left_join(pob_est,
+                        by = "Grupo_etario") %>%
+              mutate(tasa_masc_est = (tasa_masc/100000)*Población_estandar,
+                     tasa_fem_est = (tasa_fem/100000)*Población_estandar)
+
+tasas_est_prov = tasas_est %>%
+                    group_by(Provincia)%>%
+                    summarise(Tasas_estandarizadas_masc = sum(tasa_masc_est),
+                              Tasas_estandarizadas_fem = sum(tasa_fem_est))
 
 ```
+
+Observando estos valores podemos concluir que:
+
+- Resultados generales
+
+...
+
+- Hombres vs Mujeres
+
+...
+
+- Tierra del fuego
+
+...razón
 
 
 ### Método indirecto
