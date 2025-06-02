@@ -292,7 +292,6 @@ tasas_est_prov = tasas_est %>%
                     group_by(Provincia)%>%
                     summarise(Tasas_estandarizadas_masc = sum(tasa_masc_est),
                               Tasas_estandarizadas_fem = sum(tasa_fem_est))
-
 ```
 
 Observando estos valores podemos concluir que:
