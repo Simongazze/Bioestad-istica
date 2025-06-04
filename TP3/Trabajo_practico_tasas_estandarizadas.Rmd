@@ -16,9 +16,7 @@ La **diabetes mellitus tipo 2 (DM2)** es una afección metabólica caracterizada
 
 Dicha enfermedad constituye uno de los principales desafíos sanitarios del siglo XXI, tanto a nivel global como en el contexto nacional. Además cabe destacar que la diabetes tipo 2 es la forma más frecuente de esta enfermedad, representando aproximadamente entre el 90% y el 95% de los casos de diabetes diagnosticados en adultos.
 
-<center>
-![](https://media.istockphoto.com/id/1272421423/es/vector/tiny-doctor-insertar-muestra-con-sangre-en-medidor-de-glucosa-digital-para-controlar-la.jpg?s=612x612&w=0&k=20&c=a67YXt8UGdIfGpeaf76UtBTkTlbZ2EISKLBd3mMjJFk=)
-</center>
+<center>![](https://media.istockphoto.com/id/1272421423/es/vector/tiny-doctor-insertar-muestra-con-sangre-en-medidor-de-glucosa-digital-para-controlar-la.jpg?s=612x612&w=0&k=20&c=a67YXt8UGdIfGpeaf76UtBTkTlbZ2EISKLBd3mMjJFk=)</center>
 
 En este contexto, el análisis de la mortalidad de esta enfermedad adquiere una relevancia fundamental para el diseño de políticas públicas en salud. A diferencia de los datos de prevalencia, que reflejan cuántas personas viven con la enfermedad, los registros de mortalidad permiten dimensionar el impacto final de la diabetes en términos de vidas perdidas, y evidenciar la eficacia - o insuficiencia - de los sistemas sanitarios para prevenir, diagnosticar y tratar adecuadamente esta patología.
 
@@ -327,9 +325,7 @@ A pesar de que estas tasas estandarizadas sean una "ficción", dicho cálculo pe
 
 Se puede observar que la provincia que presenta tasas estandarizadas de mortalidad más alta es Formosa, mientras que las regiones de CABA, Buenos Aires y La Pampa presentan las menores tasas de mortalidad por diabetes tipo 2.
 
-<center>
-![](Mapas_1.PNG)
-</center>
+<center>![](Mapas_1.PNG)</center>
 
 -   **Hombres vs Mujeres**
 
@@ -430,23 +426,36 @@ df_indirecta %>%
 
 A continuación, se van a interpretar las siguientes Razones de Mortalidad Estandarizadas (RME) de interés:
 
-- **Razones más altas**
+-   **Razones más altas**
 
 Se observa de manera concordante con lo visto anteriormente, que Formosa presenta razones de mortalidad estandarizadas muy altas tanto para hombres como para mujeres.
 
--- El número de muertes masculinas por diabetes mellitus tipo 2 en Formosa fue 877% mayor al número de muertes esperadas en el caso de que Formosa tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023. 
+-- El número de muertes masculinas por diabetes mellitus tipo 2 en Formosa fue 877% mayor al número de muertes esperadas en el caso de que Formosa tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023.
 
 -- El número de muertes femeninas por diabetes mellitus tipo 2 en Formosa fue 486% mayor al número de muertes esperadas en el caso de que Formosa tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023.
 
-- **Razones más pequeñas**
+-   **Razones más pequeñas**
 
 Un caso que resulta de mucho interés es el de la mortalidad femenina por diabetes mellitus tipo 2 en La Pampa, la cual se ve que es muy inferior en relación a la esperada. Mientras que la RME más chica en las poblaciones masculinas se encuentra en la provincia de Buenos Aires.
 
--- El número de muertes masculinas por diabetes mellitus tipo 2 en Buenos Aires fue 57% menor al número de muertes esperadas en el caso de que Buenos Aires tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023. 
+-- El número de muertes masculinas por diabetes mellitus tipo 2 en Buenos Aires fue 57% menor al número de muertes esperadas en el caso de que Buenos Aires tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023.
 
--- El número de muertes femeninas por diabetes mellitus tipo 2 en La Pampa fue 89% menor al número de muertes esperadas en el caso de que La Pampa tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023. 
-
+-- El número de muertes femeninas por diabetes mellitus tipo 2 en La Pampa fue 89% menor al número de muertes esperadas en el caso de que La Pampa tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023.
 
 # Conclusiones
 
-bla bla bla
+A la hora de repensar en conjunto toda la información analizada en este trabajo, lo que más nos llamó la atención fue la diferencia en la mortalidad observada para la provincia de Formosa, resultando mucho mayor al resto de las provincias, y debido a esto decidimos investigar más en profundidad. Para nuestra sorpresa se encontraron muchos ensayos o articulos que evalúan la mortalidad por diabetes mellitus en esta región de nuestro país.
+
+Como se mencionó anteriormente, factores como la desigualdad social, el acceso a salud pública, y otras cuestiones del mismo indole pueden resultar determinantes para influenciar los patrones de mortalidad por esta enfermedad. De manera que al leer varios articulos pudimos ver que muchos trataban este tema, siendo el articulo ["*PREMATURE MORTALITY TRENDS DUE TO DIABETES MELLITUS IN NORTHEASTERN ARGENTINA FROM 1990 TO 2020*"](https://revistasaludpublica.uchile.cl/index.php/RCSP/article/view/70230/77671) realizado por Sebastián Genero, Samantha Cardozo , Lucrecia Obregón y Gerardo Andino, y publicado en la Revista Chilena de Salud Pública el que lo aborda de manera más directa. De este articulo pudimos observar que:
+
+-   El Nordeste Argentino históricamente presenta los peores indicadores socioeconómicos del país.
+
+-   En lo referido a los recursos de atención de la salud, la región dispone de menos médicos (4,6 cada 1.000 habitantes) y enfermeros (5,2 cada 1.000 habitantes) respecto del país (8,7 y 7,8 cada 1.000 habitantes, respectivamente), y menos camas cada 1.000 habitantes que el país (3,59 comparado con 5,02).
+
+-   Aunque dispone de más centros de salud del primer nivel de atención cada 100.000 habitantes que el país (32,5 comparado con 19,25), el 45% de estos centros de salud representan establecimientos sin atención médica en forma periódica (menor a 3 veces por semana) mientras que en el país es del 25%.
+
+Esto sugiere que la capacidad instalada para la atención de la diabetes mellitus y sus complicaciones podría representar un componente de importancia a la hora de analizar las diferencias en la mortalidad observadas.
+
+De la misma manera, se intentó identificar el motivo por el cual la población masculina parecería tener mayores tasas de mortalidad por esta enfermedad que la población femenina. Luego de revisar varios articulos y leer al respecto pudimos encontrar que los hombres con diabetes tipo 2 presentan un mayor riesgo de mortalidad debido a factores como un peor control glucémico, una mayor frecuencia de problemas cardiovasculares y, posiblemente, una demora en buscar atención médica en comparación con las mujeres.
+
+Por último, queda propuesto investigar con personal especializado en el tema, el motivo por el cual la mortalidad por diabetes mellitus tipo 2 fue tan diferente en Tierra del Fuego a la hora de comparar los sexos, creemos que también sería adecuado realizar un analisis que abarque más años para poder identificar un posible factor de confusión, ya que no sabemos si fue algo puntual del año analizado.
