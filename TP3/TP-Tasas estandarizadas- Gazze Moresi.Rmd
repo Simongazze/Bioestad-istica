@@ -293,6 +293,8 @@ tasas_est = tasas_etar %>%
               mutate(tasa_masc_est = (tasa_masc/100000)*Población_estandar,
                      tasa_fem_est = (tasa_fem/100000)*Población_estandar)
 
+#write.xlsx(tasas_etar, "tasas_estandarizadas.xlsx")
+
 tasas_est_prov = tasas_est %>%
                     group_by(Provincia)%>%
                     summarise(Tasas_estandarizadas_masc = sum(tasa_masc_est),
