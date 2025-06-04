@@ -7,18 +7,20 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```
 
 ## Introducción
 
 La **diabetes mellitus tipo 2 (DM2)** es una afección metabólica caracterizada por niveles persistentemente elevados de glucosa en sangre (hiperglucemia), que resultan de una resistencia a la insulina y una disfunción progresiva de las células beta pancreáticas.
 
-Dicha enfermedad constituye uno de los principales desafíos sanitarios del siglo XXI, tanto a nivel global como en el contexto nacional. La diabetes tipo 2 es la forma más frecuente de esta enfermedad, representando aproximadamente entre el 90% y el 95% de los casos de diabetes diagnosticados en adultos.
+Dicha enfermedad constituye uno de los principales desafíos sanitarios del siglo XXI, tanto a nivel global como en el contexto nacional. Además cabe destacar que la diabetes tipo 2 es la forma más frecuente de esta enfermedad, representando aproximadamente entre el 90% y el 95% de los casos de diabetes diagnosticados en adultos.
 
+<center>
 ![](https://media.istockphoto.com/id/1272421423/es/vector/tiny-doctor-insertar-muestra-con-sangre-en-medidor-de-glucosa-digital-para-controlar-la.jpg?s=612x612&w=0&k=20&c=a67YXt8UGdIfGpeaf76UtBTkTlbZ2EISKLBd3mMjJFk=)
+</center>
 
-En este contexto, el análisis de la mortalidad por diabetes tipo 2 adquiere una relevancia fundamental para el diseño de políticas públicas en salud. A diferencia de los datos de prevalencia, que reflejan cuántas personas viven con la enfermedad, los registros de mortalidad permiten dimensionar el impacto final de la diabetes en términos de vidas perdidas, y evidenciar la eficacia - o insuficiencia - de los sistemas sanitarios para prevenir, diagnosticar y tratar adecuadamente esta patología.
+En este contexto, el análisis de la mortalidad de esta enfermedad adquiere una relevancia fundamental para el diseño de políticas públicas en salud. A diferencia de los datos de prevalencia, que reflejan cuántas personas viven con la enfermedad, los registros de mortalidad permiten dimensionar el impacto final de la diabetes en términos de vidas perdidas, y evidenciar la eficacia - o insuficiencia - de los sistemas sanitarios para prevenir, diagnosticar y tratar adecuadamente esta patología.
 
 En Argentina se debe tener en cuenta que factores como las desigualdades regionales en el acceso a la atención médica, las diferencias en estilos de vida, la estructura etaria de la población y la calidad de los registros sanitarios pueden influir significativamente en los patrones de mortalidad observados. Por ello, es clave realizar un análisis por provincia que permita identificar aquellas regiones con mayores tasas de mortalidad, así como las tendencias que podrían estar vinculadas a políticas sanitarias locales, cambios demográficos o contextos socioeconómicos particulares.
 
@@ -49,6 +51,7 @@ library(plotly)
 library(reactable)
 library(kableExtra)
 library(htmltools)
+library(gt)
 
 if(FALSE){ 
 
@@ -182,6 +185,8 @@ tasas_simples_long <- tasas_simples %>%
 graf_1 = ggplot(tasas_simples_long)+
   aes(y=reorder(Provincia, Tasa), x= Tasa, fill= Sexo)+
   geom_bar(stat = "identity", position = "dodge")+
+  scale_fill_manual(values = c("Masculino" = "#a3223c", "Femenino" = "#c2b280")) +
+  scale_x_continuous(limits = c(0,30)) +
   theme_minimal()+
   labs(title = "Tasas de mortalidad por provincia según sexo", x = "Tasas de mortalidad (x100.000 pers/año)", y = "Provincia")+
   theme(
@@ -190,7 +195,7 @@ graf_1 = ggplot(tasas_simples_long)+
 ggplotly(graf_1)
 ```
 
-Al realizar el cálculo de las tasas de mortalidad se puede evidenciar que las 3 provincias con mayor tasa de mortalidad por diabetes tipo 2 son: Formosa, La Rioja y Mendoza. Pero este analisis primario puede no ser adecuado, ya que como se menciono anteriormente, las provincias de Argentina pueden presentar distintas estructuras etarias.
+Al realizar el cálculo de dichas tasas, se puede evidenciar que las 3 provincias con mayor tasa de mortalidad por diabetes tipo 2 son: Formosa, La Rioja y Mendoza. Pero este analisis primario puede no ser adecuado, ya que como se menciono anteriormente, las provincias de Argentina pueden presentar distintas estructuras etarias.
 
 Para que las comparaciones no se vean influidas por esta diferencia en la distribución de las edades de las provincias se realizan las tasas de mortalidad por grupo etario, tomando grupos con intervalos de 5 años.
 
@@ -214,18 +219,7 @@ tasas_etar_long <- tasas_etar %>%
                names_to = "Sexo",
                values_to = "Tasa") %>%
   mutate(Sexo = ifelse(Sexo == "tasa_masc", "Masculino", "Femenino")) 
-  
 
-graf_2 = ggplot(tasas_etar_long, aes(x = Grupo_etario, y = Provincia, fill = Tasa)) +
-  geom_tile(color = "white") +
-  scale_fill_viridis_c(option = "plasma", direction = -1) +
-  facet_wrap(~Sexo) +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7),
-        axis.text.y = element_text(size = 8)) +
-  labs(x = "Grupo Etario",title = "Tasas por Grupo Etario y Provincia", fill = "Tasa")
-
-ggplotly(graf_2)
 
 tasas_filtrado <- tasas_etar %>%
   mutate(tasa_masc = round(tasa_masc, 2),
@@ -244,17 +238,28 @@ reactable(tasas_filtrado,
           highlight = TRUE,
           paginationType = "simple")
 
+graf_2 = ggplot(tasas_etar_long, aes(x = Grupo_etario, y = Provincia, fill = Tasa)) +
+  geom_tile(color = "white") +
+  scale_fill_gradientn(colors = c("#7a9e7e", "yellow", "red")) +
+  facet_wrap(~Sexo) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7),
+        axis.text.y = element_text(size = 8)) +
+  labs(x = "Grupo Etario",title = "Tasas por Grupo Etario y Provincia", fill = "Tasa")
+
+ggplotly(graf_2)
+
 ```
-Como se puede observar, las defunciones aparecen con mayor frecuencia en personas mayores, es decir que la edad podría considerarse como un factor de riesgo. También se aprecia que la provincia que presenta mayores tasas de mortalidad en comparación al resto es Formosa, tanto para la población masculina como la femenina. 
 
-Para poder comparar las tasas de mortalidad por diabetes mellitus de tipo 2 entre todas las provincias, podrían compararse las tasas especificas por grupo etario calculadas anteriormente, pero este procedimiento puede resultar bastante engorroso ya que se cuenta con muchas provincias y muchos grupos etarios. Para resolver esto vamos a necesitar calcular un valor que resuma la experiencia de cada provincia ajustando por las diferencias en sus estructuras etarias, y estos valores se obtienen a través de métodos de estandarización.
+Como se puede observar, las defunciones aparecen con mayor frecuencia en personas mayores, es decir que la edad podría considerarse como un factor de riesgo. También se aprecia que la provincia que presenta mayores tasas de mortalidad en comparación al resto es Formosa, tanto para la población masculina como la femenina.
 
+Para poder comparar las tasas de mortalidad por diabetes mellitus de tipo 2 entre todas las provincias, podría realizarse la comparación mediante las tasas especificas por grupo etario calculadas anteriormente, pero este procedimiento puede resultar bastante engorroso ya que se cuenta con muchas provincias y muchos grupos etarios. Para resolver esto vamos a necesitar calcular un valor que resuma la experiencia de cada provincia ajustando por las diferencias en sus estructuras etarias, y estos valores se obtienen a través de métodos de estandarización.
 
 ## Tasas de mortalidad estandarizada por grupo etario según provincia
 
 ### Método directo
 
-Para realizar esta comparación, se va a necesitar conocer las tasas de mortalidad por diabetes mellitus tipo 2 que se esperarían en cada provincia si todas tuvieran la misma distribución etaria. Este cálculo se realiza multiplicando todas las tasas específicas de cada grupo etario según la provincia por los datos de una población estandar, la cual será la población proyectada de Argentina en el año 2023. 
+Para realizar esta comparación, se va a necesitar conocer las tasas de mortalidad por diabetes mellitus tipo 2 que se esperarían en cada provincia si todas tuvieran la misma distribución etaria. Dicho cálculo se realiza multiplicando todas las tasas específicas de cada grupo etario según la provincia por los datos de una población estandar, la cual será la población proyectada de Argentina en el año 2023.
 
 A continuación, se presenta dicha población estandar por 100.000 personas:
 
@@ -268,14 +273,16 @@ pob_est = proyeccion_total %>%
 pob_est = pob_est %>% 
   select(Grupo_etario, Población_estandar)
 
-tagList(
-  h3("Población proyectada de Argentina en 2023 según grupo etario (x100.000 hab)"),
-reactable(pob_est,
-          columns = list(
-            Grupo_etario = colDef(name = "Grupo Etario"),
-            Población_estandar = colDef(name = "Población Estandar")
-          ),
-          defaultPageSize = 17))
+pob_est %>%
+  gt() %>%
+  fmt_number(columns = c(Grupo_etario,Población_estandar), decimals = 2) %>%
+  cols_label(
+    Grupo_etario = "Grupo etario",
+    Población_estandar = "Población estandar"
+  ) %>%
+  tab_header(
+    title = "Población proyectada de Argentina en 2023 según grupo etario (x100.000 hab)"
+  )
 ```
 
 Las tasas estandarizadas para cada provincia según sexo fueron las siguientes:
@@ -292,30 +299,153 @@ tasas_est_prov = tasas_est %>%
                     group_by(Provincia)%>%
                     summarise(Tasas_estandarizadas_masc = sum(tasa_masc_est),
                               Tasas_estandarizadas_fem = sum(tasa_fem_est))
+
+tasas_est_prov_long <- tasas_est_prov %>%
+  pivot_longer(cols = c(Tasas_estandarizadas_masc, Tasas_estandarizadas_fem),
+               names_to = "Sexo",
+               values_to = "Tasa") %>%
+  mutate(Sexo = ifelse(Sexo == "Tasas_estandarizadas_masc", "Masculino", "Femenino"))
+
+graf_3 = ggplot(tasas_est_prov_long)+
+  aes(y=reorder(Provincia, Tasa), x= Tasa, fill= Sexo)+
+  geom_bar(stat = "identity", position = "dodge")+
+  scale_fill_manual(values = c("Masculino" = "#a3223c", "Femenino" = "#c2b280")) +
+  scale_x_continuous(limits = c(0,40)) +
+  theme_minimal()+
+  labs(title = "Tasas de mortalidad estandarizada por provincia según sexo", x = "Tasas de mortalidad (x100.000 pers/año)", y = "Provincia")+
+  theme(
+    axis.text.y = element_text(size = 7))
+
+ggplotly(graf_3)
 ```
 
 Observando estos valores podemos concluir que:
 
-- Resultados generales
+-   **Resultados generales**
 
-...
+A pesar de que estas tasas estandarizadas sean una "ficción", dicho cálculo permite realizar comparaciones entre provincias cuya distribución etaria puede diferir.
 
-- Hombres vs Mujeres
+Se puede observar que la provincia que presenta tasas estandarizadas de mortalidad más alta es Formosa, mientras que las regiones de CABA, Buenos Aires y La Pampa presentan las menores tasas de mortalidad por diabetes tipo 2.
 
-...
+<center>
+![](Mapas_1.PNG)
+</center>
 
-- Tierra del fuego
+-   **Hombres vs Mujeres**
 
-...razón
+Ya que se estandarizaron las tasas teniendo en cuenta la misma población estandar (tanto para hombres como para mujeres), resulta interesante notar la diferencia en las tasas de mortalidad entre sexos, resultando mayor para los hombres en 22 de las 24 jurisdicciones analizadas.
 
+A continuación se presentan las razones de tasas que comparan la mortalidad por diabetes entre sexos:
+
+```{r}
+razon_tasas_sexos = tasas_est_prov %>%
+                    mutate(razones_sexos = Tasas_estandarizadas_masc/Tasas_estandarizadas_fem) %>%
+                    select(Provincia,razones_sexos)
+
+razon_tasas_sexos %>%
+  gt() %>%
+  data_color(
+    columns = razones_sexos,
+    colors = scales::col_numeric(
+      palette = c("lightgreen", "yellow", "tomato"),
+      domain = NULL
+    )
+  ) %>%
+  fmt_number(columns = razones_sexos, decimals = 2) %>%
+  cols_label(
+    Provincia = "Provincia",
+    razones_sexos = "Razón Masc/Fem"
+  ) %>%
+  tab_header(
+    title = "Razón de tasas estandarizadas",
+    subtitle = "Comparación por provincia"
+  )
+```
+
+Un dato muy relevante es la diferencia en las tasas de mortalidad estandarizadas comparando ambos sexos en la provincia de Tierra del Fuego, en la cual podemos ver que la mortalidad estimada por diabetes tipo 2 para el sexo masculino fue 11.4 veces esa misma mortalidad para el sexo femenino, independientemente de las diferencias en la distribución etaria de ambas poblaciones.
 
 ### Método indirecto
 
-bla bla bla
+Otro método de estandarización de tasas muy utilizado es el llamado *Método Indirecto*, el cual es de gran utilidad en casos donde no se cuenta con la cantidad de muertes por grupo etario para todas las poblaciones, pero si los valores totales. En ese caso podrían calculares los casos esperados de muertes por grupo etario si se tuviera la misma distribución de mortalidad que una población en la cual si se conociera esta información.
+
+Supongamos que solo se cuenta con la información de muertes por grupo etario para toda Argentina, por lo que se procede a calcular los valores esperados de mortalidad para todas las provincias tal como se mencionó anteriormente.
 
 ```{r}
+df_arg = df_unido %>%
+              group_by(Grupo_etario)%>%
+              summarise(Pob_amb_arg = sum(Ambos_sexos),
+                        Def_amb_arg = sum(Def_ambos_sexos))%>%
+              mutate(Tasa_amb_arg = Def_amb_arg/Pob_amb_arg)%>%
+              mutate(Grupo_etario = factor(Grupo_etario, levels = c(
+                     "0-4", "5-9", "10-14", "15-19", "20-24", "25-29", 
+                    "30-34", "35-39", "40-44", "45-49", "50-54", 
+                    "55-59", "60-64", "65-69", "70-74", "75-79", "80 y más"
+                      ))) %>%
+              arrange(Grupo_etario)
+
+df_recontra_unido = df_unido  %>%
+  left_join(df_arg %>% select(Grupo_etario,Tasa_amb_arg), by = c("Grupo_etario")) %>%
+  mutate(def_esperada_amb = Ambos_sexos*Tasa_amb_arg,
+         def_esperada_masc = Masculino*Tasa_amb_arg,
+         def_esperada_fem = Femenino*Tasa_amb_arg)
+
+df_indirecta = df_recontra_unido %>%
+                    group_by(Provincia) %>%
+                    summarise(Obs_masc = sum(Def_masculino),
+                              Obs_fem = sum(Def_femenino),
+                              Obs_amb = sum(Def_ambos_sexos),
+                              Esp_masc = sum(def_esperada_masc),
+                              Esp_fem = sum(def_esperada_fem),
+                              Esp_amb = sum(def_esperada_amb))%>%
+                    mutate(RME_masc = Obs_masc/Esp_masc,
+                           RME_fem = Obs_fem/Esp_fem,
+                           RME_amb = Obs_amb/Esp_amb)
+
+df_indirecta = df_indirecta[-24,] %>%
+                    select(Provincia,RME_masc, RME_fem)
+
+df_indirecta %>%
+  gt() %>%
+  data_color(
+    columns = c(RME_masc,RME_fem),
+    colors = scales::col_numeric(
+      palette = c("lightgreen", "yellow", "tomato"),
+      domain = range(c(df_indirecta$RME_masc, df_indirecta$RME_fem), na.rm = TRUE)
+    )
+  ) %>%
+  fmt_number(columns = c(RME_masc,RME_fem), decimals = 2) %>%
+  cols_label(
+    Provincia = "Provincia",
+    RME_masc = "RME Masc",
+    RME_fem = "RME Fem"
+    
+  ) %>%
+  tab_header(
+    title = "Razón de tasas estandarizadas por sexo",
+    subtitle = "Comparación por provincia"
+  )
+
 
 ```
+
+A continuación, se van a interpretar las siguientes Razones de Mortalidad Estandarizadas (RME) de interés:
+
+- Razones más altas
+
+Se observa de manera concordante con lo visto anteriormente que Formosa presenta razones de mortalidad estandarizadas muy altas tanto para hombres como para mujeres.
+
+-- El número de muertes masculinas por diabetes mellitus tipo 2 en Formosa fue 877% mayor al número de muertes esperadas en el caso de que Formosa tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023. 
+
+-- El número de muertes femeninas por diabetes mellitus tipo 2 en Formosa fue 486% mayor al número de muertes esperadas en el caso de que Formosa tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023.
+
+- Razones más pequeñas
+
+Un caso que resulta de mucho interés es el de la mortalidad femenina por diabetes mellitus tipo 2 en La Pampa, la cual se ve que es muy inferior en relación a la esperada. Mientras que la RME más chica en las poblaciones masculinas se encuentra en la provincia de Buenos Aires.
+
+-- El número de muertes masculinas por diabetes mellitus tipo 2 en Buenos Aires fue 57% menor al número de muertes esperadas en el caso de que Buenos Aires tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023. 
+
+-- El número de muertes femeninas por diabetes mellitus tipo 2 en La Pampa fue 89% menor al número de muertes esperadas en el caso de que La Pampa tenga la misma distribución en la mortalidad que en el total de Argentina en el 2023. 
+
 
 ## Conclusiones
 
