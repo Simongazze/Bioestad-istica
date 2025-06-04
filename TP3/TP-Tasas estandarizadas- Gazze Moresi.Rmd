@@ -293,8 +293,6 @@ tasas_est = tasas_etar %>%
               mutate(tasa_masc_est = (tasa_masc/100000)*Población_estandar,
                      tasa_fem_est = (tasa_fem/100000)*Población_estandar)
 
-#write.xlsx(tasas_etar, "tasas_estandarizadas.xlsx")
-
 tasas_est_prov = tasas_est %>%
                     group_by(Provincia)%>%
                     summarise(Tasas_estandarizadas_masc = sum(tasa_masc_est),
@@ -461,3 +459,7 @@ Esto sugiere que la capacidad instalada para la atención de la diabetes mellitu
 De la misma manera, se intentó identificar el motivo por el cual la población masculina parecería tener mayores tasas de mortalidad por esta enfermedad que la población femenina. Luego de revisar varios articulos y leer al respecto pudimos encontrar que los hombres con diabetes tipo 2 presentan un mayor riesgo de mortalidad debido a factores como un peor control glucémico, una mayor frecuencia de problemas cardiovasculares y, posiblemente, una demora en buscar atención médica en comparación con las mujeres.
 
 Por último, queda propuesto investigar con personal especializado en el tema, el motivo por el cual la mortalidad por diabetes mellitus tipo 2 fue tan diferente en Tierra del Fuego a la hora de comparar los sexos, creemos que también sería adecuado realizar un analisis que abarque más años para poder identificar un posible factor de confusión, ya que no sabemos si fue algo puntual del año analizado.
+
+# Anexo
+
+En el siguiente [link](https://docs.google.com/spreadsheets/d/1Su4o0KZKC91tDpI4VBZDBq75y3Qv-baM9C-41Lb6rWI/edit?gid=0#gid=0) se encuentra la información necesaria para realizar el cálculo de las tasas estandarizadas para todas las provincias.
