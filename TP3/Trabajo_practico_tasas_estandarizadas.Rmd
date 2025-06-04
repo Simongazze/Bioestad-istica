@@ -1,7 +1,7 @@
 ---
 title: "Trabajo Práctico 3 - Estandarización de Tasas"
 author: "Gazze Simón - Moresi Manuel"
-date: "2025-05-28"
+date: "`r Sys.Date()`"
 output: 
   rmdformats::readthedown
 ---
@@ -28,9 +28,9 @@ Comprender estas diferencias territoriales contribuye a mejorar la planificació
 
 # Manejo de bases de datos
 
-Se cuenta con la información sobre la mortalidad por Diabetes mellitus tipo 2 (E11) para el año 2023, desagregado por provincia, grupo etario y sexo. Dichos datos fueron obtenidos de la página web de la Dirección de Estadísticas e Información en Salud ([DEIS](https://www.argentina.gob.ar/salud/deis)).
+Se cuenta con la información sobre la mortalidad por diabetes mellitus tipo 2 (E11) para el año 2023, desagregado por provincia, grupo etario y sexo. Dichos datos fueron obtenidos de la página web de la Dirección de Estadísticas e Información en Salud ([DEIS](https://www.argentina.gob.ar/salud/deis)).
 
-A su vez se cuenta con la proyección de la población para cada una de las provincias en ese año.
+A su vez se cuenta con la proyección de la población para cada una de las provincias en ese año, obtenida en la página web del Instituto Nacional de Estadísticas y Censos ([INDEC](https://www.indec.gob.ar/indec/web/Nivel3-Tema-2-24)).
 
 Para realizar esta tarea se decidió excluir a las personas argentinas que:
 
@@ -245,7 +245,7 @@ graf_2 = ggplot(tasas_etar_long, aes(x = Grupo_etario, y = Provincia, fill = Tas
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7),
         axis.text.y = element_text(size = 8)) +
-  labs(x = "Grupo Etario",title = "Tasas por Grupo Etario y Provincia", fill = "Tasa")
+  labs(x = "Grupo Etario",title = "Tasas de mortalidad por grupo etario, provincia y sexo", fill = "Tasa")
 
 ggplotly(graf_2)
 
@@ -421,7 +421,7 @@ df_indirecta %>%
     
   ) %>%
   tab_header(
-    title = "Razón de tasas estandarizadas por sexo",
+    title = "Razón de Mortalidad Estandarizada (RME) por sexo",
     subtitle = "Comparación por provincia"
   )
 
