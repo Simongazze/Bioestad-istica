@@ -109,10 +109,10 @@ Library](https://journalpublishingguide.vu.nl/WebQuery/vubrowser/15503#:~:text=S
 
 ### Objetivo del estudio
 
-Realizar una revisión sistemática para evaluar la efectividad y
-seguridad de la vacuna TAK-003 tetravalente contra el dengue, en
-pacientes sanos (niños y adultos), independientemente de su estado de
-exposición previa al virus.
+El objetivo del estudio es realizar una revisión sistemática para
+evaluar la efectividad y seguridad de la vacuna TAK-003 tetravalente
+contra el dengue, en pacientes sanos (niños y adultos),
+independientemente de su estado de exposición previa al virus.
 
 ### Diseño del estudio
 
@@ -125,21 +125,21 @@ exposición previa al virus.
 -   Comparador (C): Placebo.
 -   Resultados (O):
 
--- Mortalidad: definida como mortalidad por cualquier causa
+-- Mortalidad: definida como mortalidad por cualquier causa.
 
 -- Infección grave por dengue: según los criterios de la Organización
-Mundial de la Salud
+Mundial de la Salud.
 
 -- Infección por dengue: diagnóstico mediante reacción en cadena de la
-polimerasa (PCR) en un paciente con fiebre y síntomas compatibles
+polimerasa (PCR) en un paciente con fiebre y síntomas compatibles.
 
 -- Dengue hemorrágico: pacientes diagnosticados con dengue y
-trombocitopenia, o shock, o signos de sangrado
+trombocitopenia, o shock, o signos de sangrado.
 
 -- Eventos adversos graves: según la definición de los estudios
-primarios
+primarios.
 
--- Eventos adversos: según la definición de los estudios primarios
+-- Eventos adversos: según la definición de los estudios primarios.
 
 **Búsqueda de los datos:** todas las búsquedas abarcaron el período
 desde la fecha de creación de cada base de datos hasta el 18/12/2023,
@@ -147,18 +147,19 @@ sin restricciones de fecha de publicación, estado de publicación ni
 idioma. La identificación de estudios primarios se complementó con una
 búsqueda específica en la base de datos PubMed.
 
-**Selección de estudios:** dos investigadores independientes (AB, CS)
-evaluaron los títulos y resúmenes de todos los artículos de acuerdo con
-los criterios de elegibilidad para población, intervención, comparación
-y diseño del estudio. Se obtuvo el texto completo de todos los estudios
-potencialmente elegibles, y dos investigadores (AB, CS) evaluaron su
+**Selección de estudios:** dos investigadores independientes evaluaron
+los títulos y resúmenes de todos los artículos de acuerdo con los
+criterios de elegibilidad para población, intervención, comparación y
+diseño del estudio. Se obtuvo el texto completo de todos los estudios
+potencialmente elegibles, y dos investigadores evaluaron su
 elegibilidad. Cualquier desacuerdo fue resuelto mediante discusión y, de
-ser necesario, se involucró a un tercer revisor (AI).
+ser necesario, se involucró a un tercer revisor.
 
-**Extracción de los datos:** se recopiló información detallada sobre las
-características demográficas, la metodología del estudio, la población
-incluida, las intervenciones realizadas, la comparación utilizada y los
-resultados reportados.
+**Extracción de los datos:** Fue realizada por un investigador mediante
+un formulario estandarizado estandarizados y se recopiló información
+detallada sobre las características demográficas, la metodología del
+estudio, la población incluida, las intervenciones realizadas, la
+comparación utilizada y los resultados reportados.
 
 ### Criterios de inclusión/exclusión
 
@@ -184,75 +185,554 @@ A continuación, se presenta el diagrama de flujo PRISMA:
 
 ![](Imagenes/PRISMA.jpeg)
 
-
 ### Metodología estadística
 
-- Para el análisis de variables dicotómicas, se expresó la estimación del impacto terapéutico de la intervención mediante medidas de riesgo junto con el IC del 95%.
+-   Para el análisis de variables dicotómicas, se expresó la estimación
+    del impacto terapéutico de la intervención mediante medidas de
+    riesgo junto con el IC del 95%.
 
-- Para el análisis de variables continuas, se utilizó la diferencia de medias y la desviación estándar, también con su IC del 95%.
+-   Para el análisis de variables continuas, se utilizó la diferencia de
+    medias y la desviación estándar, también con su IC del 95%.
 
-- Se empleó el método de variancia inversa y un modelo de efectos aleatorios, para analizar estudios clínicamente homogéneos.
+-   Se empleó el método de variancia inversa y un modelo de efectos
+    aleatorios, para analizar estudios clínicamente homogéneos.
 
-- La homogeneidad se evaluó mediante la prueba ꭕ² y la estadística I² con un nivel de significación del 10%.
+-   La homogeneidad se evaluó mediante la prueba ꭕ² y la estadística I²
+    con un nivel de significación del 10%.
 
-- Se evaluó la certeza de la evidencia utilizando la metodología GRADE.
-
+-   Se evaluó la certeza de la evidencia utilizando la metodología
+    GRADE.
 
 ### Resultados
 
 #### Mortalidad
 
-En un ensayo clínico, que incluyó un total de 20.067 participantes de entre 4 y 16 años, se informó que el efecto de la vacuna tetravalente contra el dengue sobre la mortalidad es incierto. RR=1.25, IC 95%=[0.22 ; 6.44].
+En un ensayo clínico, que incluyó un total de 20.067 participantes de
+entre 4 y 16 años, se informó que el efecto de la vacuna tetravalente
+contra el dengue sobre la mortalidad es incierto. RR=1.25, IC 95%=[0.22
+; 6.44].
 
-La certeza de la evidencia fue clasificada como muy baja. Al haber una baja tasa de eventos en ambos grupos del estudio, se puede pensar que es un evento poco frecuente.
-
+La certeza de la evidencia fue clasificada como muy baja. Al haber una
+baja tasa de eventos en ambos grupos del estudio, se puede pensar que es
+un evento poco frecuente.
 
 #### Infección grave por dengue
 
-En un ensayo clínico con 20.067 participantes de entre 4 y 16 años, se reportó que el uso de la vacuna contra el dengue se asoció con evidencia de alta certeza en la reducción del riesgo de infección grave por virus del dengue. RR=0.17,  IC 95%=[0,12 ; 0,24].
+En un ensayo clínico con 20.067 participantes de entre 4 y 16 años, se
+reportó que el uso de la vacuna contra el dengue se asoció con evidencia
+de alta certeza en la reducción del riesgo de infección grave por virus
+del dengue. RR=0.17, IC 95%=[0,12 ; 0,24].
 
-Tanto en Argentina (riesgo basal de infección grave por dengue 170 por cada 100.000 pacientes) como en Puerto Rico (4.990 por cada 100.000 pacientes), la certeza de la evidencia fue clasificada como alta y el uso de la vacuna TAK-003 resultaría en una disminución de infecciones graves entre niños y adolescentes de 4 a 16 años.
-
+Tanto en Argentina (riesgo basal de infección grave por dengue 170 por
+cada 100.000 pacientes) como en Puerto Rico (4.990 por cada 100.000
+pacientes), la certeza de la evidencia fue clasificada como alta y el
+uso de la vacuna TAK-003 resultaría en una disminución de infecciones
+graves entre niños y adolescentes de 4 a 16 años.
 
 #### Fiebre hemorrágica
 
-En un ensayo clínico con 20.067 participantes de entre 4 y 16 años, el uso de la vacuna contra el dengue se asoció con evidencia de baja certeza en la reducción del riesgo de desarrollar fiebre hemorrágica. RR=0.35, IC 95%=[0.15 ; 0.81].
+En un ensayo clínico con 20.067 participantes de entre 4 y 16 años, el
+uso de la vacuna contra el dengue se asoció con evidencia de baja
+certeza en la reducción del riesgo de desarrollar fiebre hemorrágica.
+RR=0.35, IC 95%=[0.15 ; 0.81].
 
-La certeza de la evidencia fue clasificada como baja, principalmente por la imprecisión derivada del bajo número de eventos en cada grupo, lo cual introduce fragilidad en los resultados.
-
+La certeza de la evidencia fue clasificada como baja, principalmente por
+la imprecisión derivada del bajo número de eventos en cada grupo, lo
+cual introduce fragilidad en los resultados.
 
 #### Infección por dengue
 
-Tres ensayos clínicos con un total de 22.221 participantes sanos entre 4 y 16 años, reportaron evidencia de alta certeza sobre la reducción de infecciones por dengue asociadas con el uso de la vacuna. RR=0.40, IC 95%=[0.36 ; 0.45], I²=0%.
+Tres ensayos clínicos con un total de 22.221 participantes sanos entre 4
+y 16 años, reportaron evidencia de alta certeza sobre la reducción de
+infecciones por dengue asociadas con el uso de la vacuna. RR=0.40, IC
+95%=[0.36 ; 0.45], I²=0%.
 
-Tanto en Argentina (riesgo basal de infección por virus del dengue 256 por cada 100.000 pacientes) como en Brasil (1.383 por cada 100.000 pacientes), la certeza de la evidencia fue clasificada como alta y el uso de la vacuna tetravalente contra el dengue resultaría en una disminución de infecciones entre niños y adolescentes de 4 a 16 años.
-
+Tanto en Argentina (riesgo basal de infección por virus del dengue 256
+por cada 100.000 pacientes) como en Brasil (1.383 por cada 100.000
+pacientes), la certeza de la evidencia fue clasificada como alta y el
+uso de la vacuna tetravalente contra el dengue resultaría en una
+disminución de infecciones entre niños y adolescentes de 4 a 16 años.
 
 #### Eventos adversos graves
 
-Cinco ensayos clínicos con un total de 23.540 participantes,  reportaron evidencia de baja certeza sobre un posible aumento de eventos adversos graves asociados al uso de la vacuna contra el dengue. RR=1.04, IC 95%=[0.69 ; 1.55], I²=25%.
-
+Cinco ensayos clínicos con un total de 23.540 participantes, reportaron
+evidencia de baja certeza sobre un posible aumento de eventos adversos
+graves asociados al uso de la vacuna contra el dengue. RR=1.04, IC
+95%=[0.69 ; 1.55], I²=25%.
 
 #### Eventos adversos de cualquier tipo
 
-Tres ensayos clínicos con un total de 21.348 participantes, predominantemente niños o adolescentes, reportaron evidencia de baja certeza sobre un posible aumento de eventos adversos de cualquier tipo asociados al uso de la vacuna contra el dengue. RR=1.41, IC 95%=[0.79 ; 2.52], I²=94,6%.
+Tres ensayos clínicos con un total de 21.348 participantes,
+predominantemente niños o adolescentes, reportaron evidencia de baja
+certeza sobre un posible aumento de eventos adversos de cualquier tipo
+asociados al uso de la vacuna contra el dengue. RR=1.41, IC 95%=[0.79 ;
+2.52], I²=94,6%.
 
+En conclusión, esta revisión establece que la vacuna tetravalente
+TAK-003 es una herramienta efectiva para para reducir la incidencia de
+infecciones graves por dengue y de infecciones por el virus del dengue,
+particularmente en regiones altamente endémicas y en la población menor
+de 17 años, con alta certeza en la evidencia sobre su eficacia. Si bien
+se enfatiza su efectividad, también se resalta la necesidad de continuar
+con la investigación y la vigilancia, especialmente en lo que respecta a
+la seguridad en poblaciones y grupos etarios diversos, en particular en
+adultos mayores, ya que este grupo no fue incluido en los ensayos
+clínicos.
 
 ### Posibles sesgos
 
 Se consideraron como posibles los siguientes sesgos:
 
-- Sesgo en el proceso de aleatorización.
+-   Sesgo en el proceso de aleatorización.
 
-- Sesgo en la medición de las variables respuestas.
+-   Sesgo en la medición de las variables respuestas.
 
-- Sesgo en la selección del resultado comunicado.
+-   Sesgo en la selección del resultado comunicado.
 
-- Sesgo debido a desviaciones de las intervenciones previstas.
+-   Sesgo debido a desviaciones de las intervenciones previstas.
 
-- Sesgo por falta de datos de resultados.
+-   Sesgo por falta de datos de resultados.
 
-Tres ensayos fueron considerados con bajo riesgo de sesgo, uno presentó algunas consideraciones y otro mostró un alto riesgo de sesgo. Estos riesgos de sesgo se evaluaron usando la herramienta Cochrane Rob 2.
+Tres ensayos fueron considerados con bajo riesgo de sesgo, uno presentó
+algunas consideraciones y otro mostró un alto riesgo de sesgo. Estos
+riesgos de sesgo se evaluaron usando la herramienta Cochrane Rob 2.
 
 ![](Imagenes/Sesgos.jpeg)
 
+## Kallás et al. (2024). *Live, Attenuated, Tetravalent Butantan–Dengue Vaccine in Children and Adults*.
+
+### Revista de publicación
+
+[The New England Journal of Medicine](https://www.nejm.org/)
+
+The New England Journal of Medicine (NEJM), fundada en 1812 es una de
+las revistas médicas más prestigiosas y antiguas del mundo. Publicada
+por la Massachusetts Medical Society, difunde investigaciones clínicas
+originales, revisiones, y artículos sobre medicina basada en evidencia,
+con alto impacto en la comunidad científica y médica a nivel global.
+
+### Factor de impacto
+
+Su factor de impacto en 2023 fue de **96,2**(según el [Journal Citation
+Reports (Clarivate,
+2024)](https://clarivate.com/academia-government/scientific-and-academic-research/research-funding-analytics/journal-citation-reports/?campaignname=JCR_Launch_Retention_AG_RA_Global_2025&campaignid=701QO00000avg0zYAA&utm_campaign=JCR_Launch_Retention_AG_RA_Global_2025&utm_source=Press_Release&utm_medium=Earned_Press&utm_content=&utm_term=)),
+lo que la situó en el segundo puesto entre 168 revistas en la categoría
+de "Medicina General e Interna".
+
+### Objetivo del estudio
+
+Los objetivos primarios del ensayo fueron evaluar la eficacia general de
+la vacuna contra el dengue sintomático, virológicamente confirmado, de
+cualquier serotipo, ocurrido más de 28 días después de la vacunación,
+independientemente del estado serológico basal, y describir la seguridad
+hasta el día 21 .
+
+Los objetivos secundarios fueron evaluar la eficacia de la vacuna según
+el estado serológico basal de los participantes y según el serotipo del
+virus del dengue; también se evaluó la eficacia según la edad.
+
+### Diseño del estudio
+
+Es un ensayo clínico de fase III, aleatorizado, de doble ciego,
+realizado en 16 centros de Brasil y controlado por placebo con un
+seguimiento planificado de 5 años y de 2 años por participante.
+
+La aleatorización se realizó según grupo etario (2 a 6 años, 7 a 17 años
+y 18 a 59 años), en una proporción 2:1 para recibir la dosis o placebo.
+Las secuencias de aleatorización por computadora para cada estrato
+etario fueron ingresadas en un sistema central de aleatorización
+electrónica por un estadístico independiente.
+
+Las jeringas las preparó un farmacéutico que conocía el contenido pero
+no participó luego en la evaluación de los participantes.
+
+Se obtuvieron muestras de sangre antes de la inyección para evaluar el
+estado serológico frente al dengue al inicio, y luego se administró por
+vía subcutánea una dosis única de 0.5 ml de la vacuna o del placebo.
+
+Los participantes recibieron un diario para registrar eventos adversos
+que les ocurran durante los 21 días posteriores a la inyección.
+
+Se realizó una visita de control a la semana 4 y durante los 2 años de
+seguimiento se realizaron contactos mensuales para ver si había eventos
+adversos o dengue.
+
+### Criterios de inclusión/exclusión
+
+*Criterios de inclusión*:
+
+-   Niños mayores de 24 meses, adolescentes y adultos menores de 60
+    años.
+
+-   Aceptan mantener contacto periódico por teléfono, medios
+    electrónicos y visitas domiciliarias.
+
+-   Demuestran su intención de participar en el estudio, lo cual se
+    documenta mediante la firma del Formulario de Consentimiento
+    Informado por parte del participante o su representante legal.
+
+*Criterios de exclusión*:
+
+-   Para participantes femeninas: estar embarazada (confirmado por
+    prueba positiva de β-hCG), en período de lactancia o expresar la
+    intención de mantener relaciones sexuales con potencial reproductivo
+    sin utilizar métodos anticonceptivos durante los 28 días posteriores
+    a la vacunación.
+
+-   Evidencia de enfermedad activa no controlada de tipo neurológica,
+    cardíaca, pulmonar, hepática o renal, según anamnesis o examen
+    físico.
+
+-   Enfermedades con compromiso del sistema inmunológico, incluyendo
+    diabetes mellitus descompensada, neoplasias (excepto carcinoma
+    basocelular), inmunodeficiencias congénitas o adquiridas y
+    enfermedades autoinmunes no controladas, según anamnesis o examen
+    físico.
+
+-   Enfermedades conductuales, cognitivas o psiquiátricas que, a juicio
+    del investigador principal o del representante médico, afecten la
+    capacidad del potencial participante para comprender y colaborar con
+    los requerimientos del protocolo del estudio.
+
+-   Cualquier consumo considerado como abuso de alcohol o drogas en los
+    últimos 12 meses previos a la inclusión en el estudio que haya
+    causado problemas médicos, profesionales o familiares, según lo
+    indicado en los registros clínicos.
+
+-   Antecedentes de reacciones alérgicas graves o anafilaxia a la vacuna
+    o a alguno de sus componentes.
+
+-   Antecedentes de asplenia.
+
+Entre otros criterios de exclusión relacionados a condiciones que
+comprometieran el sistema inmunológico.
+
+### Metodología estadística
+
+-   Para el tamaño muestral se utilizó la fórmula de Blackwelder con una
+    aproximación de Poisson.
+
+-   La eficacia se calculó como:
+
+$$Eficacia = \frac{1 - (1 + s) \theta}{1-\theta}$$,
+
+Donde,
+
+$s$:razón entre los tiempos de seguimiento del control y el vacunado.
+
+$\theta$:proporción de casos de dengue en los vacunados.
+
+Con su respectivo intervalo de confianza del 95%.
+
+La eficacia se estimó con la aproximación condicional de Chan y Bohidar
+y los intervalos de confianza se calcularon con el método de Blaker. El
+criterio de eficacia se consideró cumplido si el límite inferior del IC
+95% bilateral era mayor al 25%.
+
+-   Para el análisis de seguridad, se calcularon los porcentajes de
+    eventos adversos graves dentro de los 21 días posteriores a la
+    inyección en ambos grupos, y también dentro de los 2 años de
+    seguimiento.
+
+### Resultados
+
+#### Eficacia
+
+Un total de 16.235 participantes fueron aleatorizados y recibieron la
+vacuna (10.259 participantes) o placebo (5.976 participantes). La
+población por protocolo para la eficacia incluyó a 10.215 en el grupo de
+vacuna y a 5.947 en el grupo de placebo.
+
+Durante los 2 años de seguimiento, la eficacia de la vacuna frente a
+cualquier serotipo de DENV fue del 79,6% (IC 95%: 70,0 a 86,3).
+
+*Eficacia por serotipo*:
+
+-   Contra DENV-1: 89,5% (IC 95%: 78,7 a 95,0)
+
+-   Contra DENV-2: 69,6% (IC 95%: 50,8 a 81,5)
+
+*Según estado serológico basal*:
+
+En participantes sin evidencia de exposición previa: 73,6% (IC 95%: 57,6
+a 83,7)
+
+En participantes con evidencia de exposición previa: 89,2% (IC 95%: 77,6
+a 95,6)
+
+*Por grupo etario (independientemente del estado serológico)*:
+
+2 a 6 años: 80,1% (IC 95%: 66,0 a 88,4)
+
+7 a 17 años: 77,8% (IC 95%: 55,6 a 89,6)
+
+18 a 59 años: 90,0% (IC 95%: 68,2 a 97,5)
+
+#### Seguridad
+
+El porcentaje de eventos adversos graves dentro de los 21 días
+posteriores a la inyección fue similar entre los grupos:
+
+-   Grupo vacuna: 0,2% (20 participantes)
+
+-   Grupo placebo: 0,1% (8 participantes)
+
+Durante el período total de seguimiento de 2 años, la tasa de eventos
+adversos graves fue:
+
+-   Grupo vacuna: 3,9%
+
+-   Grupo placebo: 4,0%
+
+La mayoría de los eventos adversos solicitados y no solicitados dentro
+de los 21 días fueron leves a moderados.
+
+**Eventos adversos sistémicos relacionados con la vacuna/placebo (dentro
+de 21 días)**:
+
+-   Grupo vacuna: 58,3%
+
+-   Grupo placebo: 45,6%
+
+**Evento más frecuente en el sitio de administración**:
+
+*Dolor en el sitio de inyección*: 14,9% vacuna vs 11,1% placebo
+
+**Eventos sistémicos más comunes**:
+
+*Cefalea*: 36,4% vacuna vs. 30,9% placebo
+
+*Fatiga*: 19,3% vacuna vs. 15,1% placebo
+
+*Erupción cutánea*: 22,5% vacuna vs. 4,2% placebo
+
+La incidencia de eventos adversos sistémicos relacionados con la vacuna
+aumentó con la edad.
+
+En conclusión, una sola dosis de la vacuna Butantan-DV resultó eficaz en
+niños, adolescentes y adultos entre 2 y 59 años. Se cumplió con el
+criterio principal de eficacia, con una eficacia de aproximadamente 80%
+para prevenir el dengue sintomático confirmado virológicamente durante
+los 2 años de seguimiento. Los eventos adversos sistémicos solicitados,
+relacionados con la vacuna o el placebo, fueron informados con mayor
+frecuencia por quienes recibieron Butantan-DV en comparación con los que
+recibieron placebo.
+
+### Posibles sesgos
+
+Se pensaron posibles sesgos en los resultados del estudio, estos se
+presentan a continuación:
+
+**Sesgo de selección**: los participantes fueron todos de Brasil, lo que
+limita la representatividad poblacional global.
+
+**Sesgo de información**: los eventos adversos fueron registrados por
+diario del paciente y contactos telefónicos, lo que puede dar lugar a
+subregistro o variabilidad en la calidad de la información.
+
+**Sesgo de serotipos**: durante el período de seguimiento, no circularon
+DENV-3 ni DENV-4, por lo que la eficacia solo se puede atribuir a DENV-1
+y DENV-2.
+
+**Sesgo de protocolo**: exclusión de participantes que no cumplieron el
+protocolo puede sesgar resultados.
+
+**Sesgo temporal**: el estudio se desarrolló durante 3 años, en los
+cuales la incidencia de dengue y circulación de serotipos cambió.
+
+## Situación del dengue en Argentina
+
+En los últimos cinco años, Argentina ha experimentado un incremento
+sostenido en el número de casos de dengue, con la aparición de brotes en
+departamentos sin antecedentes de transmisión. A partir de 2023, se
+constató la persistencia de la circulación viral durante la temporada
+invernal en la región del NEA y adelantamiento de los casos,
+evidenciando un cambio en la temporalidad. Por lo que resulta crucial
+avanzar en la solución de esta problemática.
+
+Se evidencia que las epidemias de los años 2023 y 2024 concentran el 83%
+del total de casos históricos registrados en el país hasta el momento.
+
+![](Imagenes/imagen%20casos%20dengue%20argentina.png)
+
+-   En la temporada 2024/2025 se notificaron desde la Semana
+    Epidemiológica (SE) 31/2024 hasta la SE 21/2025 un total de 72921
+    casos sospechosos de dengue, de los cuales se confirmaron un total
+    de 17126 casos de dengue en el país. Siendo la Semana Epidemiológica
+    14/2025 la que mayores casos de dengue presentó.
+
+-   Se registraron 153 casos notificados con antecedente de vacunación
+    contra el dengue dentro de los 30 días previos al inicio de los
+    síntomas.
+
+![](Imagenes/dengue%20semana.png)
+
+-   La incidencia acumulada a nivel país para la temporada actual es de
+    36 casos cada 100.000 habitantes.
+
+-   Por región, la mayor incidencia acumulada fue la de la región Centro
+    con 48 casos cada 100.000 habitantes, seguida por NOA con 31, NEA
+    con 10, Sur con 7 y Cuyo con 2.
+
+-   La región Centro, lleva registrado en la actual temporada el 85% de
+    casos confirmados (14533) del total de casos de dengue en el país.
+    Las provincias que confirmaron la mayor cantidad de casos fueron
+    Córdoba y Santa Fe.
+
+![](Imagenes/tasa%20por%20region.png)
+
+Desde la SE 31/2024 a la SE 21/2025 se han registrado ocho muertes
+vinculadas al evento. Seis de los casos correspondieron a residentes de
+la provincia de Santa Fe (cinco en Rosario y uno en San Lorenzo) y los
+otros dos casos correspondieron a residentes de CABA (Comuna 11) y
+Córdoba (San Lorenzo).Los fallecimientos ocurrieron entre las SE 11 y 20
+(considerando la fecha de inicio de síntomas). La mediana de edad es de
+62 años, con un rango de edades entre 14 meses y 75 años.
+
+Cabe destacar que, cinco de los siete casos presentaban comorbilidades o
+condiciones clínicas preexistentes. Dos de los casos fallecidos
+correspondieron a personas adultas jóvenes (25 y 47 años) sin
+comorbilidades identificadas al momento del análisis.
+
+Fuente: [Boletín Epidemiológico Nacional (SE
+21/2025)](https://www.argentina.gob.ar/sites/default/files/2025/01/ben-758-se-21_02062025.pdf).
+
+## Situación del dengue en Santa Fe
+
+-   En lo que va de la temporada 2024-2025 (SE 31/2024 hasta la SE
+    22/2025), se notificaron un total de 15320 casos sospechosos de
+    dengue. Se confirmaron un total de 9904 casos. Además se observa que
+    al igual que a nivel país, la Semana Epidemiológica con mayor
+    cantidad de casos de dengue fue la 14/2025 con un total de 1637
+    contagiados.
+
+-   Se notificaron 16 casos con antecedente de vacunación en los últimos
+    30 días.
+
+![](Imagenes/dengue%20semana%20santa%20fe.png)
+
+Un aspecto a destacar es que luego de pasar por la gran epidemia del
+2024, en lo que va de la temporada 2024-2025 se logró una disminución
+superior al 85 % respecto a los casos registrados en igual período de la
+temporada anterior.
+
+![](Imagenes/dengue%20comparacion%20santa%20fe.png)
+
+Estos resultados pueden basarse en parte por las medidas realizadas por
+la provincias, los municipios y las comunas para combatir esta
+problemática. El Gobierno de Santa Fe, mediante el programa Objetivo
+Dengue, continúa promoviendo la vacunación gratuita para los grupos
+priorizados y refuerza las acciones de prevención durante todo el año,
+recordando la importancia de eliminar criaderos, mantener limpios los
+entornos domiciliarios y hacer la consulta ante la aparición de
+síntomas.
+
+En cuanto a los avances de la estrategia de vacunación focalizada, ya se
+aplicaron 126.534 dosis de la vacuna TAK-003. En la población entre 40 y
+59 años, la cobertura con esquema completo alcanza el 66,45 %; mientras
+que en las edades entre 20 y 39 años, es del 50,13 %, y del 34,54 % en
+adolescentes y jóvenes de entre 15 y 19 años.
+
+Fuente: [Informe Epidemiológico de Santa Fe (SE
+22/2025)](https://www.santafe.gov.ar/index.php/web/content/download/281055/1454977/file/INFORME_EPIDEMIOLOGICO_SE22_2025.pdf)
+y [Web de la Provincia de Santa
+Fe](https://www.santafe.gob.ar/noticias/noticia/283119/#:~:text=En%20lo%20que%20va%20de,per%C3%ADodo%20de%20la%20temporada%20anterior).
+
+## Situación del dengue en Rosario
+
+-   En la temporada 2024/2025 se confirmaron desde la Semana
+    Epidemiológica (SE) 31/2024 hasta la SE 22/2025 un total de 9186
+    casos de dengue en el departamento de Rosario, los cuales 7.958
+    corresponden a la ciudad de Rosario.
+
+-   Actualmente la ciudad de Rosario continúa en fase de brote, siendo
+    una de las zonas más afectadas por el virus a nivel nacional.
+
+La cantidad de casos de dengue por Semana Epidemiológica se presenta a
+continuación:
+
+![](Imagenes/dengue%20rosario.png)
+
+Para atacar esta problemática se llevaron a cabo distintas acciones,
+algunas de ellas fueron:
+
+-   Se realizaron estrategias de bloqueo que dieron buenos resultados,
+    ya que permitieron que no se produzca una dispersión en los casos
+    detectados. Se presta mayor atención en sudoeste y sur y se continúa
+    con campañas de concientización en redes sociales, medios y espacios
+    de cartelería y capacitación y formación desde julio del año pasado.
+
+-   En las zonas de mayor incidencia se contabilizan ya, 65 operativos
+    que incluyen a 15.000 viviendas, donde se concurre con todo el
+    equipo epidemiológico, y casa por casa se realiza toma de febriles,
+    descacharrado y también fumigación, y si hay escuelas dentro del
+    sector, se trabaja con docentes y alumnos que son quienes más
+    replican en sus familias.
+
+-   En cuanto al tema de la vacunación, actualmente, ya se están
+    realizando las segundas dosis de los grupos que inicialmente
+    tuvieron su vacunación habiéndose aplicado en la ciudad, 34.700
+    dosis.
+
+Fuente: [Informe Epidemiológico de Santa Fe (SE
+22/2025)](https://www.santafe.gov.ar/index.php/web/content/download/281055/1454977/file/INFORME_EPIDEMIOLOGICO_SE22_2025.pdf)
+y [Web del Concejo de
+Rosario](https://www.concejorosario.gov.ar/informaron-sobre-la-situacion-del-dengue-en-rosario/).
+
+## Preguntas de interés
+
+### ¿Existen pruebas de tamizaje (screening) aprobadas por la ANMAT para la detección de infección por Dengue?
+
+Una prueba de tamizaje, también llamada screening, es una prueba rápida
+que se realiza a personas asintomáticas para identificar aquellas que
+tienen mayor riesgo de desarrollar una enfermedad o trastorno
+específico. El objetivo es detectar la enfermedad en una etapa temprana,
+cuando el tratamiento puede ser más efectivo y las consecuencias a largo
+plazo pueden ser menores.
+
+En Argentina se desarrollo *Detect-AR Dengue* (aprobada por el ANMAT),
+el primer test de antígeno para dengue fabricado localmente. El test
+permite identificar el virus en tres horas y sin equipo especializado.
+Es un desarrollo impulsado por la Fundación Instituto Leloir y el
+CONICET para uso profesional. Esto representa un avance para el
+diagnóstico temprano y un paso importante hacia la soberanía sanitaria
+del país, al disminuir la dependencia de insumos importados y optimizar
+el control de futuros brotes.
+
+Diseñado para detectar los cuatro serotipos del virus, la prueba logra
+ofrecer un diagnóstico en aproximadamente tres horas y permite procesar
+hasta 92 muestras simultáneamente, facilitando su uso en laboratorios de
+análisis clínico con una alta carga de trabajo.
+
+Este nuevo kit no solo es el primero de tipo ELISA para dengue
+desarrollado en Argentina, sino que además cumple con los estándares de
+especificidad y sensibilidad comparables a las pruebas internacionales
+utilizadas actualmente en el ámbito clínico, los cuales son
+mayoritariamente importados.
+
+Fuente: [Portal Oficial del Estado
+Argentino](https://www.argentina.gob.ar/noticias/se-confirmo-el-excelente-desempeno-del-kit-detect-ar-dengue-para-la-deteccion-del-antigeno).
+
+### ¿Cuál es la vacuna aprobada por la ANMAT para prevenir el Dengue y a qué población está destinada?
+
+La ANMAT aprobó el uso de la vacuna del laboratorio Takeda contra el
+dengue, TAK-003 o Qdenga, que está indicada para todas las personas
+mayores de 4 años, hayan tenido o no la enfermedad.
+
+Dicha vacuna se basa en el virus del dengue 2, al que se añade ADN de
+los otros tres serotipos para proteger contra cualquiera de los cuatro
+tipos de dengue. Su forma de administración se realiza mediante dos
+dosis que deben ser aplicadas en un intervalo de tres meses.
+
+El grupo de expertos y autoridades sanitarias consideraron que, en base
+a los datos presentados, ninguna vacuna cumple función de bloqueo frente
+a un brote de dengue como el que tiene lugar actualmente en Rosario. En
+ese sentido, coincidieron en que la mejor estrategia de prevención sigue
+siendo la participación de la comunidad en relación al control y
+eliminación de criaderos de mosquitos, así como el fortalecimiento de la
+comunicación de las medidas de prevención para evitar picaduras de
+mosquitos y el empleo de métodos de aislamiento vectorial (repelentes,
+espirales, mosquiteros, etc.).
+
+Fuente: [Portal Oficial del Estado
+Argentino](https://www.argentina.gob.ar/noticias/la-anmat-aprobo-el-uso-de-la-vacuna-del-laboratorio-takeda-contra-el-dengue).
