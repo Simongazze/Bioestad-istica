@@ -198,3 +198,61 @@ A continuación, se presenta el diagrama de flujo PRISMA:
 - Se evaluó la certeza de la evidencia utilizando la metodología GRADE.
 
 
+### Resultados
+
+#### Mortalidad
+
+En un ensayo clínico, que incluyó un total de 20.067 participantes de entre 4 y 16 años, se informó que el efecto de la vacuna tetravalente contra el dengue sobre la mortalidad es incierto. RR=1.25, IC 95%=[0.22 ; 6.44].
+
+La certeza de la evidencia fue clasificada como muy baja. Al haber una baja tasa de eventos en ambos grupos del estudio, se puede pensar que es un evento poco frecuente.
+
+
+#### Infección grave por dengue
+
+En un ensayo clínico con 20.067 participantes de entre 4 y 16 años, se reportó que el uso de la vacuna contra el dengue se asoció con evidencia de alta certeza en la reducción del riesgo de infección grave por virus del dengue. RR=0.17,  IC 95%=[0,12 ; 0,24].
+
+Tanto en Argentina (riesgo basal de infección grave por dengue 170 por cada 100.000 pacientes) como en Puerto Rico (4.990 por cada 100.000 pacientes), la certeza de la evidencia fue clasificada como alta y el uso de la vacuna TAK-003 resultaría en una disminución de infecciones graves entre niños y adolescentes de 4 a 16 años.
+
+
+#### Fiebre hemorrágica
+
+En un ensayo clínico con 20.067 participantes de entre 4 y 16 años, el uso de la vacuna contra el dengue se asoció con evidencia de baja certeza en la reducción del riesgo de desarrollar fiebre hemorrágica. RR=0.35, IC 95%=[0.15 ; 0.81].
+
+La certeza de la evidencia fue clasificada como baja, principalmente por la imprecisión derivada del bajo número de eventos en cada grupo, lo cual introduce fragilidad en los resultados.
+
+
+#### Infección por dengue
+
+Tres ensayos clínicos con un total de 22.221 participantes sanos entre 4 y 16 años, reportaron evidencia de alta certeza sobre la reducción de infecciones por dengue asociadas con el uso de la vacuna. RR=0.40, IC 95%=[0.36 ; 0.45], I²=0%.
+
+Tanto en Argentina (riesgo basal de infección por virus del dengue 256 por cada 100.000 pacientes) como en Brasil (1.383 por cada 100.000 pacientes), la certeza de la evidencia fue clasificada como alta y el uso de la vacuna tetravalente contra el dengue resultaría en una disminución de infecciones entre niños y adolescentes de 4 a 16 años.
+
+
+#### Eventos adversos graves
+
+Cinco ensayos clínicos con un total de 23.540 participantes,  reportaron evidencia de baja certeza sobre un posible aumento de eventos adversos graves asociados al uso de la vacuna contra el dengue. RR=1.04, IC 95%=[0.69 ; 1.55], I²=25%.
+
+
+#### Eventos adversos de cualquier tipo
+
+Tres ensayos clínicos con un total de 21.348 participantes, predominantemente niños o adolescentes, reportaron evidencia de baja certeza sobre un posible aumento de eventos adversos de cualquier tipo asociados al uso de la vacuna contra el dengue. RR=1.41, IC 95%=[0.79 ; 2.52], I²=94,6%.
+
+
+### Posibles sesgos
+
+Se consideraron como posibles los siguientes sesgos:
+
+- Sesgo en el proceso de aleatorización.
+
+- Sesgo en la medición de las variables respuestas.
+
+- Sesgo en la selección del resultado comunicado.
+
+- Sesgo debido a desviaciones de las intervenciones previstas.
+
+- Sesgo por falta de datos de resultados.
+
+Tres ensayos fueron considerados con bajo riesgo de sesgo, uno presentó algunas consideraciones y otro mostró un alto riesgo de sesgo. Estos riesgos de sesgo se evaluaron usando la herramienta Cochrane Rob 2.
+
+![](Imagenes/Sesgos.jpeg)
+
